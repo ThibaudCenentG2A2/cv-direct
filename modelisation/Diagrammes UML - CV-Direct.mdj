@@ -10659,8 +10659,8 @@
 										"$ref": "AAAAAAFZKEyIBHW+aek="
 									},
 									"name": "PSEUDONYME",
-									"type": "VARCHAR",
-									"length": "30",
+									"type": "TEXT",
+									"length": 0,
 									"primaryKey": false,
 									"foreignKey": false,
 									"nullable": false,
@@ -10673,8 +10673,8 @@
 										"$ref": "AAAAAAFZKEyIBHW+aek="
 									},
 									"name": "EMAIL",
-									"type": "VARCHAR",
-									"length": "30",
+									"type": "TEXT",
+									"length": 0,
 									"primaryKey": false,
 									"foreignKey": false,
 									"nullable": false,
@@ -10851,8 +10851,8 @@
 										"$ref": "AAAAAAFZKGcvTnbVEdA="
 									},
 									"name": "CONTRAT_ASSURANCE_PROFESSIONNEL",
-									"type": "VARCHAR",
-									"length": "250",
+									"type": "TEXT",
+									"length": 0,
 									"primaryKey": false,
 									"foreignKey": false,
 									"nullable": false,
@@ -10879,8 +10879,8 @@
 										"$ref": "AAAAAAFZKGcvTnbVEdA="
 									},
 									"name": "ADRESSE",
-									"type": "VARCHAR",
-									"length": "30",
+									"type": "TEXT",
+									"length": 0,
 									"primaryKey": false,
 									"foreignKey": false,
 									"nullable": false,
