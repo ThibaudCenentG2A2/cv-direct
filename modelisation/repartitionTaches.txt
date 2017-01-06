@@ -1,0 +1,18 @@
+Thibaud CENENT
+•	Requête de création, supppresion et modification de cv
+•	Système ajout cv
+•	Les cookies
+
+Romain COLONNA D ISTRIA
+•	Système de recherche par critères
+•	Validation demandes d’ajout de compte recruteur pour les administrateurs
+•	Mot de passe oublié
+
+Tristan DIETZ
+•	Système emailing
+•	Système ajout/suppression/modification des compétences et sous-compétences pour Administrateur
+
+Thierry FERNANDEZ
+•	Création user Envoie de mail
+•	Authentification recruteur
+•	Requête de modification ou suppression compte recruteur
