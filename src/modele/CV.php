@@ -35,7 +35,6 @@ class CV
      * Correspond au numéro de tel portable de l'utilisateur
      * @var $num_Tel_Portable
      * @see CV::getNumTelPortable()
-     * @see CV::setNumTelPortable()
      */
     private $num_Tel_Portable;
 
@@ -43,7 +42,6 @@ class CV
      * Correspond au numéro de tel fixe de l'utilisateur
      * @var $num_Tel_Fixe
      * @see CV::getNumTelFixe()
-     * @see CV::setNumTelFixe()
      */
     private $num_Tel_Fixe;
 
@@ -51,7 +49,6 @@ class CV
      * Correspond à l'adresse d'un utilisateur
      * @var $adresse
      * @see CV::getAdresse()
-     * @see CV::setAdresse()
      */
     private $adresse;
 
@@ -59,7 +56,6 @@ class CV
      * Correspond au code postal d'un utilisateur
      * @var $code_Postal
      * @see CV::getCodePostal()
-     * @see CV::setCodePostal()
      */
     private $code_Postal;
 
@@ -67,9 +63,22 @@ class CV
      * Correspond à la ville où habite un utilisateur
      * @var $ville
      * @see CV::getVille()
-     * @see CV::setVille()
      */
     private $ville;
+
+    /**
+     * Correspond au nom de la personne concernée par le CV
+     * @var $nom
+     * @see CV::getNom()
+     */
+    private $nom;
+
+    /**
+     * Correspond au prénom de la personne concernée par le CV
+     * @var $prenom
+     * @see CV::getPrenom()
+     */
+    private $prenom;
 
 
     /** Constructeur de la classe CV
@@ -163,14 +172,32 @@ class CV
         return $this->ville;
     }
 
+    /** Retourne le nom de la personne concernée par le CV
+     * @return mixed
+     */
+    public function get_nom()
+    {
+        return $this->nom;
+    }
+
+    /** Retourne le prénom de la personne concernée par le CV
+     * @return mixed
+     */
+    public function get_prenom()
+    {
+        return $this->prenom;
+    }
+
+
     /** Fonction qui va permettre de d'insérer des CV pour chaque CV crée en fonction de chaque utilisateur
      */
     public function inserer()
     {
-        $req = $GLOBALS['pdo']->prepare('INSERT INTO CV(NUMERO_SECU_SOCIALE,CONTRAT_ASSURANCE_PROFESSIONNEL,CV_FORMAT_PDF
-        ,NUM_TEL_PORTABLE,NUM_TEL_FIXE,ADRESSE,CODE_POSTAL,VILLE,PHOTOGRAPHIE) VALUES(:secu,:assurance,:cv,:portable
-        ,:fixe,:adresse,:code_postal,:ville,:photo)');
-        //$req->execute(array('secu' => ));
+        $req = $GLOBALS['pdo']->prepare('INSERT INTO CV(NUMERO_SECU_SOCIALE,NUM_TEL_PORTABLE,CONTRAT_ASSURANCE_PROFESSIONNEL,NUM_TEL_FIXE,ADRESSE,CODE_POSTAL
+        ,VILLE,NOM,PRENOM) VALUES(:num_secu,:num_portable,:contrat_assurance_pro,:num_fixe,:adresse,:code_postal,:ville,:nom,:prenom)');
+        $req->execute(array('num_secu' => $this->numero_Secu_Sociale, 'num_portable' => $this->num_Tel_Portable, 'contrat_assurance_pro'
+        => $this->contrat_Assurance_Professionnel, 'num_fixe' => $this->num_Tel_Fixe, 'adresse' => $this->adresse, 'code_postal'
+        => $this->code_Postal, 'ville' => $this->ville, 'nom' => $this->nom, 'prenom' => $this->prenom));
         echo 'Insertion bien réalisé';
     }
 
@@ -179,50 +206,7 @@ class CV
      */
     public function mettre_a_jour()
     {
-        /**
-         * On réalise plusieurs conditions car grâce à la page validate_update.php, on va travailler sur une donnée en particulier à modifier à chaque fois donc on suppose que les autres variables sont à null.
-         */
-        /*
-        if(isset($assurance))
-        {
-            $req = $bd->prepare('UPDATE CV SET CONTRAT_ASSURANCE_PROFESSIONNEL = :assurance WHERE ID_CV = :id_cv');
-            $req->execute(array('assurance' => $assurance, 'id_cv' => $id_cv));
-        }
-        if(isset($cv_pdf))
-        {
-            $req = $bd->prepare('UPDATE CV SET CV_FORMAT_PDF = :cv_pdf WHERE ID_CV = :id_cv');
-            $req->execute(array('cv_pdf' => $cv_pdf, 'id_cv' => $id_cv));
-        }
-        if(isset($photo))
-        {
-            $req = $bd->prepare('UPDATE CV SET PHOTOGRAPHIE = :photo WHERE ID_CV = :id_cv');
-            $req->execute(array('photo' => $photo, 'id_cv' => $id_cv));
-        }
-        if(isset($num_portable))
-        {
-            $req = $bd->prepare('UPDATE CV SET NUM_TEL_PORTABLE = :portable WHERE ID_CV = :id_cv');
-            $req->execute(array('portable' => $num_portable, 'id_cv' => $id_cv));
-        }
-        if(isset($num_fixe))
-        {
-            $req = $bd->prepare('UPDATE CV SET NUM_TEL_FIXE = :fixe WHERE ID_CV = :id_cv');
-            $req->execute(array('fixe' => $num_fixe, 'id_cv' => $id_cv));
-        }
-        if(isset($adresse))
-        {
-            $req = $bd->prepare('UPDATE CV SET ADRESSE = :adresse WHERE ID_CV = :id_cv');
-            $req->execute(array('adresse' => $adresse, 'id_cv' => $id_cv));
-        }
-        if(isset($code_postal))
-        {
-            $req = $bd->prepare('UPDATE CV SET CODE_POSTAL = :code_postal WHERE ID_CV = :id_cv');
-            $req->execute(array('code_postal' => $code_postal, 'id_cv' => $id_cv));
-        }
-        if(isset($ville))
-        {
-            $req = $bd->prepare('UPDATE CV SET VILLE = :ville WHERE ID_CV = :id_cv');
-            $req->execute(array('ville' => $ville, 'id_cv' => $id_cv));
-        }*/
+
     }
 
     /** Fonction qui va permettre la suppression d'un tuple dans la relation CV ayant un identifiant et un utilisateur en particulier grâce à la requête DELETE.
@@ -231,7 +215,7 @@ class CV
     public function supprimer()
     {
         $req = $GLOBALS['pdo']->prepare('DELETE FROM CV WHERE ID_CV = : id_cv');
-        // $req->execute(array('id_cv' => $id_cv));
+        $req->execute(array('id_cv' => $this->id_CV));
     }
 
     /** Fonction qui va permettre d'afficher un cv d'un utilisateur en fonction de son identifiant grâce aux données récupérées grâce à la requête SELECT
