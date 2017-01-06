@@ -1,7 +1,9 @@
 <?php
 /**
  * Permet la connexion à la base de données présent sur PHP My Admin via le PDO (PHP DATA OBJECT) avec la gestion des exceptions par le biais du try/catch
+ *
  * @author Thibaud CENENT
+ *
  * @version 1.2
  */
 //Connexion à la base de données
