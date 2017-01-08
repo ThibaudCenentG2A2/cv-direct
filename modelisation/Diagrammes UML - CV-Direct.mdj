@@ -10031,13 +10031,13 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 912,
-											"top": 685,
-											"width": 218,
+											"left": 872,
+											"top": 693,
+											"width": 235.130859375,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "COMPETENCES",
+											"text": "COMPETENCE",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -10069,9 +10069,9 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 917,
-													"top": 708,
-													"width": 208,
+													"left": 877,
+													"top": 716,
+													"width": 225.130859375,
 													"height": 13,
 													"autoResize": false
 												},
@@ -10093,9 +10093,9 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 917,
-													"top": 723,
-													"width": 208,
+													"left": 877,
+													"top": 731,
+													"width": 225.130859375,
 													"height": 13,
 													"autoResize": false
 												}
@@ -10109,9 +10109,9 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 912,
-											"top": 703,
-											"width": 218,
+											"left": 872,
+											"top": 711,
+											"width": 235.130859375,
 											"height": 38,
 											"autoResize": false
 										}
@@ -10125,9 +10125,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 912,
-									"top": 680,
-									"width": 218,
+									"left": 872,
+									"top": 688,
+									"width": 235.130859375,
 									"height": 61,
 									"autoResize": false,
 									"nameLabel": {
@@ -10550,7 +10550,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 993,
-											"top": 639,
+											"top": 643,
 											"width": 0,
 											"height": 13,
 											"autoResize": false,
@@ -10610,7 +10610,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 994,
-											"top": 648,
+											"top": 656,
 											"width": 0,
 											"height": 13,
 											"autoResize": false,
@@ -10641,7 +10641,7 @@
 										"$ref": "AAAAAAFZc2c0cuWkDnw="
 									},
 									"lineStyle": 2,
-									"points": "979:612;979:680",
+									"points": "979:612;979:688",
 									"nameLabel": {
 										"$ref": "AAAAAAFZc2tRWOY2Lwk="
 									},
@@ -11066,7 +11066,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFZKEqYrnWPzoc="
 							},
-							"name": "COMPETENCES",
+							"name": "COMPETENCE",
 							"columns": [
 								{
 									"_type": "ERDColumn",
@@ -11088,7 +11088,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFZc2Y61+WAvrc="
 									},
-									"name": "COMPETENCE",
+									"name": "NOM_COMPETENCE",
 									"type": "TEXT",
 									"length": 0,
 									"primaryKey": false,
