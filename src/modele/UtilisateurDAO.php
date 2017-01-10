@@ -44,7 +44,8 @@ function connexion_utilisateur_verif ($mail, $mdp)
     $data=$req->fetch();
 
     if ($data['mdp'] == $mdp) // l'acces a la bd est ok
-    {
+    {    require_once('../controleur/Utilisateur.php');
+        demarrage_session_utilisateur();
         $_SESSION['pseudo'] = $data['pseudo'];
         $_SESSION['mail'] = $data['mail'];
         return true;

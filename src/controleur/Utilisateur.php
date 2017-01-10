@@ -33,7 +33,7 @@ class Utilisateur
 
     function inscrire_utilisateur()
     {
-        require_once('../modele/Utilisateur.php');
+        require_once('../modele/UtilisateurDAO.php');
 
         insertion_utilisateur($this->pseudo, $this->prenom, $this->nom, $this->mail, $this->mdp);
     }
@@ -61,7 +61,7 @@ class Utilisateur
 
     function connexion_utilisateur()
     {
-        require_once('../modele/Utilisateur.php');
+        require_once('../modele/UtilisateurDAO.php');
 
         connexion_utilisateur_verif($this->mail, $this->mdp);
 
