@@ -64,7 +64,7 @@
                                         <!-- logo -->
                                         <tr>
                                             <td align="left">
-                                                <a href="../../controleur/index.php">
+                                                <a href="http://cv-direct.alwaysdata.net/">
                                                     <img src="../images/logo_brown.png" alt="Company Logo" style="display: block;"/>
                                                 </a>
                                             </td>
@@ -370,7 +370,7 @@
                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="250" style="border-collapse: collapse;">
                                                     <tr>
                                                         <td>
-                                                            <a href="../../controleur/index.php">
+                                                            <a href="http://cv-direct.alwaysdata.net/">
                                                                 <img src="../images/logo_brown.png" alt="Logo" style="display: block;"/>
                                                             </a>
                                                         </td>
