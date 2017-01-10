@@ -10,7 +10,7 @@ Romain COLONNA D ISTRIA
 
 Tristan DIETZ
 •	Système emailing
-•	Système ajout/suppression/modification des compétences et sous-compétences pour Administrateur
+•	Système ajout/suppression/modification des compétences pour Administrateur
 
 Thierry FERNANDEZ
 •	Création user Envoie de mail
