@@ -23,17 +23,17 @@
                                     <table align="center">
                                         <tr>
                                             <td width="22">
-                                                <img src="images/marker-icon-white.png" alt="location" />
+                                                <img src="html/images/marker-icon-white.png" alt="location" />
                                             </td>
                                             <td style="color: #fff; font-size: 12px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif;">One infinity loop, 54100</td>
                                             <td width="22"></td>
                                             <td width="22">
-                                                <img src="images/phone-icon-white.png" alt="location" />
+                                                <img src="html/images/phone-icon-white.png" alt="location" />
                                             </td>
                                             <td style="color: #fff; font-size: 12px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif;">+12&nbsp;1234&nbsp;1234&nbsp;123</td>
                                             <td width="22"></td>
                                             <td width="22">
-                                                <img src="images/mail-icon-white.png" alt="location" />
+                                                <img src="html/images/mail-icon-white.png" alt="location" />
                                             </td>
                                             <td>
                                                 <a style="color: #fff; font-size: 12px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif; text-decoration:none;" href="mailto:theproject@mail.com">theproject@mail.com</a>
@@ -107,7 +107,7 @@
                                         <tr>
                                             <td align="center" bgcolor="#ffffff" >
                                                 <a href="#">
-                                                    <img src="images/banner.png" width="580" alt="Section one image" style="display: block;"/>
+                                                    <img src="html/images/banner.png" width="580" alt="Section one image" style="display: block;"/>
                                                 </a>
                                             </td>
                                         </tr>
@@ -149,7 +149,7 @@
                                                     <tr>
                                                         <td align="center">
                                                             <a href="#">
-                                                                <img src="images/feature-icon-1.png" width="60" alt="Feature" style="display: block;"/>
+                                                                <img src="html/images/feature-icon-1.png" width="60" alt="Feature" style="display: block;"/>
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -198,7 +198,7 @@
                                                     <tr>
                                                         <td align="center">
                                                             <a href="#">
-                                                                <img src="images/feature-icon-2.png" width="60" alt="Feature" style="display: block;"/>
+                                                                <img src="html/images/feature-icon-2.png" width="60" alt="Feature" style="display: block;"/>
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -254,7 +254,7 @@
                                                     <tr>
                                                         <td align="center">
                                                             <a href="#">
-                                                                <img src="images/feature-icon-3.png" width="60" alt="Feature" style="display: block;"/>
+                                                                <img src="html/images/feature-icon-3.png" width="60" alt="Feature" style="display: block;"/>
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -303,7 +303,7 @@
                                                     <tr>
                                                         <td align="center">
                                                             <a href="#">
-                                                                <img src="images/feature-icon-4.png" width="60" alt="Feature" style="display: block;"/>
+                                                                <img src="html/images/feature-icon-4.png" width="60" alt="Feature" style="display: block;"/>
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -390,7 +390,7 @@
                                                                 <tr>
                                                                     <td>
                                                                         <a href="https://www.facebook.com">
-                                                                            <img src="images/facebook-icon.png"  alt="Facebook" style="display: block;" />
+                                                                            <img src="html/images/facebook-icon.png" alt="Facebook" style="display: block;" />
                                                                         </a>
                                                                     </td>
                                                                 </tr>
@@ -399,7 +399,7 @@
                                                                 <tr>
                                                                     <td>
                                                                         <a href="https://www.twitter.com">
-                                                                            <img src="images/twitter-icon.png"  alt="Twitter" style="display: block;" />
+                                                                            <img src="html/images/twitter-icon.png" alt="Twitter" style="display: block;" />
                                                                         </a>
                                                                     </td>
                                                                 </tr>
@@ -408,7 +408,7 @@
                                                                 <tr>
                                                                     <td>
                                                                         <a href="https://plus.google.com/">
-                                                                            <img src="images/googleplus-icon.png"  alt="Google+" style="display: block;" />
+                                                                            <img src="html/images/googleplus-icon.png" alt="Google+" style="display: block;" />
                                                                         </a>
                                                                     </td>
                                                                 </tr>
@@ -417,7 +417,7 @@
                                                                 <tr>
                                                                     <td>
                                                                         <a href="https://www.linkedin.com/">
-                                                                            <img src="images/linkedin-icon.png"  alt="Linked In" style="display: block;" />
+                                                                            <img src="html/images/linkedin-icon.png" alt="Linked In" style="display: block;" />
                                                                         </a>
                                                                     </td>
                                                                 </tr>
@@ -439,7 +439,7 @@
                                                     <tr><td style="font-size: 0; line-height: 0;" height="57">&nbsp;</td></tr>
                                                     <tr>
                                                         <td width="22">
-                                                            <img src="images/marker-icon.png" alt="location" />
+                                                            <img src="html/images/marker-icon.png" alt="location" />
                                                         </td>
                                                         <td style="color: #999999; font-size: 14px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif;">One infinity loop, 54100</td>
                                                     </tr>
@@ -447,7 +447,7 @@
                                                     <tr><td style="font-size: 0; line-height: 0;" height="10">&nbsp;</td></tr>
                                                     <tr>
                                                         <td width="22">
-                                                            <img src="images/phone-icon.png" alt="location" />
+                                                            <img src="html/images/phone-icon.png" alt="location" />
                                                         </td>
                                                         <td style="color: #999999; font-size: 14px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif;">+12&nbsp;1234&nbsp;1234&nbsp;123</td>
                                                     </tr>
@@ -455,7 +455,7 @@
                                                     <tr><td style="font-size: 0; line-height: 0;" height="10">&nbsp;</td></tr>
                                                     <tr>
                                                         <td width="22">
-                                                            <img src="images/fax-icon.png" alt="location" />
+                                                            <img src="html/images/fax-icon.png" alt="location" />
                                                         </td>
                                                         <td style="color: #999999; font-size: 14px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif;">+12&nbsp;1234&nbsp;1234&nbsp;123</td>
                                                     </tr>
@@ -463,7 +463,7 @@
                                                     <tr><td style="font-size: 0; line-height: 0;" height="10">&nbsp;</td></tr>
                                                     <tr>
                                                         <td width="22">
-                                                            <img src="images/mail-icon.png" alt="location" />
+                                                            <img src="html/images/mail-icon.png" alt="location" />
                                                         </td>
                                                         <td>
                                                             <a style="color: #999999; font-size: 14px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif; text-decoration:none;" href="mailto:theproject@mail.com">theproject@mail.com</a>
