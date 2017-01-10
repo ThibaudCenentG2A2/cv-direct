@@ -65,7 +65,7 @@
                                         <tr>
                                             <td align="left">
                                                 <a href="../html/index.html">
-                                                    <img src="images/logo_brown.png" alt="Company Logo" style="display: block;"/>
+                                                    <img src="../images/logo_brown.png" alt="Company Logo" style="display: block;"/>
                                                 </a>
                                             </td>
                                         </tr>
@@ -371,7 +371,7 @@
                                                     <tr>
                                                         <td>
                                                             <a href="../html/index.html">
-                                                                <img src="images/logo_brown.png" alt="Logo" style="display: block;"/>
+                                                                <img src="../images/logo_brown.png" alt="Logo" style="display: block;"/>
                                                             </a>
                                                         </td>
                                                     </tr>
