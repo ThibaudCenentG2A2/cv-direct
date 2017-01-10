@@ -1,0 +1,10 @@
+Options +FollowSymlinks
+RewriteEngine On
+
+# Test : pas de fichier de ce nom à la racine
+RewriteCond %{REQUEST_FILENAME} !-f
+# Test : pas de dossier de ce nom à la racine
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirection de la page PAGE vers controleur/PAGE.php
+RewriteRule ^(.*)$ /controleur/$1.php [L,QSA]

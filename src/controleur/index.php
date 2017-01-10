@@ -6,4 +6,4 @@
  * Time: 11:24
  */
 
-echo "Salut";
+echo "Tu as réussi !";
