@@ -58,5 +58,3 @@ function connexion_utilisateur_verif ($mail, $mdp)
     }
 
 }
-
-?>
