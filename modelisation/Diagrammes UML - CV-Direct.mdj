@@ -9647,30 +9647,6 @@
 												},
 												{
 													"_type": "ERDColumnView",
-													"_id": "AAAAAAFZKGeaUnb6ZV8=",
-													"_parent": {
-														"$ref": "AAAAAAFZKGcvT3bZ+Aw="
-													},
-													"model": {
-														"$ref": "AAAAAAFZKGeaCXb3SKo="
-													},
-													"visible": true,
-													"enabled": true,
-													"lineColor": "#000000",
-													"fillColor": "#ffffff",
-													"fontColor": "#000000",
-													"font": "Arial;13;0",
-													"showShadow": true,
-													"containerChangeable": false,
-													"containerExtending": false,
-													"left": 653,
-													"top": 305,
-													"width": 404.99169921875,
-													"height": 13,
-													"autoResize": false
-												},
-												{
-													"_type": "ERDColumnView",
 													"_id": "AAAAAAFZKGgO+HcJL6A=",
 													"_parent": {
 														"$ref": "AAAAAAFZKGcvT3bZ+Aw="
@@ -9688,7 +9664,7 @@
 													"containerChangeable": false,
 													"containerExtending": false,
 													"left": 653,
-													"top": 320,
+													"top": 305,
 													"width": 404.99169921875,
 													"height": 13,
 													"autoResize": false
@@ -9712,7 +9688,7 @@
 													"containerChangeable": false,
 													"containerExtending": false,
 													"left": 653,
-													"top": 335,
+													"top": 320,
 													"width": 404.99169921875,
 													"height": 13,
 													"autoResize": false
@@ -9736,7 +9712,7 @@
 													"containerChangeable": false,
 													"containerExtending": false,
 													"left": 653,
-													"top": 350,
+													"top": 335,
 													"width": 404.99169921875,
 													"height": 13,
 													"autoResize": false
@@ -9760,7 +9736,7 @@
 													"containerChangeable": false,
 													"containerExtending": false,
 													"left": 653,
-													"top": 365,
+													"top": 350,
 													"width": 404.99169921875,
 													"height": 13,
 													"autoResize": false
@@ -9784,7 +9760,7 @@
 													"containerChangeable": false,
 													"containerExtending": false,
 													"left": 653,
-													"top": 380,
+													"top": 365,
 													"width": 404.99169921875,
 													"height": 13,
 													"autoResize": false
@@ -9808,7 +9784,7 @@
 													"containerChangeable": false,
 													"containerExtending": false,
 													"left": 653,
-													"top": 395,
+													"top": 380,
 													"width": 404.99169921875,
 													"height": 13,
 													"autoResize": false
@@ -9826,7 +9802,7 @@
 											"left": 648,
 											"top": 255,
 											"width": 414.99169921875,
-											"height": 158,
+											"height": 143,
 											"autoResize": false
 										}
 									],
@@ -9842,7 +9818,7 @@
 									"left": 648,
 									"top": 232,
 									"width": 414.99169921875,
-									"height": 181,
+									"height": 166,
 									"autoResize": false,
 									"nameLabel": {
 										"$ref": "AAAAAAFZKGcvT3bYP74="
@@ -10330,7 +10306,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 759,
-											"top": 431,
+											"top": 416,
 											"width": 0,
 											"height": 13,
 											"autoResize": false,
@@ -10361,7 +10337,7 @@
 										"$ref": "AAAAAAFZc1XWkuVFhqg="
 									},
 									"lineStyle": 2,
-									"points": "682:613;774:613;774:412",
+									"points": "682:613;774:613;774:397",
 									"nameLabel": {
 										"$ref": "AAAAAAFZc2neaOYKmW8="
 									},
@@ -10398,7 +10374,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 907,
-											"top": 475,
+											"top": 467,
 											"width": 0,
 											"height": 13,
 											"autoResize": false,
@@ -10428,7 +10404,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 908,
-											"top": 431,
+											"top": 416,
 											"width": 0,
 											"height": 13,
 											"autoResize": false,
@@ -10489,7 +10465,7 @@
 										"$ref": "AAAAAAFZKGcvT3bXb2E="
 									},
 									"lineStyle": 2,
-									"points": "893:412;893:552",
+									"points": "893:397;893:552",
 									"nameLabel": {
 										"$ref": "AAAAAAFZc2sNAeYg9XE="
 									},
@@ -10839,20 +10815,6 @@
 									"name": "NUM_TEL_PORTABLE",
 									"type": "VARCHAR",
 									"length": "20",
-									"primaryKey": false,
-									"foreignKey": false,
-									"nullable": false,
-									"unique": false
-								},
-								{
-									"_type": "ERDColumn",
-									"_id": "AAAAAAFZKGeaCXb3SKo=",
-									"_parent": {
-										"$ref": "AAAAAAFZKGcvTnbVEdA="
-									},
-									"name": "CONTRAT_ASSURANCE_PROFESSIONNEL",
-									"type": "TEXT",
-									"length": 0,
 									"primaryKey": false,
 									"foreignKey": false,
 									"nullable": false,
