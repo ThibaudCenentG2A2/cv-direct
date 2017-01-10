@@ -1,10 +1,11 @@
 <?php
 /**
  * Gestion de l'inscription d'un utilisateur
- * @author thierry Fernandez
- * @version 1.0
+ * @author Thierry FERNNANDEZ
+ * @author Tristan DIETZ
+ * @version 1.1
  */
-include 'psl-config.php';
+include "connexion_bd.php";
 
 class Utilisateur
 {
@@ -26,13 +27,19 @@ class Utilisateur
 
     }
 
-    function encryptage_mdp()
+    /**
+     * Fonction d'encryptage du mot de passe d'un utilisateur
+     * @param $mdp Mot de passe à encrypter
+     * @return string Le mot de passe encrypté
+     */
+    function encryptage_mdp($mdp)
     {
-        return $this->mdp = md5('on y met notre grain de sel'+ $this->mdp);
+        return md5("on y met notre grain de sel" . $mdp);
     }
 
     function inscrire_utilisateur()
     {
+        //TODO : à refaire avec le code d'ajout directement dans cette méthode
         require_once('../modele/UtilisateurDAO.php');
 
         insertion_utilisateur($this->pseudo, $this->prenom, $this->nom, $this->mail, $this->mdp);
@@ -44,7 +51,7 @@ class Utilisateur
         $httponly = true;
 
         if (ini_set('session.use_only_cookies', 1) === FALSE) {
-            header("Location: erreur chargement cookie");
+            header("Location: erreur chargement cookie"); //TODO mais WTF ?????? Tu fais quoi là ?????
             exit();
         }
 
