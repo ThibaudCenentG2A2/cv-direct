@@ -3,7 +3,7 @@
   CV-Direct
 #############
 
-Bonjour,
+Bonjour %USER%,
 
 
 Votre profil a été retenu pour une offre d'emploi.

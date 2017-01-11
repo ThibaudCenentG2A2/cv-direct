@@ -22,7 +22,7 @@ require_once "email_header.php";
                                                             <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
                                                                 <tr>
                                                                     <td width="100%" align="left" style="font-size: 28px; line-height: 34px; font-family:helvetica, Arial, sans-serif; color:#343434;">
-                                                                        Un emploi vous correspond
+                                                                        %USER%, un emploi vous correspond
                                                                     </td>
                                                                 </tr>
                                                             </table>
