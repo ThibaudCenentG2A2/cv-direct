@@ -7,26 +7,33 @@ class Courriel
 {
     const EXPEDITEUR_PAR_DEFAUT = "contact@cv-direct.fr";
 
-    /*
-     * Fonction d'envoi de mails de récupération de mot de passe
-     * @param $destinataire
-     * @param string $expediteur
-
-    public static function envoyerCourrielMotDePasseOublie($destinataire, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
+    /**
+     * Fonction d'envoi de mails de recuperation de mot de passe
+     * @param String $destinataire  Destinataire du message
+     * @param String $user          Utilisateur demandant le nouveau mot de passe
+     * @param String $expediteur    Expediteur du message
+     * 
+     * @return bool                 Retourne vrai si le mail a correctement ete envoye.
+     */
+    public static function envoyerCourrielMotDePasseOublie($destinataire, $user, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
     {
         $sujet = "CV-Direct : Mot de passe oublié";
-        $contenuTexte = file_get_contents("../vue/emails/texte/mot_de_passe_oublie.txt");
-    }*/
+        $contenu_texte = file_get_contents("../vue/emails/texte/mot_de_passe_oublie.txt");
+        $contenu_html = file_get_contents("http://cv-direct.alwaysdata.net/vue/html/email_oubli_mdp.php");
+        $contenu_html = str_replace("%USER", $user, $contenu_html); //%USER%
+
+        return self::envoyer_courriel($destinataire, $sujet, $contenu_texte, $contenu_html, $expediteur);
+    }
 
 
 
     /**
-     * Fonction d'envoi de mails de récupération de mot de passe
+     * Fonction d'envoi de mails de recuperation de mot de passe
      *
      * @param string $destinataire  Destinataire du message
-     * @param string $expediteur    Expéditeur du message
+     * @param string $expediteur    Expediteur du message
      *
-     * @return bool                 Retourne vrai si le mail a correctement été envoyé.
+     * @return bool                 Retourne vrai si le mail a correctement ete envoye.
      */
     public static function envoyer_courriel_demande_disponibilite($destinataire, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
     {
