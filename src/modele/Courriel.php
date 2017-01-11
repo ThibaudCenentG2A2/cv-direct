@@ -28,12 +28,15 @@ class Courriel
      *
      * @return bool                 Retourne vrai si le mail a correctement été envoyé.
      */
-    public static function envoyer_courriel_demande_disponibilite($destinataire, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
+    public static function envoyer_courriel_demande_disponibilite($destinataire, $utilisateur, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
     {
-        $sujet = "CV-Direct : un emploi vous correspond !";
-        //$contenu_texte = file_get_contents("../vues/emails/texte/courriel_demande_disponibilite.txt");
+        $sujet = "CV-Direct : " . $utilisateur . ", un emploi vous correspond !";
+
         $contenu_texte = file_get_contents("../vue/emails/texte/courriel_demande_disponibilite.txt");
+        $contenu_texte = str_replace("%USER%", $utilisateur, $contenu_texte);
+
         $contenu_html = file_get_contents("http://cv-direct.alwaysdata.net/vue/emails/html/courriel_demande_disponibilite.php");
+        $contenu_html = str_replace("%USER%", $utilisateur, $contenu_html);
 
         return self::envoyer_courriel($destinataire, $sujet, $contenu_texte, $contenu_html, $expediteur);
     }
