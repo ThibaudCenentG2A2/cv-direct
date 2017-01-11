@@ -66,15 +66,6 @@ class Utilisateur
         session_regenerate_id();
     }
 
-    function connexion_utilisateur()
-    {
-        require_once('../modele/UtilisateurDAO.php');
-
-        connexion_utilisateur_verif($this->mail, $this->mdp);
-
-        $this->demarrage_session_utilisateur();
-    }
-
     /**
      * Cette fonction va permettre de vérifier que l'adresse mail entré par
      * l'utilisateur est présente dans la base de données.
@@ -89,5 +80,87 @@ class Utilisateur
         $requete->execute(array('mail' => $mail));
 
         return $requete->fetch() > 0 ? true : false;
+    }
+
+    function verification_pseudo($pseudo)
+    {
+        $bdd = $GLOBALS['pdo'];
+        $req = $bdd->query
+        ('INSERT INTO SELECT(pseudo)FROM UTILISATEUR WHERE pseudo=:pseudo');// a modifier selon la bd hein :)
+        $req->execute
+        (array(":pseudo" => $pseudo));
+        $data = $req->fetch();
+        if (empty($data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function verification_email()
+    {
+        $bdd = $GLOBALS['pdo'];
+        $req = $bdd->query
+        ('INSERT INTO SELECT(email)FROM UTILISATEUR WHERE email=:email');// a modifier selon la bd hein :)
+        $req->execute
+        (array(":email" => $this->mail));
+        $data = $req->fetch();
+        if (empty($data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function insertion_utilisateur()
+    {
+        $bdd = $GLOBALS['pdo'];
+        $req = $bdd->query
+        ('INSERT INTO UTILISATEUR(pseudo, prenom, nom, mail,mdp) VALUES (:pseudo, :prenom, :nom, :mail, :mdp)');// a modifier selon la bd hein :)
+
+        $req->execute
+        (array(":pseudo" => $this->pseudo, ":prenom" => $this->prenom, ":nom" => $this->nom, ":mail" => $this->mail, ':mdp' => $this->mdp));
+        $_SESSION['flash']['success'] = 'Un email de confirmation vous a été envoyé pour valider votre compte';
+    }
+
+    function connexion_utilisateur()
+    {
+
+
+        connexion_utilisateur_verif($this->mail, $this->mdp);
+        demarrage_session_utilisateur($this->pseudo);
+    }
+
+    /**
+     * @param $mail
+     * @param $mdp
+     * @return bool
+     */
+    function connexion_utilisateur_verif()
+    {
+        $bdd = $GLOBALS['pdo'];
+        $req = $bdd->query
+        ('SELECT membre_mdp, membre_id, membre_rang, membre_pseudo
+        FROM UTILISATEUR WHERE email = :mail AND mdp =:mdp'); // a modifier selon la bd hein :)
+
+        $req->execute
+        (array(":mail" => $this->mail, ':mdp' => $this->mdp));
+        $data = $req->fetch();
+
+        if ($data['mdp'] == $this->mdp) // l'acces a la bd est ok
+        {   $this->demarrage_session_utilisateur();
+            require_once('../controleur/Utilisateur.php');
+            demarrage_session_utilisateur();
+            $_SESSION['pseudo'] = $data['pseudo'];
+            $_SESSION['mail'] = $data['mail'];
+            return true;
+
+        } else // Acces pas OK !
+        {
+            echo 'echec de l\'acces a la bd';
+            return false;
+        }
+
+
     }
 }
