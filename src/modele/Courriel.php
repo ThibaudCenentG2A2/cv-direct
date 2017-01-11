@@ -15,8 +15,8 @@ class Courriel
      * 
      * @return bool                 Retourne vrai si le mail a correctement ete envoye.
      */
-    public static function envoyer_courriel_mot_de_passe_oublie($destinataire, $utilisateur, $token, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
-    {
+    public static function envoyer_courriel_mot_de_passe_oublie($destinataire, $utilisateur = null, $token = null, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
+    { //TODO Régler problèmes paramètres
         $sujet = "Demande nouveau mot de passe";
         $url = 'http://cv-direct.alwaysdata.net/truc-'.$token;
 
