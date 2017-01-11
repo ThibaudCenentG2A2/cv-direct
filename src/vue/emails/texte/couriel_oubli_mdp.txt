@@ -8,10 +8,10 @@ Bonjour %UTILISATEUR%,
 
 Vous avez fais la demande d'un nouveau mot de
 passe. Afin de pouvoir le modifier, merci de
-recopier le lien ci-dessou :
+recopier le lien ci-dessous :
 %URL%
 
-Si vous n'êtes pas a l'origine de cette demande,
+Si vous n'etes pas a l'origine de cette demande,
 veuillez ignorer cet e-mail.
 
 

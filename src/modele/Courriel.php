@@ -26,6 +26,7 @@ class Courriel
 
         $contenu_html = file_get_contents("http://cv-direct.alwaysdata.net/vue/html/email_oubli_mdp.php");
         $contenu_html = str_replace("%UTILISATEUR%", $utilisateur, $contenu_html);
+        $contenu_html = str_replace("%URL%", $url, $contenu_html);
 
         return self::envoyer_courriel($destinataire, $sujet, $contenu_texte, $contenu_html, $expediteur);
     }
