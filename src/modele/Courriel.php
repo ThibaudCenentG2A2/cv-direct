@@ -56,6 +56,19 @@ class Courriel
 
 
 
+    public static function envoyer_courriel_validation_par_mail($destinataire, $utilisateur, $token, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
+    {
+        $sujet = "";
+
+        $contenu_texte = "";
+
+        $contenu_html = "";
+
+        return self::envoyer_courriel($destinataire, $sujet, $contenu_texte, $contenu_html, $expediteur);
+    }
+
+
+
     /**
      * Fonction générale d'envoi de mails au format MIME 1.0
      *
