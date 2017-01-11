@@ -87,14 +87,11 @@ class Utilisateur
      *
      * @return bool Renvoi true si présente et false sinon.
      */
-    function is_presente($mail) {
+    function est_presente($mail) {
         $requete = $GLOBALS['pdo']->prepare('SELECT COUNT(*) FROM UTILISATEUR WHERE MAIL = :mail');
         $requete->execute(array('mail' => $mail));
 
-        if ($requete->fetch() > 0)
-            return true;
-        else 
-            return false;
+        return $requete->fetch() > 0 ? true : false;
     }
 
 }
