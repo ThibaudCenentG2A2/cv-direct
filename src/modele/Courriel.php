@@ -31,8 +31,9 @@ class Courriel
     public static function envoyer_courriel_demande_disponibilite($destinataire, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
     {
         $sujet = "CV-Direct : un emploi vous correspond !";
-        $contenu_texte = file_get_contents("../vues/emails/texte/courriel_demande_disponibilite.txt");
-        $contenu_html = null;
+        //$contenu_texte = file_get_contents("../vues/emails/texte/courriel_demande_disponibilite.txt");
+        $contenu_texte = file_get_contents("../vue/emails/texte/courriel_demande_disponibilite.txt");
+        $contenu_html = file_get_contents("http://cv-direct.alwaysdata.net/vue/emails/html/courriel_demande_disponibilite.php");
 
         return self::envoyer_courriel($destinataire, $sujet, $contenu_texte, $contenu_html, $expediteur);
     }

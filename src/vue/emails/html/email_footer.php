@@ -23,7 +23,7 @@
                                                         <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
                                                             <tr>
                                                                 <td>
-                                                                    <img src="images/service-1.jpg" width="290" alt="Service 1" style="display: block;"/>
+                                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/service-1.jpg" width="290" alt="Service 1" style="display: block;"/>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -55,7 +55,7 @@
                                                         <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
                                                             <tr>
                                                                 <td>
-                                                                    <img src="images/service-2.jpg" width="290" alt="Service 2" style="display: block;"/>
+                                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/service-2.jpg" width="290" alt="Service 2" style="display: block;"/>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -94,7 +94,7 @@
                                                         <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
                                                             <tr>
                                                                 <td>
-                                                                    <img src="images/service-3.jpg" width="290" alt="Service 3" style="display: block;"/>
+                                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/service-3.jpg" width="290" alt="Service 3" style="display: block;"/>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -126,7 +126,7 @@
                                                         <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
                                                             <tr>
                                                                 <td>
-                                                                    <img src="images/service-4.jpg" width="290" alt="Service 4" style="display: block;"/>
+                                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/service-4.jpg" width="290" alt="Service 4" style="display: block;"/>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -178,7 +178,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <a href="http://cv-direct.alwaysdata.net">
-                                                                        <img src="images/logo_brown.png" alt="Logo" style="display: block;"/>
+                                                                        <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/logo_brown.png" alt="Logo" style="display: block;"/>
                                                                     </a>
                                                                 </td>
                                                             </tr>
@@ -197,7 +197,7 @@
                                                                         <tr>
                                                                             <td>
                                                                                 <a href="https://www.facebook.com">
-                                                                                    <img src="images/facebook-icon.png" alt="Facebook" style="display: block;" />
+                                                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/facebook-icon.png" alt="Facebook" style="display: block;" />
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
@@ -206,7 +206,7 @@
                                                                         <tr>
                                                                             <td>
                                                                                 <a href="https://www.twitter.com">
-                                                                                    <img src="images/twitter-icon.png" alt="Twitter" style="display: block;" />
+                                                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/twitter-icon.png" alt="Twitter" style="display: block;" />
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
@@ -215,7 +215,7 @@
                                                                         <tr>
                                                                             <td>
                                                                                 <a href="https://plus.google.com/">
-                                                                                    <img src="images/googleplus-icon.png" alt="Google+" style="display: block;" />
+                                                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/googleplus-icon.png" alt="Google+" style="display: block;" />
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
@@ -224,7 +224,7 @@
                                                                         <tr>
                                                                             <td>
                                                                                 <a href="https://www.linkedin.com/">
-                                                                                    <img src="images/linkedin-icon.png" alt="Linked In" style="display: block;" />
+                                                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/linkedin-icon.png" alt="Linked In" style="display: block;" />
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
@@ -246,7 +246,7 @@
                                                             <tr><td style="font-size: 0; line-height: 0;" height="57">&nbsp;</td></tr>
                                                             <tr>
                                                                 <td width="22">
-                                                                    <img src="images/marker-icon.png" alt="location" />
+                                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/marker-icon.png" alt="location" />
                                                                 </td>
                                                                 <td style="color: #999999; font-size: 14px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif;">413 Avenue Gaston Berger</td>
                                                             </tr>
@@ -254,7 +254,7 @@
                                                             <tr><td style="font-size: 0; line-height: 0;" height="10">&nbsp;</td></tr>
                                                             <tr>
                                                                 <td width="22">
-                                                                    <img src="images/phone-icon.png" alt="location" />
+                                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/phone-icon.png" alt="location" />
                                                                 </td>
                                                                 <td style="color: #999999; font-size: 14px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif;">+33 (0) 0 00 00 00 00</td>
                                                             </tr>
@@ -262,7 +262,7 @@
                                                             <tr><td style="font-size: 0; line-height: 0;" height="10">&nbsp;</td></tr>
                                                             <tr>
                                                                 <td width="22">
-                                                                    <img src="images/mail-icon.png" alt="location" />
+                                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/mail-icon.png" alt="location" />
                                                                 </td>
                                                                 <td>
                                                                     <a style="color: #999999; font-size: 14px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif; text-decoration:none;" href="mailto:contact@cv-direct.fr">contact@cv-direct.fr</a>

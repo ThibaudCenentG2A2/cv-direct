@@ -33,17 +33,17 @@
                                     <table align="center">
                                         <tr>
                                             <td width="22">
-                                                <img src="images/marker-icon-white.png" alt="location" />
+                                                <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/marker-icon-white.png" alt="location" />
                                             </td>
                                             <td style="color: #fff; font-size: 12px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif;">413 Avenue Gaston Berger</td>
                                             <td width="22"></td>
                                             <td width="22">
-                                                <img src="images/phone-icon-white.png" alt="location" />
+                                                <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/phone-icon-white.png" alt="location" />
                                             </td>
                                             <td style="color: #fff; font-size: 12px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif;">+33 (0) 0 00 00 00 00</td>
                                             <td width="22"></td>
                                             <td width="22">
-                                                <img src="images/mail-icon-white.png" alt="location" />
+                                                <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/mail-icon-white.png" alt="location" />
                                             </td>
                                             <td>
                                                 <a style="color: #fff; font-size: 12px; line-height: 18px; font-weight: normal; font-family: helvetica, Arial, sans-serif; text-decoration:none;" href="mailto:contact@cv-direct.fr">contact@cv-direct.fr</a>
@@ -75,7 +75,7 @@
                                         <tr>
                                             <td align="left">
                                                 <a href="http://cv-direct.alwaysdata.net">
-                                                    <img src="images/logo_brown.png" alt="Company Logo" style="display: block;"/>
+                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/logo_brown.png" alt="Company Logo" style="display: block;"/>
                                                 </a>
                                             </td>
                                         </tr>
@@ -95,3 +95,27 @@
                 </tr>
             </table>
             <!-- Header End -->
+
+            <!-- Banner Start -->
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+                <tr>
+                    <td>
+                        <table bgcolor="#fafafa" align="center" border="0" cellpadding="0" cellspacing="0" width="580" style="border-collapse: collapse;">
+                            <tr>
+                                <td>
+                                    <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+                                        <tr>
+                                            <td align="center" bgcolor="#ffffff" >
+                                                <a href="#">
+                                                    <img src="http://cv-direct.alwaysdata.net/vue/emails/html/images/banniere.jpg" width="580" alt="Section one image" style="display: block;"/>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!-- Banner End -->

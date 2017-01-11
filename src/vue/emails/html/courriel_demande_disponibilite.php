@@ -6,30 +6,6 @@ require_once "email_header.php";
             <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
                 <tr>
                     <td>
-                        <table bgcolor="#fafafa" align="center" border="0" cellpadding="0" cellspacing="0" width="580" style="border-collapse: collapse;">
-                            <tr>
-                                <td>
-                                    <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
-                                        <tr>
-                                            <td align="center" bgcolor="#ffffff" >
-                                                <a href="#">
-                                                    <img src="images/banniere.jpg" width="580" alt="Section one image" style="display: block;"/>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <!-- Banner End -->
-
-            <!-- Banner Start -->
-            <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
-                <tr>
-                    <td>
                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="580" style="border-collapse: collapse;">
                             <tr>
                                 <td>
