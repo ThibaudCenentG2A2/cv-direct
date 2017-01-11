@@ -17,7 +17,7 @@ class Courriel
      */
     public static function envoyerCourrielMotDePasseOublie($destinataire, $user, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
     {
-        $sujet = "CV-Direct : Mot de passe oublié";
+        $sujet = "Votre changement de mot de passe";
         $contenu_texte = file_get_contents("../vue/emails/texte/mot_de_passe_oublie.txt");
         $contenu_html = file_get_contents("http://cv-direct.alwaysdata.net/vue/html/email_oubli_mdp.php");
         $contenu_html = str_replace("%USER", $user, $contenu_html); //%USER%
@@ -37,7 +37,7 @@ class Courriel
      */
     public static function envoyer_courriel_demande_disponibilite($destinataire, $utilisateur, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
     {
-        $sujet = "CV-Direct : " . $utilisateur . ", un emploi vous correspond !";
+        $sujet = $utilisateur . ", un emploi vous correspond !";
 
         $contenu_texte = file_get_contents("../vue/emails/texte/courriel_demande_disponibilite.txt");
         $contenu_texte = str_replace("%USER%", $utilisateur, $contenu_texte);
