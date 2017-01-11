@@ -6,10 +6,11 @@
 Bonjour %USER%,
 
 
-Votre profil a été retenu pour une offre d'emploi.
+Votre profil a été retenu pour une offre
+d'emploi.
 
-Nous vous invitons dès lors à contacter votre agence CV-Direct
-afin d'en savoir plus.
+Nous vous invitons dès lors à contacter votre
+agence CV-Direct afin d'en savoir plus.
 
 
 Cordialement,
