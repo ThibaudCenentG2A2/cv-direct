@@ -71,9 +71,6 @@ class Courriel
         $message .= "\n--" . $limite . "--";
 
         // Envoi du courriel
-        if(mail($destinataire, $sujet, $message, $header))
-            return true;
-        else
-            return false;
+        return mail($destinataire, $sujet, $message, $header);
     }
 }
