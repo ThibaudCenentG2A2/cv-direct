@@ -10,17 +10,22 @@ class Courriel
     /**
      * Fonction d'envoi de mails de recuperation de mot de passe
      * @param String $destinataire  Destinataire du message
-     * @param String $user          Utilisateur demandant le nouveau mot de passe
+     * @param String $utilisateur   Nom et prenom de l'utilisateur
      * @param String $expediteur    Expediteur du message
      * 
      * @return bool                 Retourne vrai si le mail a correctement ete envoye.
      */
-    public static function envoyerCourrielMotDePasseOublie($destinataire, $user, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
+    public static function envoyer_courriel_mot_de_passe_oublie($destinataire, $utilisateur, $token, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
     {
-        $sujet = "Votre changement de mot de passe";
+        $sujet = "Demande nouveau mot de passe";
+        $url = 'http://cv-direct.alwaysdata.net/truc-'.$token;
+
         $contenu_texte = file_get_contents("../vue/emails/texte/mot_de_passe_oublie.txt");
+        $contenu_texte = str_replace("%UTILISATEUR%", $utilisateur, $contenu_texte);
+        $contenu_texte = str_replace("%URL%", $url, $contenu_texte);
+
         $contenu_html = file_get_contents("http://cv-direct.alwaysdata.net/vue/html/email_oubli_mdp.php");
-        $contenu_html = str_replace("%USER", $user, $contenu_html); //%USER%
+        $contenu_html = str_replace("%UTILISATEUR%", $utilisateur, $contenu_html);
 
         return self::envoyer_courriel($destinataire, $sujet, $contenu_texte, $contenu_html, $expediteur);
     }
