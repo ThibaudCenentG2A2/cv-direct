@@ -5,7 +5,7 @@
  */
 class Courriel
 {
-    const EXPEDITEUR_PAR_DEFAUT = "contact@cv-direct.fr";
+    const EXPEDITEUR_PAR_DEFAUT = "CV-Direct <cv-direct@alwaysdata.net>";
 
     /**
      * Fonction d'envoi de mails de recuperation de mot de passe
