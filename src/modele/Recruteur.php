@@ -22,6 +22,7 @@ class Recruteur
     public function __construct($pseudo_or_mail, $mdp) //TODO
     {
         //TODO vérifier que le mdp correspond au pseudo ou à l'adresse mail (une requête est suffisance avec WHERE ... OR ...). Si oui, initialiser les données-membres. Sinon, tout vaut null.
+
         $req = BD::getInstance()->prepare('SELECT pseudo, mdp, nom, prenom
                                           FROM UTILISATEUR
                                           WHERE (UTILISATEUR.EMAIL = :mail_or_pseudo
@@ -30,12 +31,12 @@ class Recruteur
         $res = $req->execute(array(':mail' => $pseudo_or_mail, ':mdp' => $mdp));
         while ($data = $res->fetch())
             {
-                if ($data['mdp'] == $mdp && $data['pseudo'] == $pseudo_or_mail)
+                if (($data['PASSWORD'] == $mdp && $data['EMAIL'] == $pseudo_or_mail)||($data['PASSWORD'] == $mdp && $data['PSEUDONYME'] == $pseudo_or_mail))
                 {
-                    $this->nom=$data['nom'];
-                    $this->prenom=$data['prenom'];
-                    $this->pseudo=$data['pseudo'];
-                    $this->mail=$data['email'];
+                    $this->nom=$data['NOM'];
+                    $this->prenom=$data['PRENOM'];
+                    $this->pseudo=$data['PSEUDONYME'];
+                    $this->mail=$data['EMAIL'];
                 }
             }
     }
@@ -70,10 +71,18 @@ class Recruteur
     {
         //TODO tests d'unicité dans la BD (mail, pseudo...) car utilisé uniquement ici (donc fonction non nécessaire)
         //TODO requête d'insertion dans la BD
-        // verification a faire
-        $req = BD::getInstance()->prepare('INSERT INTO UTILISATEUR(pseudo, prenom, nom, mail,mdp) VALUES (:pseudo, :prenom, :nom, :mail, :mdp)');// a modifier selon la bd hein :)
-        $req->execute(array(':pseudo' => $pseudo, ':prenom' => $prenom, ':nom' => $nom, ':mail' => $mail, ':mdp' => $mdp));
-
+        $req = BD::getInstance()->prepare('SELECT EMAIL FROM UTILISATEUR WHERE UTILISATEUR.EMAIL =:mail');// a modifier selon la bd hein :)
+        $req->execute(array( ':mail' => $mail));
+        $data=$req->fetch();
+        if($data['EMAIL']== '' && preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\\.[a-z]{2,4}$#", $mail) && !empty($mail)&& !empty($nom)&& !empty($prenom) && !empty($pseudo))
+            {
+            $req = BD::getInstance()->prepare('INSERT INTO UTILISATEUR(PSEUDONYME, PRENOM, NOM, EMAIL, PASSWORD) VALUES (:pseudo, :prenom, :nom, :mail, :mdp)');// a modifier selon la bd hein :)
+            $req->execute(array(':pseudo' => $pseudo, ':prenom' => $prenom, ':nom' => $nom, ':mail' => $mail, ':mdp' => $mdp));
+            }
+        else
+            {
+                echo 'Erreur dans le remplisssage du formulaire veuillez reessayer';
+            }
     }
 
 
