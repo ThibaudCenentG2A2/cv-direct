@@ -1,8 +1,5 @@
 <?php
 
-    /**
-    * On initialise une session afin de pouvoir récupéré l'identifiant du CV concerné par les modifications.
-    */
     require 'modele/BD.php';
     require 'modele/CV.php';
 
@@ -11,6 +8,7 @@
      * @author Thibaud CENENT
      * @version 1.3
      */
+
     if($_POST['Maj_CV'] == "Enregistrer Modifications")
     {
         $id_Cv = $_GET['numero'];
@@ -24,11 +22,7 @@
 
         $cv_Modifie = new CV($id_Cv, null, $num_portable, $num_fixe, $adresse, $code_postal, $ville, $nom, $prenom);
         $cv_Modifie->mettre_a_jour();
-
-        echo 'Modifications sur le CV N°' . $id_Cv . 'effectuées';
-
         header('Location: gestion_affichage_cv.php?numero='.$_GET['numero']);
-
     }
     else if($_POST['Maj_CV'] == "Annuler")
     {

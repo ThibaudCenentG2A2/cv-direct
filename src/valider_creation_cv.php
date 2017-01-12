@@ -1,4 +1,5 @@
 <?php
+
     require 'modele/BD.php';
     require 'modele/CV.php';
     require 'modele/CV_PDF.php';
@@ -12,7 +13,6 @@
 
     if($_POST['creer'] == "Creer CV")
     {
-
         $num_Secu = $_POST['num_secu_sociale'];
         $num_Portable = $_POST['num_portable'];
         $num_Fixe = $_POST['num_fixe'];
@@ -22,15 +22,14 @@
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
 
-        $cv_Cree = new CV(null, $num_Secu, $num_Portable, $num_Fixe, $adresse, $code_Postal, $ville,
-            $nom, $prenom);
+        $cv_Cree = new CV(null, $num_Secu, $num_Portable, $num_Fixe, $adresse, $code_Postal, $ville, $nom, $prenom);
         $id_CV_Recupere = $cv_Cree->inserer();
-        $piece_Jointe_Uploade = new Piece_Jointe(null, $id_CV_Recupere, null, null,null);
-
+        $piece_Jointe_Uploade = new Piece_Jointe(null, $id_CV_Recupere, null, null, null);
 
         /**
          * Nous allons tester dans un premier temps que le contrat d'assurance upload a bien été reçu et qu'il ne contient pas d'erreur
          */
+
         if(isset($_FILES['assurance']) AND $_FILES['assurance']['error'] == 0)
         {
             $infos_Fichier = pathinfo($_FILES['assurance']['name']);
@@ -49,6 +48,7 @@
         /**
          * Même principe pour la photographie
          */
+
         if(isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0)
         {
             $infos_Fichier = pathinfo($_FILES['photo']['name']);
@@ -63,13 +63,13 @@
                 move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
             }
         }
-
         $cv_PDF_Cree = new CV_PDF(null, $id_CV_Recupere);
         $cv_PDF_Cree->creer();
 
         /**
          * Même principe pour le CV au format PDF
          */
+
         if(isset($_FILES['cv_pdf']) AND $_FILES['cv_pdf']['error'] == 0)
         {
             $infos_Fichier = pathinfo($_FILES['cv_pdf']['name']);
@@ -84,9 +84,7 @@
                 move_uploaded_file($_FILES['cv_pdf']['tmp_name'], $chemin);
             }
         }
-
         header('Location: gestion_affichage_tous_les_cv.php');
-
     }
     else if($_POST['creer'] == "Annuler")
     {

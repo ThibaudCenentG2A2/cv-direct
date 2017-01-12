@@ -9,6 +9,7 @@
      * @author Thibaud CENENT
      * @version 1.1
      */
+
     if($_POST['action'] == 'Supprimer')
     {
         $id_CV_A_Supprimer = $_GET['numero'];
@@ -18,7 +19,8 @@
         /**
          * Gestion de suppression grâce à la fonction unlink()
          */
-        foreach ($cv_A_Supprimer->afficher_pieces_jointes() as $piece_jointe)
+
+        foreach ($cv_A_Supprimer->ajouter_pieces_jointes() as $piece_jointe)
         {
             unlink("cv/pieces_jointes/" . $piece_jointe->get_token() . "." . $piece_jointe->get_extension());
         }

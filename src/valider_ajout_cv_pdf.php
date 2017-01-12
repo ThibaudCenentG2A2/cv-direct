@@ -1,11 +1,12 @@
 <?php
+
     require 'modele/BD.php';
     require 'modele/CV_PDF.php';
     require 'modele/Piece_Jointe.php';
 
     /** Valide l'ajout d'un CV PDF et vérifie que le champ est bien rempli ou non et s'adapte en conséquence
      * @author Thibaud CENENT
-     * @version 1.1
+     * @version 1.2
      *
      */
 
@@ -28,6 +29,7 @@
                    $piece_Jointe_Uploade->set_extension($extension_Upload);
                    $piece_Jointe_Uploade->set_type('CVPDF');
                    $piece_Jointe_Uploade->set_token($piece_Jointe_Uploade->get_generer_token_aleatoire());
+                   $piece_Jointe_Uploade->creer();
                    $chemin = "cv/pieces_jointes/". $piece_Jointe_Uploade->get_token() . "." . $extension_Upload;
                    move_uploaded_file($_FILES['cv_pdf']['tmp_name'], $chemin);
                 }
