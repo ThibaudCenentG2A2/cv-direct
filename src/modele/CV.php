@@ -1,7 +1,5 @@
 <?php
 namespace nsCV;
-require 'Competence.php';
-use \nsCompetence\Competence;
 
 /**
  * Class CV correspondant à un CV créé par un recruteur
@@ -86,11 +84,16 @@ class CV
      */
     private $liste_CV_PDF = array();
 
+    /** Correspond à une liste de pieces jointe associées à un CV
+     * @var array | \nsCV\Piece_Jointe
+     */
+    private $liste_pieces_jointe = array();
+
     /**
      * Correspond au nombre de CV à afficher par page
      * @var int
      */
-    private $cv_Par_Page = 10;
+    const cv_Par_Page = 10;
 
     /** Constructeur de la classe CV
      * @param $id_CV
@@ -191,13 +194,6 @@ class CV
         return $this->prenom;
     }
 
-    /**Retourne la liste des compétences disponible sur le CV.
-     * @return array| \nsCompetence\Competence
-     */
-    public function get_liste_competences()
-    {
-        return $this->liste_Competences;
-    }
 
     /** Retourne la liste des CV_PDF pour un CV en particulier
      * @return array|\nsCV\CV_PDF
@@ -207,12 +203,12 @@ class CV
         return $this->liste_CV_PDF;
     }
 
-    /** Permet d'ajouter une nouvelle compétence sur le CV de la personne concernée par le recruteur
-     * @param Competence $competence
+    /**
+     * @return array|\nsCV\Piece_Jointe
      */
-    public function ajouter_Competence(Competence $competence)
+    public function get_liste_pieces_jointe()
     {
-        $this->liste_Competences[] = $competence;
+        return $this->liste_pieces_jointe;
     }
 
     /**
@@ -227,10 +223,23 @@ class CV
         }
     }
 
+    /** Ajoute toutes les pieces jointes associes à un CV pour une personne concernée
+     *
+     */
+    public function ajouter_pieces_jointes()
+    {
+        $liste_Pieces_Jointes = array();
+        $req = $GLOBALS['pdo']->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_CV = :id_cv');
+        $req->execute(array('id_cv' => $this->get_id_cv()));
+        while($donnees = $req->fetch())
+            $this->liste_pieces_jointe[] = new Piece_Jointe($donnees['ID_PIECE_JOINTE'], $this->get_id_cv(), $donnees['TYPE'],
+                $donnees['EXTENSION'], $donnees['TOKEN']);
+    }
+
     /** Retourne sous la forme d'une String le CV et son identifiant
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         return "CV N° : " . $this->get_id_cv();
     }
@@ -295,18 +304,19 @@ class CV
         $req->execute(array('id_cv' => $this->id_CV));
     }
 
-    /** Fonction qui va permettre d'afficher le CV d'une personne concernée
+    /** Fonction qui va permettre d'afficher le CV d'une personne concernée avec ces CV PDF
      * en fonction de son identifiant grâce aux données par la requête SELECT
      * @return CV
      */
     public function afficher()
     {
         $req = $GLOBALS['pdo']->prepare('SELECT * FROM CV WHERE ID_CV = :id_cv ');
-        $req->execute(array('id_cv' => $_SESSION['id_cv']));
+        $req->execute(array('id_cv' => $this->get_id_cv()));
         $donnees = $req->fetch();
-        $cv_Cree = new CV($_SESSION['id_cv'], $donnees['NUMERO_SECU_SOCIALE'], $donnees['NUM_TEL_PORTABLE'],
+        $cv_Cree = new CV($this->get_id_cv(), $donnees['NUMERO_SECU_SOCIALE'], $donnees['NUM_TEL_PORTABLE'],
             $donnees['NUM_TEL_FIXE'], $donnees['ADRESSE'], $donnees['CODE_POSTAL'], $donnees['VILLE'], $donnees['NOM'], $donnees['PRENOM']);
         $cv_Cree->ajouter_cv_pdf();
+        $cv_Cree->ajouter_pieces_jointes();
         return $cv_Cree;
     }
 
@@ -314,13 +324,13 @@ class CV
     /** Retourne le nombre de pages nécessaire pour pouvoir afficher tous les CV.
      * @return int
      */
-    private function get_nombres_pages_necessaires()
+    public static function get_nombres_pages_necessaires()
     {
-        $nombre_CV_Total = mysqli_query('SELECT COUNT(*) AS total_cv FROM CV');
-        $donnes_total = mysqli_fetch_assoc($nombre_CV_Total);
+        $nombre_CV_Total = $GLOBALS['pdo']->query('SELECT COUNT(*) AS total_cv FROM CV');
+        $donnes_total = $nombre_CV_Total->fetch();
         $total = $donnes_total['total_cv'];
 
-        $nombre_Pages_Necessaires = ($total / $this->cv_Par_Page);
+        $nombre_Pages_Necessaires = ceil($total / CV::cv_Par_Page);
 
         return $nombre_Pages_Necessaires;
     }
@@ -328,9 +338,9 @@ class CV
     /** Retourne la page actuelle où sont affichés les 10 CV correspondants
      * @return int
      */
-    public function get_page_actuelle()
+    public static function get_page_actuelle()
     {
-        $nombre_Pages_Necessaires = $this->get_nombres_pages_necessaires();
+        $nombre_Pages_Necessaires = CV::get_nombres_pages_necessaires();
         if (isset($_GET['page'])) {
             $page_Actuelle = intval($_GET['page']);
 
@@ -350,20 +360,22 @@ class CV
     /** Retourne le nombre de CV moyens à afficher par page grâce à la création d'un système de pagination
      * @return array | \nsCV\CV
      */
-    public function afficher_tous_les_CV()
+    public static function afficher_tous_les_CV()
     {
-        $nombre_Pages_Necessaires = $this->get_nombres_pages_necessaires();
-        $page_Actuelle = $this->get_page_actuelle();
-        $premiers_CV_A_Afficher = ($page_Actuelle - 1) * $nombre_Pages_Necessaires;
+        $page_Actuelle = CV::get_page_actuelle();
+        $premiers_CV_A_Afficher = ($page_Actuelle - 1) * CV::cv_Par_Page;
 
-        $req = $GLOBALS['pdo']->prepare('SELECT * FROM CV ORDER BY DESC LIMIT :premiers_CV, :cv_Par_Page');
-        $req->execute(array('premiers_CV' => $premiers_CV_A_Afficher, 'cv_Par_Page' => $this->cv_Par_Page));
+        $req = $GLOBALS['pdo']->query('SELECT * FROM CV ORDER BY  ID_CV DESC LIMIT' . $premiers_CV_A_Afficher . ', ' .
+            CV::get_nombres_pages_necessaires(). ' ');
+        //$req->execute(array('premiers_CV' => $premiers_CV_A_Afficher, 'cv_Par_Page' => CV::cv_Par_Page));
         $liste_CV_Existants = array();
-        while ($donnees = $req->fetch()) {
+        while ($donnees = $req->fetch())
+        {
             $liste_CV_Existants[] = new CV($donnees['ID_CV'], $donnees['NUMERO_SECU_SOCIALE'], $donnees['NUM_TEL_PORTABLE'],
                 $donnees['NUM_TEL_FIXE'], $donnees['ADRESSE'], $donnees['CODE_POSTAL'],
                 $donnees['VILLE'], $donnees['NOM'], $donnees['PRENOM']);
         }
         return $liste_CV_Existants;
     }
+
 }

@@ -1,5 +1,5 @@
 
-    <form action="../controleur/valider_creation_cv.php" method="post" enctype="multipart/form-data">
+    <form action="../valider_creation_cv.php" method="post" enctype="multipart/form-data">
         <label> Création CV </label> <br/> <br/>
         <label> Numéro Securité Sociale : </label>
             <input name="num_secu_sociale" type="number" required/> <br/> <br/>
@@ -12,7 +12,7 @@
             <input name="cv_pdf" type="file"/> <br/> <br/>
             <input type="hidden" name="max_size_cv_pdf" value="409600"/>
         <label> Téléphone Fixe : </label>
-            <input name="num_fixe" type="text" required/> <br/> <br/>
+            <input name="num_fixe" type="text" /> <br/> <br/>
         <label> Adresse : </label>
             <input name="adresse" type="text" required /> <br/> <br/>
         <label> Code Postal : </label>
@@ -33,5 +33,6 @@
             <input type="checkbox" name="choix_competence" value="PHP"/> PHP <br/>
             <input type="checkbox" name="choix_competence" value="HTML5"/> HTML5 <br/>
             <input type="checkbox" name="choix_competence" value="CSS"/> CSS <br/> <br/>
-        <input type="submit" name = "creer" value="Creer CV"/>
+        <input type="submit" name = "creer" value="Creer CV" style="margin-left: 20px;"/>
+        <input type="submit" name="creer" value="Annuler"/>
     </form>

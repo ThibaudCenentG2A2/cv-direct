@@ -102,8 +102,11 @@ class Piece_Jointe
 
     public function get_generer_token_aleatoire()
     {
-
-        $token_Genere = \OAuthProvider::generateToken(20);
+        $chaine = "abcdefghijklmnpqrstuvwxy";
+        $token_Genere = "";
+        srand((double)microtime()*1000000);
+        for($i=0; $i< 20 ; $i++)
+            $token_Genere .= $chaine[rand()%strlen($chaine)];
         $req = $GLOBALS['pdo']->prepare('SELECT COUNT(*) AS token_Existe FROM PIECE_JOINTE WHERE TOKEN = :token');
         $req->execute(array('token' => $token_Genere));
         $donnees = $req->fetch();
@@ -112,7 +115,8 @@ class Piece_Jointe
         else
             do
             {
-                $token_Genere = \OAuthProvider::generateToken(20);
+                for($i=0; $i< 20 ; $i++)
+                    $token_Genere .= $chaine[rand()%strlen($chaine)];
                 $req->execute(array('token' => $token_Genere));
                 $donnees = $req->fetch();
                 $this->token = $token_Genere;
@@ -121,18 +125,17 @@ class Piece_Jointe
         return $this->token;
     }
 
-    /**
-     * @return array | \nsCV\Piece_Jointe
+    /** Retourne la pièce jointe associé à l'identifiant nécessaire dans le cas de la suppression d'une pièce jointe.
+     * @return \nsCV\Piece_Jointe
      */
-    public function afficher_pieces_jointes()
+    public function get_supprimer_piece_jointe()
     {
-        $liste_Pieces_Jointes = array();
-        $req = $GLOBALS['pdo']->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_CV = :id_cv');
-        $req->execute(array('id_cv' => $this->get_id_cv()));
-        while($donnees = $req->fetch())
-            $liste_Pieces_Jointes[] = new Piece_Jointe($donnees['ID_PIECE_JOINTE'], $this->get_id_cv(), $donnees['TYPE'],
-                $donnees['EXTENSION'], $donnees['TOKEN']);
-        return $liste_Pieces_Jointes;
+        $req = $GLOBALS['pdo']->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_PIECE_JOINTE = :id_piece_jointe');
+        $req->execute(array('id_piece_jointe' => $this->get_id_piece_jointe()));
+        $donnees = $req->fetch();
+        return new Piece_Jointe($this->get_id_piece_jointe(), $donnees['ID_CV'], $donnees['TYPE_PIECE_JOINTE'], $donnees['EXTENSION'], $donnees['TOKEN']);
     }
+
+
 
 }
