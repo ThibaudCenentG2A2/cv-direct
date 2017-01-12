@@ -5,7 +5,7 @@
  * @author Tristan DIETZ
  * @version 1.1
  */
-include "connexion_bd.php";
+require_once ("connexion_bd.php");
 
 class Utilisateur
 {
@@ -79,7 +79,7 @@ class Utilisateur
         $requete = $GLOBALS['pdo']->prepare('SELECT COUNT(*) FROM UTILISATEUR WHERE MAIL = :mail');
         $requete->execute(array('mail' => $mail));
 
-        return $requete->fetch() > 0 ? true : false;
+        return $requete->fetch() > 0;
     }
 
     function verification_pseudo($pseudo)
