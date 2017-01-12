@@ -7,6 +7,8 @@
  *
  * @version 1.0
  */
+
+require_once ('BD.php');
 class Recruteur
 {
     private $pseudo;
@@ -81,7 +83,7 @@ class Recruteur
      */
     static function est_presente($mail)
     {
-        $requete = BD::getInstance()->prepare('SELECT COUNT(*) FROM UTILISATEUR WHERE MAIL = :mail');
+        $requete = BD::getInstance()->prepare('SELECT COUNT(*) FROM UTILISATEUR WHERE EMAIL = :mail');
         $requete->execute(array('mail' => $mail));
 
         return $requete->fetch() > 0;
