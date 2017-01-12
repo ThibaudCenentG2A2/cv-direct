@@ -132,8 +132,6 @@ class Utilisateur
     }
 
     /**
-     * @param $mail
-     * @param $mdp
      * @return bool
      */
     function connexion_utilisateur_verif()
