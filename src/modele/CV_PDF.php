@@ -1,12 +1,11 @@
 <?php
 
-require 'BD.php';
-
 /**
  * Création de la classe CV_PDF correspondant à un CV au format PDF qu'un recruteur ajoutera pour le CV d'une personne concernée
  * @author Thibaud CENENT
  * @version 1.3
  */
+
 class CV_PDF
 {
     /** Correspond à l'identifiant d'un CV au format PDF pour un CV d'une personne concernée
@@ -71,7 +70,7 @@ class CV_PDF
     {
         $req = BD::getInstance()->prepare('INSERT INTO CV_PDF (ID_CV) VALUES(:id_cv)');
         $req->execute(array('id_cv' => $this->get_id_cv()));
-        $id_CV_PDF_Cree = $GLOBALS['pdo']->lastInsertId();
+        $id_CV_PDF_Cree = BD::getInstance()->lastInsertId();
         return $id_CV_PDF_Cree;
     }
 

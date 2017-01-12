@@ -1,6 +1,6 @@
 <?php
 
-    session_start();
+    require 'modele/BD.php';
     require 'modele/CV.php';
     require 'modele/Piece_Jointe.php';
 
@@ -20,7 +20,7 @@
          */
         foreach ($cv_A_Supprimer->afficher_pieces_jointes() as $piece_jointe)
         {
-            unlink("../cv/pieces_jointes/" . $piece_jointe->get_token() . "." . $piece_jointe->get_extension());
+            unlink("cv/pieces_jointes/" . $piece_jointe->get_token() . "." . $piece_jointe->get_extension());
         }
         header('Location: gestion_affichage_tous_les_cv.php');
     }
@@ -30,6 +30,6 @@
     }
     else
     {
-        header('Location: ../vue/supprimer_cv.php');
+        header('Location: vue/supprimer_cv.php?numero=' . $_GET['numero']);
     }
 ?>

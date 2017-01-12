@@ -1,5 +1,5 @@
 <?php
-
+    require 'modele/BD.php';
     require 'modele/CV_PDF.php';
     require 'modele/Piece_Jointe.php';
 
@@ -28,7 +28,7 @@
                    $piece_Jointe_Uploade->set_extension($extension_Upload);
                    $piece_Jointe_Uploade->set_type('CVPDF');
                    $piece_Jointe_Uploade->set_token($piece_Jointe_Uploade->get_generer_token_aleatoire());
-                   $chemin = "../cv/pieces_jointes/". $piece_Jointe_Uploade->get_token() . "." . $extension_Upload;
+                   $chemin = "cv/pieces_jointes/". $piece_Jointe_Uploade->get_token() . "." . $extension_Upload;
                    move_uploaded_file($_FILES['cv_pdf']['tmp_name'], $chemin);
                 }
             }

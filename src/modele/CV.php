@@ -1,6 +1,5 @@
 <?php
 
-require 'BD.php';
 
 /**
  * Class CV correspondant à un CV créé par un recruteur
@@ -255,7 +254,7 @@ class CV
             'num_fixe' => $this->num_Tel_Fixe, 'adresse' => $this->adresse, 'code_postal' => $this->code_Postal,
             'ville' => $this->ville, 'nom' => $this->nom, 'prenom' => $this->prenom));
         echo 'Insertion bien réalisé';
-        $id_CV_Initialise = $GLOBALS['pdo']->lastInsertId();
+        $id_CV_Initialise = BD::getInstance()->lastInsertId();
         return $id_CV_Initialise;
     }
 
@@ -364,8 +363,7 @@ class CV
         $page_Actuelle = CV::get_page_actuelle();
         $premiers_CV_A_Afficher = ($page_Actuelle - 1) * CV::cv_Par_Page;
 
-        $req = BD::getInstance()->query('SELECT * FROM CV ORDER BY  ID_CV DESC LIMIT' . $premiers_CV_A_Afficher . ', ' .
-            CV::get_nombres_pages_necessaires(). ' ');
+        $req = BD::getInstance()->query('SELECT * FROM CV ORDER BY ID_CV DESC LIMIT 0 , 10');
         //$req->execute(array('premiers_CV' => $premiers_CV_A_Afficher, 'cv_Par_Page' => CV::cv_Par_Page));
         $liste_CV_Existants = array();
         while ($donnees = $req->fetch())
