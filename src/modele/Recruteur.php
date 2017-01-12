@@ -18,7 +18,19 @@ class Recruteur
 
     public function __construct($pseudo_or_mail, $mdp) //TODO
     {
-        BD::getInstance()->query(''); //TODO vérifier que le mdp correspond au pseudo ou à l'adresse mail (une requête est suffisance avec WHERE ... OR ...). Si oui, initialiser les données-membres. Sinon, tout vaut null.
+        //TODO vérifier que le mdp correspond au pseudo ou à l'adresse mail (une requête est suffisance avec WHERE ... OR ...). Si oui, initialiser les données-membres. Sinon, tout vaut null.
+        $req = BD::getInstance()->prepare('SELECT pseudo, mdp, nom, prenom FROM UTILISATEUR WHERE email = :mail AND mdp =:mdp');
+        $res = $req->execute(array(':mail' => $pseudo_or_mail, ':mdp' => $mdp));
+        while ($data = $res->fetch())
+            {
+                if ($data['mdp'] == $mdp && $data['pseudo'] == $pseudo_or_mail)
+                {
+                    $this->nom=$data['nom'];
+                    $this->prenom=$data['prenom'];
+                    $this->pseudo=$data['pseudo'];
+                    $this->mail=$data['email'];
+                }
+            }
     }
 
 
@@ -47,10 +59,14 @@ class Recruteur
     /**
      * //TODO PHPDoc
      */
-    public static function inscrire_utilisateur() //TODO remplir tous les paramètres du formulaire demandé lors de l'inscription (voir énoncé & BD)
+    public static function inscrire_utilisateur($pseudo, $nom, $prenom, $mail, $mdp) //TODO remplir tous les paramètres du formulaire demandé lors de l'inscription (voir énoncé & BD)
     {
         //TODO tests d'unicité dans la BD (mail, pseudo...) car utilisé uniquement ici (donc fonction non nécessaire)
         //TODO requête d'insertion dans la BD
+        // verification a faire
+        $req = BD::getInstance()->prepare('INSERT INTO UTILISATEUR(pseudo, prenom, nom, mail,mdp) VALUES (:pseudo, :prenom, :nom, :mail, :mdp)');// a modifier selon la bd hein :)
+        $req->execute(array(':pseudo' => $pseudo, ':prenom' => $prenom, ':nom' => $nom, ':mail' => $mail, ':mdp' => $mdp));
+
     }
 
 
