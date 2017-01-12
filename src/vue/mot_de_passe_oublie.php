@@ -1,4 +1,4 @@
-<?php require_once ('header.php'); ?>
+<?php require_once ('vue/header.php'); ?>
 
 
 <form action="mot_de_passe_oublie.php" class="form-horizontal" method="post">

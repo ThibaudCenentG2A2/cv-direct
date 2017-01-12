@@ -1,7 +1,7 @@
-<?php require_once ('header.php'); ?>
+<?php require_once ('vue/header.php'); ?>
 
 
-<form action="../mot_de_passe_oublie.php" class="form-horizontal" method="post">
+<form action="mot_de_passe_oublie.php" class="form-horizontal" method="post">
 
     <div class="form-group has-feedback">
         <label for="inputMail" class="col-sm-3 control-label">Saisissez votre adresse mail</label>
