@@ -6,8 +6,7 @@
  * Time: 09:10
  */
 
-namespace nsCV;
-
+require 'BD.php';
 
 class Piece_Jointe
 {
@@ -96,7 +95,7 @@ class Piece_Jointe
 
     public function creer()
     {
-        $req = $GLOBALS['pdo']->prepare('INSERT INTO PIECE_JOINTE (ID_CV, TYPE_PIECE_JOINTE, EXTENSION, TOKEN) VALUES(:id_cv, :type_Piece_Jointe, :extension, :token)');
+        $req = BD::getInstance()->prepare('INSERT INTO PIECE_JOINTE (ID_CV, TYPE_PIECE_JOINTE, EXTENSION, TOKEN) VALUES(:id_cv, :type_Piece_Jointe, :extension, :token)');
         $req->execute(array('id_cv' => $this->get_id_cv(), 'type_Piece_Jointe' => $this->get_type(), 'extension' => $this->get_extension(), 'token' => $this->get_token()));
     }
 
@@ -107,7 +106,7 @@ class Piece_Jointe
         srand((double)microtime()*1000000);
         for($i=0; $i< 20 ; $i++)
             $token_Genere .= $chaine[rand()%strlen($chaine)];
-        $req = $GLOBALS['pdo']->prepare('SELECT COUNT(*) AS token_Existe FROM PIECE_JOINTE WHERE TOKEN = :token');
+        $req = BD::getInstance()->prepare('SELECT COUNT(*) AS token_Existe FROM PIECE_JOINTE WHERE TOKEN = :token');
         $req->execute(array('token' => $token_Genere));
         $donnees = $req->fetch();
         if($donnees['token_Existe'] == 0)
@@ -126,11 +125,11 @@ class Piece_Jointe
     }
 
     /** Retourne la pièce jointe associé à l'identifiant nécessaire dans le cas de la suppression d'une pièce jointe.
-     * @return \nsCV\Piece_Jointe
+     * @return Piece_Jointe
      */
     public function get_supprimer_piece_jointe()
     {
-        $req = $GLOBALS['pdo']->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_PIECE_JOINTE = :id_piece_jointe');
+        $req = BD::getInstance()->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_PIECE_JOINTE = :id_piece_jointe');
         $req->execute(array('id_piece_jointe' => $this->get_id_piece_jointe()));
         $donnees = $req->fetch();
         return new Piece_Jointe($this->get_id_piece_jointe(), $donnees['ID_CV'], $donnees['TYPE_PIECE_JOINTE'], $donnees['EXTENSION'], $donnees['TOKEN']);

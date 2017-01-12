@@ -1,10 +1,7 @@
 <?php
 
-    include '../modele/connexion_bd.php';
-    require '../modele/CV_PDF.php';
-    require '../modele/Piece_Jointe.php';
-    use \nsCV\CV_PDF;
-    use \nsCV\Piece_Jointe;
+    require 'modele/CV_PDF.php';
+    require 'modele/Piece_Jointe.php';
 
     /** Valide l'ajout d'un CV PDF et vérifie que le champ est bien rempli ou non et s'adapte en conséquence
      * @author Thibaud CENENT
@@ -36,7 +33,7 @@
                 }
             }
 
-            header('Location; gestion_affichage_cv.php?numero=' . $id_CV_Recupere);
+            header('Location: gestion_affichage_cv.php?numero=' . $id_CV_Recupere);
         }
     }
     else if($_POST['ajout_cv-pdf'] == 'Annuler')
@@ -45,6 +42,6 @@
     }
     else
     {
-        header('Location: ../vue/ajouter_cv_pdf.php');
+        header('Location: vue/ajouter_cv_pdf.php?numero=' . $_GET['numero']);
     }
 ?>

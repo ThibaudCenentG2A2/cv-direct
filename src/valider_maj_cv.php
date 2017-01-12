@@ -4,10 +4,7 @@
     * On initialise une session afin de pouvoir récupéré l'identifiant du CV concerné par les modifications.
     */
     session_start();
-
-    include '../modele/connexion_bd.php';
-    require '../modele/CV.php';
-    use \nsCV\CV;
+    require 'modele/CV.php';
 
     /**
      * Phase de validation de la modification du CV avec l'ajout probable d'un nouveau CV PDF où on a accepté d'appliquer les principales modifications.
@@ -37,6 +34,6 @@
     }
     else
     {
-        header('Location: ../vue/maj_cv.php');
+        header('Location: ../vue/maj_cv.php?numero='.$_GET['numero']);
     }
 ?>

@@ -1,11 +1,7 @@
 <?php
-    include '../modele/connexion_bd.php';
-    require '../modele/CV.php';
-    require '../modele/CV_PDF.php';
-    require '../modele/Piece_Jointe.php';
-    use \nsCV\CV;
-    use \nsCV\CV_PDF;
-    use \nsCV\Piece_Jointe;
+    require 'modele/CV.php';
+    require 'modele/CV_PDF.php';
+    require 'modele/Piece_Jointe.php';
 
     /**
      * Gére et récupére les informations à la création d'un CV pour chaque utilisateur en renvoyant vers la page de création en cas d'erreur pour l'importation de pièces jointes.
@@ -97,7 +93,7 @@
     }
     else
     {
-        header('Location: ../vue/creer_cv.php');
+        header('Location: vue/creer_cv.php');
     }
 
 ?>

@@ -1,5 +1,5 @@
 
-    <form action="../valider_ajout_cv_pdf.php" method="post" enctype="multipart/form-data">
+    <form action="../valider_ajout_cv_pdf.php?numero=<?php$_GET['numero']?>" method="post" enctype="multipart/form-data">
         <label> CV PDF à ajouter : </label>
             <input name="cv_pdf" type="file"/> <br/> <br/>
             <input type="hidden" name="max_size_cv_pdf" value="409600"/>

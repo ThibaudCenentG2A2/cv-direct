@@ -1,10 +1,8 @@
 <?php
 
     session_start();
-    include '../modele/connexion_bd.php';
-    require '../modele/CV.php';
-    require '../modele/Piece_Jointe.php';
-    use \nsCV\CV;
+    require 'modele/CV.php';
+    require 'modele/Piece_Jointe.php';
 
     /**
      *Gére la suppression ou non d'un CV en fonction du choix du recruteur.

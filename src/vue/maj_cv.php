@@ -1,5 +1,5 @@
 
-    <form action="../valider_maj_cv.php" method="post">
+    <form action="../valider_maj_cv.php?numero=<?php$_GET['numero']?>"method="post">
         <label> Téléphone Portable : </label>
             <input name="num_portable" type="text" /> <br/> <br/>
         <label> Téléphone Fixe : </label>

@@ -1,8 +1,6 @@
 <?php
     session_start();
-    include '../modele/connexion_bd.php';
-    require '../modele/CV.php';
-    use \nsCV\CV;
+    require 'modele/CV.php';
 
     /**
      *Gestion de l'affichage de tous les CV de la BD en fonction des restrictions de pagination imposées

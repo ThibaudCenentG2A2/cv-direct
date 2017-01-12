@@ -1,11 +1,11 @@
 <?php
-namespace nsCV;
+
+require 'BD.php';
 
 /**
  * Class CV correspondant à un CV créé par un recruteur
- * @package nsCVUser correpondant au namespace où on va traiter la gestion des CV
  * @author Thibaud CENENT
- * @version 1.4
+ * @version 1.5
  */
 class CV
 {
@@ -85,7 +85,7 @@ class CV
     private $liste_CV_PDF = array();
 
     /** Correspond à une liste de pieces jointe associées à un CV
-     * @var array | \nsCV\Piece_Jointe
+     * @var array | Piece_Jointe
      */
     private $liste_pieces_jointe = array();
 
@@ -196,7 +196,7 @@ class CV
 
 
     /** Retourne la liste des CV_PDF pour un CV en particulier
-     * @return array|\nsCV\CV_PDF
+     * @return array| CV_PDF
      */
     public function getListeCVPDF()
     {
@@ -204,7 +204,7 @@ class CV
     }
 
     /**
-     * @return array|\nsCV\Piece_Jointe
+     * @return array| Piece_Jointe
      */
     public function get_liste_pieces_jointe()
     {
@@ -216,7 +216,7 @@ class CV
      */
     public function ajouter_cv_pdf()
     {
-        $req = $GLOBALS['pdo']->prepare('SELECT * FROM CV_PDF WHERE ID_CV = :id_cv');
+        $req = BD::getInstance()->prepare('SELECT * FROM CV_PDF WHERE ID_CV = :id_cv');
         $req->execute(array('id_cv' => $_SESSION['id_cv']));
         while ($donnees = $req->fetch()) {
             $this->liste_CV_PDF[] = new CV_PDF($donnees['ID_CV_PDF'], $_SESSION['id_cv']);
@@ -228,8 +228,7 @@ class CV
      */
     public function ajouter_pieces_jointes()
     {
-        $liste_Pieces_Jointes = array();
-        $req = $GLOBALS['pdo']->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_CV = :id_cv');
+        $req = BD::getInstance()->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_CV = :id_cv');
         $req->execute(array('id_cv' => $this->get_id_cv()));
         while($donnees = $req->fetch())
             $this->liste_pieces_jointe[] = new Piece_Jointe($donnees['ID_PIECE_JOINTE'], $this->get_id_cv(), $donnees['TYPE'],
@@ -249,7 +248,7 @@ class CV
      */
     public function inserer()
     {
-        $req = $GLOBALS['pdo']->prepare('INSERT INTO CV(NUMERO_SECU_SOCIALE, NUM_TEL_PORTABLE, NUM_TEL_FIXE, ADRESSE, CODE_POSTAL
+        $req = BD::getInstance()->prepare('INSERT INTO CV(NUMERO_SECU_SOCIALE, NUM_TEL_PORTABLE, NUM_TEL_FIXE, ADRESSE, CODE_POSTAL
         , VILLE, NOM, PRENOM) VALUES(:num_secu, :num_portable, :num_fixe, :adresse,
         :code_postal, :ville, :nom, :prenom)');
         $req->execute(array('num_secu' => $this->numero_Secu_Sociale, 'num_portable' => $this->num_Tel_Portable,
@@ -266,31 +265,31 @@ class CV
     public function mettre_a_jour()
     {
         if (isset($this->num_Tel_Portable)) {
-            $req = $GLOBALS['pdo']->prepare('UPDATE CV SET NUM_TEL_PORTABLE = :portable WHERE ID_CV = :id_cv');
+            $req = BD::getInstance()->prepare('UPDATE CV SET NUM_TEL_PORTABLE = :portable WHERE ID_CV = :id_cv');
             $req->execute(array('portable' => $this->num_Tel_Portable, 'id_cv' => $this->id_CV));
         }
         if (isset($this->num_Tel_Fixe)) {
-            $req = $GLOBALS['pdo']->prepare('UPDATE CV SET NUM_TEL_FIXE = :fixe WHERE ID_CV = :id_cv');
+            $req = BD::getInstance()->prepare('UPDATE CV SET NUM_TEL_FIXE = :fixe WHERE ID_CV = :id_cv');
             $req->execute(array('fixe' => $this->num_Tel_Fixe, 'id_cv' => $this->id_CV));
         }
         if (isset($this->adresse)) {
-            $req = $GLOBALS['pdo']->prepare('UPDATE CV SET ADRESSE = :adresse WHERE ID_CV = :id_cv');
+            $req = BD::getInstance()->prepare('UPDATE CV SET ADRESSE = :adresse WHERE ID_CV = :id_cv');
             $req->execute(array('adresse' => $this->adresse, 'id_cv' => $this->id_CV));
         }
         if (isset($this->code_Postal)) {
-            $req = $GLOBALS['pdo']->prepare('UPDATE CV SET CODE_POSTAL = :code_postal WHERE ID_CV = :id_cv');
+            $req = BD::getInstance()->prepare('UPDATE CV SET CODE_POSTAL = :code_postal WHERE ID_CV = :id_cv');
             $req->execute(array('code_postal' => $this->code_Postal, 'id_cv' => $this->id_CV));
         }
         if (isset($this->ville)) {
-            $req = $GLOBALS['pdo']->prepare('UPDATE CV SET VILLE = :ville WHERE ID_CV = :id_cv');
+            $req = BD::getInstance()->prepare('UPDATE CV SET VILLE = :ville WHERE ID_CV = :id_cv');
             $req->execute(array('ville' => $this->ville, 'id_cv' => $this->id_CV));
         }
         if (isset($this->nom)) {
-            $req = $GLOBALS['pdo']->prepare('UPDATE CV SET NOM = :nom WHERE ID_CV = :id_cv');
+            $req = BD::getInstance()->prepare('UPDATE CV SET NOM = :nom WHERE ID_CV = :id_cv');
             $req->execute(array('nom' => $this->nom, 'id_cv' => $this->id_CV));
         }
         if (isset($this->prenom)) {
-            $req = $GLOBALS['pdo']->prepare('UPDATE CV SET PRENOM = :prenom WHERE ID_CV = :id_cv');
+            $req = BD::getInstance()->prepare('UPDATE CV SET PRENOM = :prenom WHERE ID_CV = :id_cv');
             $req->execute(array('prenom' => $this->prenom, 'id_cv' => $this->id_CV));
         }
     }
@@ -300,7 +299,7 @@ class CV
      */
     public function supprimer()
     {
-        $req = $GLOBALS['pdo']->prepare('DELETE FROM CV WHERE ID_CV = :id_cv');
+        $req = BD::getInstance()->prepare('DELETE FROM CV WHERE ID_CV = :id_cv');
         $req->execute(array('id_cv' => $this->id_CV));
     }
 
@@ -310,7 +309,7 @@ class CV
      */
     public function afficher()
     {
-        $req = $GLOBALS['pdo']->prepare('SELECT * FROM CV WHERE ID_CV = :id_cv ');
+        $req = BD::getInstance()->prepare('SELECT * FROM CV WHERE ID_CV = :id_cv ');
         $req->execute(array('id_cv' => $this->get_id_cv()));
         $donnees = $req->fetch();
         $cv_Cree = new CV($this->get_id_cv(), $donnees['NUMERO_SECU_SOCIALE'], $donnees['NUM_TEL_PORTABLE'],
@@ -326,7 +325,7 @@ class CV
      */
     public static function get_nombres_pages_necessaires()
     {
-        $nombre_CV_Total = $GLOBALS['pdo']->query('SELECT COUNT(*) AS total_cv FROM CV');
+        $nombre_CV_Total = BD::getInstance()->query('SELECT COUNT(*) AS total_cv FROM CV');
         $donnes_total = $nombre_CV_Total->fetch();
         $total = $donnes_total['total_cv'];
 
@@ -358,14 +357,14 @@ class CV
     }
 
     /** Retourne le nombre de CV moyens à afficher par page grâce à la création d'un système de pagination
-     * @return array | \nsCV\CV
+     * @return array | CV
      */
     public static function afficher_tous_les_CV()
     {
         $page_Actuelle = CV::get_page_actuelle();
         $premiers_CV_A_Afficher = ($page_Actuelle - 1) * CV::cv_Par_Page;
 
-        $req = $GLOBALS['pdo']->query('SELECT * FROM CV ORDER BY  ID_CV DESC LIMIT' . $premiers_CV_A_Afficher . ', ' .
+        $req = BD::getInstance()->query('SELECT * FROM CV ORDER BY  ID_CV DESC LIMIT' . $premiers_CV_A_Afficher . ', ' .
             CV::get_nombres_pages_necessaires(). ' ');
         //$req->execute(array('premiers_CV' => $premiers_CV_A_Afficher, 'cv_Par_Page' => CV::cv_Par_Page));
         $liste_CV_Existants = array();
