@@ -16,10 +16,21 @@ class Recruteur
 
 
 
-    function __construct($pseudo, $mdp)
+    public function __construct($pseudo, $mdp) //TODO
     {
-        BD::getInstance()->query('SELECT ');
+        BD::getInstance()->query(''); //TODO vérifier que le mdp correspond au pseudo. Si oui, initialiser les données-membres. Sinon, tout vaut null.
     }
+
+
+    /**
+     * @param $name
+     * @return bool
+     */
+    public function __isset($name)
+    {
+        return ($this->getPseudo() && $this->getPrenom() && $this->getNom() && $this->getMail());
+    }
+
 
 
     /**
@@ -33,6 +44,32 @@ class Recruteur
     }
 
 
+    /**
+     * //TODO PHPDoc
+     */
+    public static function inscrire_utilisateur() //TODO remplir tous les paramètres du formulaire demandé lors de l'inscription (voir énoncé & BD)
+    {
+        //TODO tests d'unicité dans la BD (mail, pseudo...) car utilisé uniquement ici (donc fonction non nécessaire)
+        //TODO requête d'insertion dans la BD
+    }
+
+
+
+    /**
+     * Cette fonction va permettre de vérifier que l'adresse mail entré par
+     * l'utilisateur est présente dans la base de données.
+     *
+     * @param String $mail Email a vérifier
+     *
+     * @return bool Renvoie true si présente et false sinon.
+     */
+    static function est_presente($mail)
+    {
+        $requete = BD::getInstance()->prepare('SELECT COUNT(*) FROM UTILISATEUR WHERE MAIL = :mail');
+        $requete->execute(array('mail' => $mail));
+
+        return $requete->fetch() > 0;
+    }
 
 
 
