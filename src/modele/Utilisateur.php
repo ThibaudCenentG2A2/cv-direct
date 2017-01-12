@@ -13,14 +13,10 @@ class Utilisateur
     private $prenom;
     private $nom;
     private $mail;
-    private $mdp;
 
-    function __construct($pseudo, $prenom, $nom, $mail, $mdp)
+    function __construct($pseudo, $mdp)
     {
         $this->pseudo = $pseudo;
-        $this->prenom = $prenom;
-        $this->nom = $nom;
-        $this->mail = $mail;
         $this->mdp = $this->encryptage_mdp($mdp);
 
         $this->inscrire_utilisateur();
@@ -119,7 +115,11 @@ class Utilisateur
         ('INSERT INTO UTILISATEUR(pseudo, prenom, nom, mail,mdp) VALUES (:pseudo, :prenom, :nom, :mail, :mdp)');// a modifier selon la bd hein :)
 
         $req->execute
-        (array(":pseudo" => $this->pseudo, ":prenom" => $this->prenom, ":nom" => $this->nom, ":mail" => $this->mail, ':mdp' => $this->mdp));
+        (array(":pseudo" => $this->pseudo,
+            ":prenom" => $this->prenom,
+            ":nom" => $this->nom,
+            ":mail" => $this->mail,
+            ':mdp' => $this->mdp));
         $_SESSION['flash']['success'] = 'Un email de confirmation vous a été envoyé pour valider votre compte';
     }
 
