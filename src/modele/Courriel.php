@@ -20,7 +20,7 @@ class Courriel
         $sujet = "Demande nouveau mot de passe";
         $url = 'http://cv-direct.alwaysdata.net/truc-'.$token;
 
-        $contenu_texte = file_get_contents("../vue/emails/texte/courriel_oubli_mdp.txt");
+        $contenu_texte = file_get_contents("http://cv-direct.alwaysdata.net/vue/emails/texte/courriel_oubli_mdp.txt");
         $contenu_texte = str_replace("%UTILISATEUR%", $utilisateur, $contenu_texte);
         $contenu_texte = str_replace("%URL%", $url, $contenu_texte);
 
