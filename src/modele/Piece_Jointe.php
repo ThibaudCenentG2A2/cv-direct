@@ -6,7 +6,6 @@
  * Time: 09:10
  */
 
-require 'BD.php';
 
 class Piece_Jointe
 {
