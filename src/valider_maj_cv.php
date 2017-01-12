@@ -3,7 +3,7 @@
     /**
     * On initialise une session afin de pouvoir récupéré l'identifiant du CV concerné par les modifications.
     */
-    session_start();
+    require 'modele/BD.php';
     require 'modele/CV.php';
 
     /**
@@ -27,6 +27,8 @@
 
         echo 'Modifications sur le CV N°' . $id_Cv . 'effectuées';
 
+        header('Location: gestion_affichage_cv.php?numero='.$_GET['numero']);
+
     }
     else if($_POST['Maj_CV'] == "Annuler")
     {
@@ -34,6 +36,6 @@
     }
     else
     {
-        header('Location: ../vue/maj_cv.php?numero='.$_GET['numero']);
+        header('Location: vue/maj_cv.php?numero='.$_GET['numero']);
     }
 ?>
