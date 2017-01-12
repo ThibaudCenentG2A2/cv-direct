@@ -9,6 +9,7 @@
  */
 
 require_once ('BD.php');
+
 class Recruteur
 {
     private $pseudo;
@@ -21,7 +22,11 @@ class Recruteur
     public function __construct($pseudo_or_mail, $mdp) //TODO
     {
         //TODO vérifier que le mdp correspond au pseudo ou à l'adresse mail (une requête est suffisance avec WHERE ... OR ...). Si oui, initialiser les données-membres. Sinon, tout vaut null.
-        $req = BD::getInstance()->prepare('SELECT pseudo, mdp, nom, prenom FROM UTILISATEUR WHERE email = :mail AND mdp =:mdp');
+        $req = BD::getInstance()->prepare('SELECT pseudo, mdp, nom, prenom
+                                          FROM UTILISATEUR
+                                          WHERE (UTILISATEUR.EMAIL = :mail_or_pseudo
+                                            OR UTILISATEUR.PSEUDONYME = :mail_or_pseudo)
+                                          AND mdp = :mdp');
         $res = $req->execute(array(':mail' => $pseudo_or_mail, ':mdp' => $mdp));
         while ($data = $res->fetch())
             {
