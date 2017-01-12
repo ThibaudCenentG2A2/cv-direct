@@ -16,9 +16,9 @@ class Recruteur
 
 
 
-    public function __construct($pseudo, $mdp) //TODO
+    public function __construct($pseudo_or_mail, $mdp) //TODO
     {
-        BD::getInstance()->query(''); //TODO vérifier que le mdp correspond au pseudo. Si oui, initialiser les données-membres. Sinon, tout vaut null.
+        BD::getInstance()->query(''); //TODO vérifier que le mdp correspond au pseudo ou à l'adresse mail (une requête est suffisance avec WHERE ... OR ...). Si oui, initialiser les données-membres. Sinon, tout vaut null.
     }
 
 
