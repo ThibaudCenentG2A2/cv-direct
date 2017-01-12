@@ -54,3 +54,10 @@ class BD
     }
 
 }
+
+/*
+ * Test de la BD
+$bd = BD::getInstance()->query('SELECT 3 bisous FROM dual');
+while ($d = $bd->fetch())
+echo $d['bisous'];
+ */
