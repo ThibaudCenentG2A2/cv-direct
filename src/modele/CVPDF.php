@@ -6,17 +6,17 @@
  * @version 1.4
  */
 
-class CV_PDF
+class CVPDF
 {
     /** Correspond à l'identifiant d'un CV au format PDF pour un CV d'une personne concernée
      * @var $id_cv_pdf
-     * @see CV_PDF::get_id_cv_pdf()
+     * @see CVPDF::get_id_cv_pdf()
      */
     private $id_cv_pdf;
 
     /** Correspond à un CV pour une personne qui admet un unique CV au format PDF
      * @var $id_CV
-     * @see CV_PDF::get_id_cv()
+     * @see CVPDF::get_id_cv()
      */
     private $id_cv;
 
@@ -48,22 +48,24 @@ class CV_PDF
     }
 
     /** Réalise la création d'un CV PDF grâce à la requête INSERT et retourne l'identifiant du CV PDF généré
+     * @param $id_cv
      * @return string
      */
-    public function creer()
+    public static function creer($id_cv)
     {
         $req = BD::getInstance()->prepare('INSERT INTO CV_PDF (ID_CV) VALUES(:id_cv)');
-        $req->execute(array('id_cv' => $this->get_id_cv()));
+        $req->execute(array('id_cv' => $id_cv));
         $id_cv_pdf_cree = BD::getInstance()->lastInsertId();
         return $id_cv_pdf_cree;
     }
 
     /**
      * Supprime le CV_PDF associé au CV de la personne concernée dans la BD.
+     * @param $id_cv_pdf
      */
-    public function supprimer()
+    public static function supprimer($id_cv_pdf)
     {
-        $req = BD::getInstance()->prepare('DELETE FROM CV_PDF WHERE ID_CV_PDF = :id_cv_pdf AND ID_CV = :id_cv');
-        $req->execute(array('id_cv_pdf' => $this->get_id_cv_pdf(), 'id_cv' => $this->get_id_cv()));
+        $req = BD::getInstance()->prepare('DELETE FROM CV_PDF WHERE ID_CV_PDF = :id_cv_pdf');
+        $req->execute(array('id_cv_pdf' => $id_cv_pdf));
     }
 }

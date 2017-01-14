@@ -3,7 +3,7 @@
 /**
  * Class CV correspondant à un CV créé par un recruteur
  * @author Thibaud CENENT
- * @version 1.6
+ * @version 1.7
  */
 
 class CV
@@ -79,7 +79,7 @@ class CV
     private $liste_cv_pdf = array();
 
     /** Correspond à une liste de pieces jointe associées à un CV
-     * @var array | Piece_Jointe
+     * @var array | PieceJointe
      * @see CV::get_liste_pieces_jointe()
      */
     private $liste_pieces_jointe = array();
@@ -116,7 +116,6 @@ class CV
         $this->nom = $nom;
         $this->prenom = $prenom;
     }
-
 
     /** Retourne l'identifiant d'un CV
      * @return $this->id_cv
@@ -193,7 +192,7 @@ class CV
 
 
     /** Retourne la liste des CV_PDF pour un CV en particulier
-     * @return array| CV_PDF
+     * @return array| CVPDF
      */
     public function get_liste_cv_pdf()
     {
@@ -201,7 +200,7 @@ class CV
     }
 
     /**
-     * @return array| Piece_Jointe
+     * @return array| PieceJointe
      */
     public function get_liste_pieces_jointe()
     {
@@ -216,21 +215,20 @@ class CV
         $req = BD::getInstance()->prepare('SELECT * FROM CV_PDF WHERE ID_CV = :id_cv');
         $req->execute(array('id_cv' => $this->get_id_cv()));
         while ($donnees = $req->fetch()) {
-            $this->liste_cv_pdf[] = new CV_PDF($donnees['ID_CV_PDF'], $this->get_id_cv());
+            $this->liste_cv_pdf[] = new CVPDF($donnees['ID_CV_PDF'], $this->get_id_cv());
         }
     }
 
     /** Ajoute toutes les pieces jointes associes à un CV pour une personne concernée
-     * @return array|\Piece_Jointe
+     *
      */
     public function ajouter_pieces_jointes()
     {
         $req = BD::getInstance()->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_CV = :id_cv');
         $req->execute(array('id_cv' => $this->get_id_cv()));
         while($donnees = $req->fetch())
-            $this->liste_pieces_jointe[] = new Piece_Jointe($donnees['ID_PIECE_JOINTE'], $this->get_id_cv(), $donnees['TYPE'],
+            $this->liste_pieces_jointe[] = new PieceJointe($donnees['ID_PIECE_JOINTE'], $this->get_id_cv(), $donnees['TYPE'],
                 $donnees['EXTENSION'], $donnees['TOKEN']);
-        return $this->get_liste_pieces_jointe();
     }
 
     /** Retourne sous la forme d'une String le CV et son identifiant
@@ -242,81 +240,96 @@ class CV
     }
 
     /** Fonction qui va permettre de d'insérer des CV pour chaque CV créé en fonction de chaque utilisateur
-     *
+     * @param $num_secu
+     * @param $num_portable
+     * @param $num_fixe
+     * @param $adresse
+     * @param $code_postal
+     * @param $ville
+     * @param $nom
+     * @param $prenom
+     * @return string
      */
-    public function inserer()
+    public static function inserer($num_secu, $num_portable, $num_fixe, $adresse, $code_postal, $ville, $nom, $prenom)
     {
         $req = BD::getInstance()->prepare('INSERT INTO CV(NUMERO_SECU_SOCIALE, NUM_TEL_PORTABLE, NUM_TEL_FIXE, ADRESSE, CODE_POSTAL
         , VILLE, NOM, PRENOM) VALUES(:num_secu, :num_portable, :num_fixe, :adresse, :code_postal, :ville, :nom, :prenom)');
-        $req->execute(array('num_secu' => $this->get_numero_secu_sociale(), 'num_portable' => $this->get_num_tel_portable(),
-            'num_fixe' => $this->get_num_tel_fixe(), 'adresse' => $this->get_adresse(), 'code_postal' => $this->get_code_postal(),
-            'ville' => $this->get_ville(), 'nom' => $this->get_nom(), 'prenom' => $this->get_prenom()));
+        $req->execute(array('num_secu' => $num_secu, 'num_portable' => $num_portable, 'num_fixe' => $num_fixe, 'adresse' => $adresse,
+            'code_postal' => $code_postal, 'ville' => $ville, 'nom' => $nom, 'prenom' => $prenom));
         echo 'Insertion bien réalisé';
         $id_CV_Initialise = BD::getInstance()->lastInsertId();
         return $id_CV_Initialise;
     }
 
     /** Fonction qui va effectuer une mise à jour sur un cv en particulier grâce à la requête UPDATE
-     *
+     * @param $id_Cv
+     * @param $num_portable
+     * @param $num_fixe
+     * @param $adresse
+     * @param $code_postal
+     * @param $ville
+     * @param $nom
+     * @param $prenom
      */
-    public function mettre_a_jour()
+    public static function mettre_a_jour($id_Cv, $num_portable, $num_fixe, $adresse, $code_postal, $ville, $nom, $prenom )
     {
-        if (isset($this->num_tel_portable))
+        if (isset($num_portable))
         {
             $req = BD::getInstance()->prepare('UPDATE CV SET NUM_TEL_PORTABLE = :portable WHERE ID_CV = :id_cv');
-            $req->execute(array('portable' => $this->get_num_tel_portable(), 'id_cv' => $this->get_id_cv()));
+            $req->execute(array('portable' => $num_portable, 'id_cv' => $id_Cv));
         }
-        if (isset($this->num_tel_fixe))
+        if (isset($num_fixe))
         {
             $req = BD::getInstance()->prepare('UPDATE CV SET NUM_TEL_FIXE = :fixe WHERE ID_CV = :id_cv');
-            $req->execute(array('fixe' => $this->get_num_tel_fixe(), 'id_cv' => $this->get_id_cv()));
+            $req->execute(array('fixe' => $num_fixe, 'id_cv' => $id_Cv));
         }
-        if (isset($this->adresse))
+        if (isset($adresse))
         {
             $req = BD::getInstance()->prepare('UPDATE CV SET ADRESSE = :adresse WHERE ID_CV = :id_cv');
-            $req->execute(array('adresse' => $this->get_adresse(), 'id_cv' => $this->get_id_cv()));
+            $req->execute(array('adresse' => $adresse, 'id_cv' => $id_Cv));
         }
-        if (isset($this->code_postal))
+        if (isset($code_postal))
         {
             $req = BD::getInstance()->prepare('UPDATE CV SET CODE_POSTAL = :code_postal WHERE ID_CV = :id_cv');
-            $req->execute(array('code_postal' => $this->get_code_postal(), 'id_cv' => $this->get_id_cv()));
+            $req->execute(array('code_postal' => $code_postal, 'id_cv' => $id_Cv));
         }
-        if (isset($this->ville))
+        if (isset($ville))
         {
             $req = BD::getInstance()->prepare('UPDATE CV SET VILLE = :ville WHERE ID_CV = :id_cv');
-            $req->execute(array('ville' => $this->get_ville(), 'id_cv' => $this->get_id_cv()));
+            $req->execute(array('ville' => $ville, 'id_cv' => $id_Cv));
         }
-        if (isset($this->nom))
+        if (isset($nom))
         {
             $req = BD::getInstance()->prepare('UPDATE CV SET NOM = :nom WHERE ID_CV = :id_cv');
-            $req->execute(array('nom' => $this->get_nom(), 'id_cv' => $this->get_id_cv()));
+            $req->execute(array('nom' => $nom, 'id_cv' => $id_Cv));
         }
-        if (isset($this->prenom))
+        if (isset($prenom))
         {
             $req = BD::getInstance()->prepare('UPDATE CV SET PRENOM = :prenom WHERE ID_CV = :id_cv');
-            $req->execute(array('prenom' => $this->get_prenom(), 'id_cv' => $this->get_id_cv()));
+            $req->execute(array('prenom' => $prenom, 'id_cv' => $id_Cv));
         }
     }
 
     /** Fonction qui va permettre la suppression d'un tuple dans la relation CV avec son identifiant grâce à la requête DELETE.
-     *
+     * @param $id_cv
      */
-    public function supprimer()
+    public static function supprimer($id_cv)
     {
         $req = BD::getInstance()->prepare('DELETE FROM CV WHERE ID_CV = :id_cv');
-        $req->execute(array('id_cv' => $this->get_id_cv()));
+        $req->execute(array('id_cv' => $id_cv));
     }
 
     /** Fonction qui va permettre d'afficher le CV d'une personne concernée avec ces CV PDF
      * en fonction de son identifiant grâce aux données par la requête SELECT
-     * @return CV
+     * @param $id_cv
+     * @return \CV
      */
-    public function afficher()
+    public static function afficher($id_cv)
     {
         $req = BD::getInstance()->prepare('SELECT * FROM CV WHERE ID_CV = :id_cv ');
-        $req->execute(array('id_cv' => $this->get_id_cv()));
+        $req->execute(array('id_cv' => $id_cv));
         $donnees = $req->fetch();
-        $cv_cree = new CV($this->get_id_cv(), $donnees['NUMERO_SECU_SOCIALE'], $donnees['NUM_TEL_PORTABLE'],
+        $cv_cree = new CV($id_cv, $donnees['NUMERO_SECU_SOCIALE'], $donnees['NUM_TEL_PORTABLE'],
             $donnees['NUM_TEL_FIXE'], $donnees['ADRESSE'], $donnees['CODE_POSTAL'], $donnees['VILLE'], $donnees['NOM'], $donnees['PRENOM']);
         $cv_cree->ajouter_cv_pdf();
         $cv_cree->ajouter_pieces_jointes();
@@ -346,12 +359,10 @@ class CV
         $nombre_pages_necessaires = CV::get_nombres_pages_necessaires();
         if (isset($_GET['page'])) {
             $page_actuelle = intval($_GET['page']);
-
             if ($page_actuelle > $nombre_pages_necessaires)
             {
                 $page_actuelle = $nombre_pages_necessaires;
             }
-
         }
         else
         {
@@ -366,10 +377,10 @@ class CV
     public static function afficher_tous_les_cv()
     {
         $page_actuelle = CV::get_page_actuelle();
-        $premiers_CV_A_Afficher = ($page_actuelle - 1) * CV::cv_par_page;
+        $premiers_cv_a_afficher = ($page_actuelle - 1) * CV::cv_par_page;
 
-        $req = BD::getInstance()->query('SELECT * FROM CV ORDER BY ID_CV DESC LIMIT 0 , 10');
-        //$req->execute(array('premiers_CV' => $premiers_CV_A_Afficher, 'cv_Par_Page' => CV::cv_Par_Page));
+        $req = BD::getInstance()->prepare('SELECT * FROM CV ORDER BY ID_CV DESC LIMIT :premiers_cv, :cv_par_page');
+        $req->execute(array('premiers_cv' => $premiers_cv_a_afficher, 'cv_par_page' => CV::cv_par_page));
         $liste_cv_existants = array();
         while ($donnees = $req->fetch())
         {
