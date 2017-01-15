@@ -376,13 +376,13 @@ class CV
      */
     public static function afficher_tous_les_cv()
     {
-        $page_actuelle = CV::get_page_actuelle();
-        $premiers_cv_a_afficher = ($page_actuelle - 1) * CV::cv_par_page;
+        //$page_actuelle = CV::get_page_actuelle();
+        //$premiers_cv_a_afficher = ($page_actuelle - 1) * CV::cv_par_page;
 
-        $req = BD::getInstance()->prepare('SELECT * FROM CV ORDER BY ID_CV DESC LIMIT :premiers_cv, :cv_par_page');
-        $req->execute(array('premiers_cv' => $premiers_cv_a_afficher, 'cv_par_page' => CV::cv_par_page));
+        $req = BD::getInstance()->query('SELECT * FROM CV ORDER BY ID_CV DESC LIMIT : 0, 10');
+        //$req->execute();
         $liste_cv_existants = array();
-        while ($donnees = $req->fetch())
+        while ($donnees = $req)
         {
             $liste_cv_existants[] = new CV($donnees['ID_CV'], $donnees['NUMERO_SECU_SOCIALE'], $donnees['NUM_TEL_PORTABLE'],
                 $donnees['NUM_TEL_FIXE'], $donnees['ADRESSE'], $donnees['CODE_POSTAL'],
