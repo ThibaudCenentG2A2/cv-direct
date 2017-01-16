@@ -10,6 +10,7 @@ demarrage_session_utilisateur();
 require_once ('header.php');
 
 ?>
+
 <form action="../connexion_recruteur.php" method="post">
     Pseudo: <input type="text" name="pseudo" value="" />
 

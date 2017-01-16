@@ -6,5 +6,5 @@
  * Time: 12:09
  */
 require_once ('../modele/Recruteur.php');
-$uer= new Utilisateur($_POST['pseudo'],$_POST['mdp']);
+$user= new Utilisateur($_POST['pseudo'],$_POST['mdp']);
 ?>
