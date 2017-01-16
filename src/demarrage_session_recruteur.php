@@ -8,7 +8,6 @@
 
 function demarrage_session_utilisateur()
 {
-    $session_name = $this->pseudo;
     $httponly = true;
 
     if (ini_set('session.use_only_cookies', 1) === FALSE) {
@@ -22,8 +21,7 @@ function demarrage_session_utilisateur()
         $cookieParams["domain"],
         $httponly);
 
-    session_name($session_name);
     session_start();
-    session_regenerate_id();
+
 }
 ?>
