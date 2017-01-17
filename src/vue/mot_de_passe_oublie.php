@@ -1,4 +1,19 @@
-<?php require_once ('header.php'); ?>
+<?php
+
+require_once 'vue/header.php';
+
+if ($alert == 1)
+    echo '<div class="alert alert-success alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              L\'email a bien été envoyé !
+          </div>';
+else if ($alert == 2)
+    echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>L\'email n\'est associé a aucun compte !</div>';
+
+?>
+
 
 
 <form action="../mot_de_passe_oublie.php" class="form-horizontal" method="post">
@@ -19,3 +34,5 @@
         </div>
     </div>
 </form>
+
+<?php require_once 'footer.php';
