@@ -15,7 +15,7 @@
     {
         if(!empty($_FILES[$nom_file])AND $_FILES[$nom_file]['error'] == 0)
         {
-            $token = PieceJointe::get_generer_token_aleatoire();
+            $token = PieceJointe::verifier_presence_token();
             $infos_Fichier = pathinfo($_FILES[$nom_file]['name']);
             $extension_Upload = $infos_Fichier['extension'];
             if($nom_file == 'assurance' AND ($extension_Upload == 'jpg' OR $extension_Upload == 'pdf'))
@@ -43,34 +43,31 @@
      */
     function verif_infos_cv($nom, $prenom, $portable, $fixe, $adresse, $code_postal, $ville)
     {
-        if(!empty($nom) && preg_match('^?[A-Z][a-z]*$', $nom) == 0)
-        {
+        if(!empty($nom) && preg_match('`^[a-zA-ZÂÊÎÔÛÄËÏÖÜÀÆæÇÉÈŒœÙàáâäçèéêëìíîïñòóôöùúûüýÿ]+(?:[\/\-\.\'][a-zA-ZÂÊÎÔÛÄËÏÖÜÀÆæÇÉÈŒœÙàáâäç
+        èéêëìíîïñòóôöùúûüýÿ]+)*$`', $nom))
             return 1;
-        }
-        if(!empty($prenom) && preg_match('^?[A-Z][a-z]*$', $prenom) == 0)
-        {
+        if(!empty($prenom) && preg_match('`^[a-zA-ZÂÊÎÔÛÄËÏÖÜÀÆæÇÉÈŒœÙàáâäçèéêëìíîïñòóôöùúûüýÿ]+(?:[\/\-\.\'][a-zA-ZÂÊÎÔÛÄËÏÖÜÀÆæÇÉÈŒœÙàáâäç
+        èéêëìíîïñòóôöùúûüýÿ]+)*$`', $prenom))
             return 2;
-        }
-        if(!empty($portable) && preg_match('[0-9]{10}', $portable) == 0)
-        {
+        if(!empty($portable) && preg_match('[0-9]{10}', $portable))
             return 3;
-        }
-        if(!empty($fixe) && preg_match('[0-9]{10}', $fixe) == 0)
-        {
+        if(!empty($fixe) && preg_match('[0-9]{10}', $fixe))
             return 4;
-        }
-        if(!empty($adresse) && preg_match('^[0-9]{1,3} [a-z]* [a-z]{2,3} [a-z]*$', $adresse) == 0)
-        {
+        if(!empty($adresse) && preg_match('^[a-zA-Z0-9]+', $adresse))
             return 5;
-        }
-        if(!empty($code_postal)&& preg_match('#^[0-9]{5}$#', $code_postal) == 0)
-        {
+        if(!empty($code_postal)&& preg_match('#^[0-9]{5}$#', $code_postal))
             return 6;
-        }
-        if(!empty($ville) && preg_match('[A-Z]*', $ville) == 0)
-        {
+        if(!empty($ville) && preg_match('[A-Za-z]+', $ville))
             return 7;
-        }
         return 0;
     }
+
+    function supprimer_pieces_jointes_cv(CV $cv_a_supprimer)
+    {
+        foreach ($cv_a_supprimer->get_liste_pieces_jointe() as $piece_jointe)
+            unlink("cv/pieces_jointes/" . $piece_jointe->get_token() . "." . $piece_jointe->get_extension());
+        foreach ($cv_a_supprimer->get_liste_cv_pdf() as $cv_pdf)
+            unlink("cv/pieces_jointes/" . $cv_pdf->get_token() . "." . $cv_pdf->get_extension());
+    }
+
 ?>
