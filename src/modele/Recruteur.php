@@ -31,13 +31,20 @@ class Recruteur
         $req->execute();
 
         $data = $req->fetch();
+        if(!empty($data))
+        {
+            $this->nom = $data['NOM'];
+            $this->prenom = $data['PRENOM'];
+            $this->pseudo = $data['PSEUDONYME'];
+            $this->mail = $data['EMAIL'];
 
-        $this->nom=$data['NOM'];
-        $this->prenom=$data['PRENOM'];
-        $this->pseudo=$data['PSEUDONYME'];
-        $this->mail=$data['EMAIL'];
-
-        header('Location:index.php');
+            header('Location:presentation.php');
+        }
+        else
+        {
+            //    <?phpif ($alert == 1){echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>L\'email n\'est associé a aucun compte !</div>';}
+            header('Location:'.$_SERVER[HTTP_REFERER]);
+        }
     }
 
 
