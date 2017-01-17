@@ -34,7 +34,7 @@ class PieceJointe
 
     /** Désigne une string généré aléatoirement et qui remplacera le nom original de la pièce jointe lors de l'upload sur le serveur ( peut servir d'identifiant unique)
      * @see PieceJointe::get_token()
-     * @see PieceJointe::get_generer_token_aleatoire()
+     * @see PieceJointe::generer_token_aleatoire()
      * @var $token
      */
     private $token;
@@ -128,19 +128,28 @@ class PieceJointe
     }
     function __toString()
     {
-        return $this->get_generer_token_aleatoire();
+        return $this->generer_token_aleatoire();
     }
 
-    /** Retourne le token généré aléatoirement
+    /** Retourne un token généré aléatoirement
      * @return string
      */
-    public static function get_generer_token_aleatoire()
+    public static function generer_token_aleatoire()
     {
         $chaine = "abcdefghijklmnpqrstuvwxy";
         $token_genere = "";
         srand((double)microtime()*1000000);
         for($i=0; $i< 20 ; $i++)
             $token_genere .= $chaine[rand()%strlen($chaine)];
+        return $token_genere;
+    }
+
+    /** Vérifie si le token est présent dans la BD et s'adapte en conséquence : regénere un token tant qu'il n'est pas valide ou renvoie le token validé
+     * @return string
+     */
+    public static function verifier_presence_token()
+    {
+        $token_genere = PieceJointe::generer_token_aleatoire();
         $req = BD::getInstance()->prepare('SELECT COUNT(*) AS token_existe FROM PIECE_JOINTE WHERE TOKEN = :token');
         $req->execute(array('token' => $token_genere));
         $donnees = $req->fetch();
@@ -149,12 +158,10 @@ class PieceJointe
         else
             do
             {
-                for($i=0; $i< 20 ; $i++)
-                    $token_genere .= $chaine[rand()%strlen($chaine)];
+                $token_genere = PieceJointe::generer_token_aleatoire();
                 $req->execute(array('token' => $token_genere));
                 $donnees = $req->fetch();
                 $token_return = $token_genere;
-
             } while($donnees['token_existe'] != 0);
         return $token_return;
     }
