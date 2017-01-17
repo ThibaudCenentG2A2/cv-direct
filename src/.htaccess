@@ -8,7 +8,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 # Test : pas de dossier de ce nom à la racine
 RewriteCond %{REQUEST_FILENAME} !-d
 # Test : la page existe en .php
-RewriteCond %{REQUEST_FILENAME}.php -f\
+RewriteCond %{REQUEST_FILENAME}.php -f
 
 # Redirection de la page PAGE vers controleur/PAGE.php
 RewriteRule ^(.*)$ /$1.php [L]
