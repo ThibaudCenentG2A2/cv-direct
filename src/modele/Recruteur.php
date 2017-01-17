@@ -80,8 +80,8 @@ class Recruteur
             $req->execute(array(':pseudo' => $pseudo, ':prenom' => $prenom, ':nom' => $nom, ':mail' => $mail, ':mdp' => $mdp));
             }
         else
-            {
-                echo 'Erreur dans le remplisssage du formulaire veuillez reessayer';
+            {   header ("Location: $_SERVER[HTTP_REFERER]" );
+                echo 'Erreur EMAIL deja existant';
             }
     }
 

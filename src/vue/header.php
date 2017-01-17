@@ -139,29 +139,24 @@
                                     <button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> Login</button>
                                     <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
                                         <li>
-                                            <form class="login-form margin-clear">
+                                            <form class="login-form margin-clear" action="../connexion_recruteur.php">
                                                 <div class="form-group has-feedback">
-                                                    <label class="control-label">Username</label>
-                                                    <input type="text" class="form-control" placeholder="">
+                                                    <label class="control-label">Pseudo</label>
+                                                    <input type="text" class="form-control" name="pseudo" placeholder="">
                                                     <i class="fa fa-user form-control-feedback"></i>
                                                 </div>
                                                 <div class="form-group has-feedback">
-                                                    <label class="control-label">Password</label>
-                                                    <input type="password" class="form-control" placeholder="">
+                                                    <label class="control-label">Mot de passe</label>
+                                                    <input type="password" class="form-control" name="mdp" placeholder="">
                                                     <i class="fa fa-lock form-control-feedback"></i>
                                                 </div>
-                                                <button type="submit" class="btn btn-gray btn-sm">Log In</button>
+                                                <button type="submit" class="btn btn-gray btn-sm">Se connecter</button>
                                                 <span class="pl-5 pr-5">or</span>
-                                                <button type="submit" class="btn btn-default btn-sm">Sing Up</button>
+                                                <button type="submit" class="btn btn-default btn-sm">S'inscrire</button>
                                                 <ul>
-                                                    <li><a href="#">Forgot your password?</a></li>
+                                                    <li><a href="http://cv-direct.alwaysdata.net/mot_de_passe_oublie.php">Mot de passe oublié?</a></li>
                                                 </ul>
-                                                <span class="text-center">Login with</span>
-                                                <ul class="social-links circle small colored clearfix">
-                                                    <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-                                                    <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
-                                                    <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
-                                                </ul>
+
                                             </form>
                                         </li>
                                     </ul>

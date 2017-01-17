@@ -5,9 +5,7 @@
  * Date: 15/01/2017
  * Time: 17:11
  */
-require_once ('../demarrage_session_recruteur.php');
-demarrage_session_utilisateur();
-require_once ('header.php');
+require_once ('vue/header.php');
 
 ?>
 
@@ -20,5 +18,5 @@ require_once ('header.php');
 </form>
 
 <?php
-require_once ('footer.php');
+require_once ('vue/footer.php');
 ?>
