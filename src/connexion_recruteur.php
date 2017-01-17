@@ -7,6 +7,7 @@
  */
 require_once 'header.php';
 require_once 'modele/Recruteur.php';
+
 if (isset($_POST['pseudo']) &&
     isset($_POST['mdp']))
 {
@@ -18,8 +19,18 @@ if($user->getNom()!=null)
     $_SESSION['pseudo'] = $user->getPseudo();
     $_SESSION['nom'] = $user->getNom();
     $_SESSION['prenom'] = $user->getPrenom();
-    header('index.php');
+    header('page_perso.php');
 }
+else
+    {
+    header('Location:'.$_SERVER[HTTP_REFERER]);
+
+    }
 }
+else
+    {
+    header('Location:'.$_SERVER[HTTP_REFERER]);
+
+    }
 
 ?>

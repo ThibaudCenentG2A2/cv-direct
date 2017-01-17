@@ -37,14 +37,8 @@ class Recruteur
             $this->prenom = $data['PRENOM'];
             $this->pseudo = $data['PSEUDONYME'];
             $this->mail = $data['EMAIL'];
+        }
 
-            header('Location:presentation.php');
-        }
-        else
-        {
-            //    <?phpif ($alert == 1){echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>L\'email n\'est associé a aucun compte !</div>';}
-            header('Location:'.$_SERVER[HTTP_REFERER]);
-        }
     }
 
 
