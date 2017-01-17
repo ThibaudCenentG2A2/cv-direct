@@ -7,18 +7,17 @@
 
 <head>
     <meta charset="utf-8">
-    <title>The Project | Header Dark/Transparent</title>
-    <meta name="description" content="The Project a Bootstrap-based, Responsive HTML5 Template">
-    <meta name="author" content="htmlcoder.me">
+    <title>CV-Direct</title>
+    <meta name="description" content="CV-Direct, votre agence pour la recherche d'emploi qui vous correspondent.">
 
     <!-- MVC -->
-    <base href="vue/">
+    <!--<base href="vue/">-->
 
     <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="vue/images/favicon.ico">
 
     <!-- Web Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -27,35 +26,34 @@
     <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="vue/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Font Awesome CSS -->
-    <link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="vue/fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- Fontello CSS -->
-    <link href="fonts/fontello/css/fontello.css" rel="stylesheet">
+    <link href="vueLfonts/fontello/css/fontello.css" rel="stylesheet">
 
     <!-- Plugins -->
-    <link href="plugins/magnific-popup/magnific-popup.css" rel="stylesheet">
-    <link href="plugins/rs-plugin/css/settings.css" rel="stylesheet">
-    <link href="css/animations.css" rel="stylesheet">
-    <link href="plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="plugins/owl-carousel/owl.transitions.css" rel="stylesheet">
-    <link href="plugins/hover/hover-min.css" rel="stylesheet">
+    <link href="vue/plugins/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <link href="vue/plugins/rs-plugin/css/settings.css" rel="stylesheet">
+    <link href="vue/css/animations.css" rel="stylesheet">
+    <link href="vue/plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="vue/plugins/owl-carousel/owl.transitions.css" rel="stylesheet">
+    <link href="vue/plugins/hover/hover-min.css" rel="stylesheet">
 
     <!-- The Project's core CSS file -->
-    <link href="css/style.css" rel="stylesheet" >
+    <link href="vue/css/style.css" rel="stylesheet" >
     <!-- The Project's Typography CSS file, includes used fonts -->
     <!-- Used font for body: Roboto -->
     <!-- Used font for headings: Raleway -->
-    <link href="css/typography-default.css" rel="stylesheet" >
+    <link href="vue/css/typography-default.css" rel="stylesheet" >
     <!-- Color Scheme (In order to change the color scheme, replace the blue.css with the color scheme that you prefer)-->
-    <link href="css/skins/light_blue.css" rel="stylesheet">
+    <link href="vue/css/skins/light_blue.css" rel="stylesheet">
 
 
     <!-- Custom css -->
-    <link href="css/custom.css" rel="stylesheet">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link href="vue/css/custom.css" rel="stylesheet">
 </head>
 
 <!-- body classes:  -->
@@ -92,7 +90,7 @@
                         <div class="header-top-first clearfix">
                             <ul class="social-links circle small clearfix hidden-xs">
                                 <!--<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>-->
-                                <li class="skype"><a target="_blank" href="skype:cv-direct?call"><i class="fa fa-skype"></i></a></li>
+                                <li class="skype"><a href="skype:cv-direct?call"><i class="fa fa-skype"></i></a></li>
                                 <!--<li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
                                 <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
                                 <li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube-play"></i></a></li>
@@ -105,7 +103,7 @@
                                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i></button>
                                     <ul class="dropdown-menu dropdown-animation">
                                         <!--<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>-->
-                                        <li class="skype"><a target="_blank" href="skype:cv-direct?call"><i class="fa fa-skype"></i></a></li>
+                                        <li class="skype"><a href="skype:cv-direct?call"><i class="fa fa-skype"></i></a></li>
                                         <!--<li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
                                         <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
                                         <li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube-play"></i></a></li>
@@ -133,13 +131,13 @@
                             <!-- ================ -->
                             <div class="header-top-dropdown text-right">
                                 <div class="btn-group">
-                                    <a href="../inscription_recruteur.php" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Inscription</a>
+                                    <a href="inscription_recruteur" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Inscription</a>
                                 </div>
                                 <div class="btn-group dropdown">
                                     <button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> Connexion</button>
                                     <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
                                         <li>
-                                            <form class="login-form margin-clear" action="../connexion_recruteur.php" method="post">
+                                            <form class="login-form margin-clear" action="connexion_recruteur" method="post">
                                                 <div class="form-group has-feedback">
                                                     <label class="control-label">Pseudonyme ou adresse mail</label>
                                                     <input type="text" class="form-control" name="pseudo" placeholder="john.doe@cv-direct.fr">
@@ -152,7 +150,7 @@
                                                 </div>
                                                 <button type="submit" class="btn btn-gray btn-sm">Se connecter</button>
                                                 <ul>
-                                                    <li><a href="../mot_de_passe_oublie.php">Mot de passe oublié?</a></li>
+                                                    <li><a href="../mot_de_passe_oublie">Mot de passe oublié?</a></li>
                                                 </ul>
 
                                             </form>
@@ -187,7 +185,7 @@
 
                             <!-- logo -->
                             <div id="logo" class="logo">
-                                <a href="../index.php"><img id="logo_img" src="images/logo_light_blue.png" alt="Logo"></a>
+                                <a href="accueil"><img id="logo_img" src="vue/images/logo_light_blue.png" alt="Logo"></a>
                             </div>
 
                             <!-- name-and-slogan -->
@@ -234,22 +232,21 @@
                                             <!-- main-menu -->
                                             <ul class="nav navbar-nav ">
                                                 <li class="dropdown ">
-                                                    <a href="../index.php" class="dropdown-toggle" data-toggle="dropdown">CV</a>
+                                                    <a href="accueil" class="dropdown-toggle" data-toggle="dropdown">CV</a>
                                                     <ul class="dropdown-menu">
-                                                        <li ><a href="portfolio-item.html">Single Item 1</a></li>
-                                                        <li ><a href="portfolio-item-2.html">Single Item 2</a></li>
-                                                        <li ><a href="portfolio-item-3.html">Single Item 3</a></li>
+                                                        <li ><a href="afficher_tous_les_cv">Liste</a></li>
+                                                        <li ><a href="creer_cv">Nouveau</a></li>
                                                     </ul>
                                                 </li>
                                                 <li class="dropdown ">
-                                                    <a href="../index.php" class="dropdown-toggle" data-toggle="dropdown">Administration</a>
+                                                    <a href="accueil" class="dropdown-toggle" data-toggle="dropdown">Administration</a>
                                                     <ul class="dropdown-menu">
                                                         <li ><a href="index-shop.html">Shop Home 1</a></li>
                                                         <li ><a href="index-shop-2.html">Shop Home 2</a></li>
                                                     </ul>
                                                 </li>
                                                 <li class="dropdown ">
-                                                    <a href="../index.php" class="dropdown-toggle" data-toggle="dropdown">Administration</a>
+                                                    <a href="accueil" class="dropdown-toggle" data-toggle="dropdown">Administration</a>
                                                     <ul class="dropdown-menu">
                                                         <li class="dropdown ">
                                                             <a  class="dropdown-toggle" data-toggle="dropdown" href="#">Recruteurs</a>
