@@ -28,7 +28,7 @@ class Recruteur
                                           WHERE (UTILISATEUR.EMAIL = :mail_or_pseudo
                                             OR UTILISATEUR.PSEUDONYME = :mail_or_pseudo)
                                           AND mdp = :mdp');
-        $res = $req->execute(array(':mail' => $pseudo_or_mail, ':mdp' => self::encryptage_mdp($mdp)));
+        $res = $req->execute(array(':mail' => $pseudo_or_mail, ':mdp' => $mdp));
         while ($data = $res->fetch())
             {
                 if (($data['PASSWORD'] == $mdp && $data['EMAIL'] == $pseudo_or_mail)||($data['PASSWORD'] == $mdp && $data['PSEUDONYME'] == $pseudo_or_mail))

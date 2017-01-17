@@ -1,0 +1,22 @@
+
+#############
+  CV-Direct
+#############
+
+Bonjour %UTILISATEUR%,
+
+
+Vous avez fais la demande d'un nouveau mot de
+passe. Afin de pouvoir le modifier, merci de
+recopier le lien ci-dessous :
+%URL%
+
+Si vous n'etes pas a l'origine de cette demande,
+veuillez ignorer cet e-mail.
+
+
+Cordialement,
+
+L'équipe de CV-Direct
+Tél. +33 (0) 0 00 00 00 00
+Mail. contact@cv-direct.fr
