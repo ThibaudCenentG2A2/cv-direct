@@ -28,7 +28,7 @@ class Recruteur
                                           WHERE (UTILISATEUR.EMAIL = :mail_or_pseudo
                                             OR UTILISATEUR.PSEUDONYME = :mail_or_pseudo)
                                           AND mdp = :mdp');
-        $res = $req->execute(array(':mail' => $pseudo_or_mail, ':mdp' => $mdp));
+        $res = $req->execute(array(':mail' => $pseudo_or_mail, ':mdp' => self::encryptage_mdp($mdp)));
         while ($data = $res->fetch())
             {
                 if (($data['PASSWORD'] == $mdp && $data['EMAIL'] == $pseudo_or_mail)||($data['PASSWORD'] == $mdp && $data['PSEUDONYME'] == $pseudo_or_mail))
@@ -97,10 +97,7 @@ class Recruteur
      */
     static function est_presente($mail)
     {
-        $requete = BD::getInstance()->prepare('SELECT COUNT(*) FROM UTILISATEUR WHERE EMAIL = :mail');
-        $requete->execute(array('mail' => $mail));
-
-        return $requete->fetch() > 0;
+        return BD::getInstance()->query("SELECT COUNT(*) FROM UTILISATEUR WHERE EMAIL = '$mail'")->fetchColumn() == 0;
     }
 
 
