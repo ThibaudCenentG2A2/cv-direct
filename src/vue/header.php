@@ -12,7 +12,7 @@
     <meta name="author" content="htmlcoder.me">
 
     <!-- MVC -->
-    <!-- <base href="vue/"> -->
+    <base href="vue/">
 
     <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
