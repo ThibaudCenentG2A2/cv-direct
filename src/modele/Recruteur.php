@@ -23,20 +23,31 @@ class Recruteur
     {
         //TODO vérifier que le mdp correspond au pseudo ou à l'adresse mail (une requête est suffisance avec WHERE ... OR ...). Si oui, initialiser les données-membres. Sinon, tout vaut null.
 
-        $req = BD::getInstance()->prepare('SELECT pseudo, mdp, nom, prenom
+        /*$req = BD::getInstance()->prepare('SELECT pseudo, mdp, nom, prenom
                                           FROM UTILISATEUR
                                           WHERE (UTILISATEUR.EMAIL = :mail_or_pseudo
                                             OR UTILISATEUR.PSEUDONYME = :mail_or_pseudo)
                                           AND mdp = :mdp');
-        $res = $req->execute(array(':mail' => $pseudo_or_mail, ':mdp' => $mdp));
-        while ($data = $res->fetch())
+        $res = $req->execute(array(':mail_or_pseudo' => $pseudo_or_mail, ':mdp' => $mdp));
+        */
+        echo'connexion reussiegrdjydt';
+        $req = BD::getInstance()->query('SELECT pseudo, mdp, nom, prenom
+                                          FROM UTILISATEUR
+                                          WHERE (UTILISATEUR.EMAIL = :mail_or_pseudo
+                                            OR UTILISATEUR.PSEUDONYME = :mail_or_pseudo)
+                                          AND mdp = :mdp');
+        echo'connexion reussie1';
+        $data = $req->fetchColumn();
+        while (!empty($data))
             {
+                echo'connexion reussie2';
                 if (($data['PASSWORD'] == $mdp && $data['EMAIL'] == $pseudo_or_mail)||($data['PASSWORD'] == $mdp && $data['PSEUDONYME'] == $pseudo_or_mail))
                 {
                     $this->nom=$data['NOM'];
                     $this->prenom=$data['PRENOM'];
                     $this->pseudo=$data['PSEUDONYME'];
                     $this->mail=$data['EMAIL'];
+                    echo'connexion reussie';
                 }
             }
     }

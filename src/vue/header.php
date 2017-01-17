@@ -133,13 +133,13 @@
                             <!-- ================ -->
                             <div class="header-top-dropdown text-right">
                                 <div class="btn-group">
-                                    <a href="page-signup.html" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Sign Up</a>
+                                    <a href="http://cv-direct.alwaysdata.net/inscription_recruteur.php" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> S'inscrire</a>
                                 </div>
                                 <div class="btn-group dropdown">
                                     <button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> Login</button>
                                     <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
                                         <li>
-                                            <form class="login-form margin-clear" action="../connexion_recruteur.php">
+                                            <form class="login-form margin-clear" action="../connexion_recruteur.php" method="post">
                                                 <div class="form-group has-feedback">
                                                     <label class="control-label">Pseudo</label>
                                                     <input type="text" class="form-control" name="pseudo" placeholder="">
@@ -151,8 +151,6 @@
                                                     <i class="fa fa-lock form-control-feedback"></i>
                                                 </div>
                                                 <button type="submit" class="btn btn-gray btn-sm">Se connecter</button>
-                                                <span class="pl-5 pr-5">or</span>
-                                                <button type="submit" class="btn btn-default btn-sm">S'inscrire</button>
                                                 <ul>
                                                     <li><a href="http://cv-direct.alwaysdata.net/mot_de_passe_oublie.php">Mot de passe oublié?</a></li>
                                                 </ul>

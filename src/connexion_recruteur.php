@@ -18,6 +18,8 @@ if($user->getNom()!=null)
     $_SESSION['pseudo'] = $user->getPseudo();
     $_SESSION['nom'] = $user->getNom();
     $_SESSION['prenom'] = $user->getPrenom();
+    header('index.php');
 }
 }
+
 ?>
