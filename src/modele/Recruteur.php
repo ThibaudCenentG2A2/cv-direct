@@ -97,7 +97,7 @@ class Recruteur
      */
     static function est_presente($mail)
     {
-        return BD::getInstance()->query("SELECT COUNT(*) FROM UTILISATEUR WHERE EMAIL = '$mail'")->fetchColumn() > 0;
+        return BD::getInstance()->query("SELECT COUNT(*) FROM UTILISATEUR WHERE EMAIL = `$mail`")->fetchColumn() > 0;
     }
 
 
