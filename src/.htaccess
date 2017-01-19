@@ -1,6 +1,8 @@
 Options +FollowSymlinks
 RewriteEngine On
 
+RewriteRule ^$ http://cv-direct.alwaysdata.net/accueil [R=302]
+
 RewriteRule ^accueil$ /index
 
 # Test : pas de fichier de ce nom à la racine
