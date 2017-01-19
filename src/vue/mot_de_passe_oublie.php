@@ -16,7 +16,7 @@ else if ($alert == 2)
 
 
 
-<form action="../mot_de_passe_oublie.php" class="form-horizontal" method="post">
+<form action="../mot_de_passe_oublie" class="form-horizontal" method="post">
 
     <div class="form-group has-feedback">
         <label for="inputMail" class="col-sm-4 control-label">Saisissez votre adresse mail</label>
