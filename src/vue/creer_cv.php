@@ -1,41 +1,76 @@
 <?php
-    include 'header.php';
-    if(isset($_GET['reponse']))
-    {
-        require '../gestion_action_utilisateur.php';
-        echo '<br/><br/>';
-        afficher_type_changement($_GET['reponse']);
-    }
+    require_once 'vue/header.php';
+    echo '<br/>';
+    echo $reponse;
 ?>
-    <form action="../valider_creation_cv.php" method="post" enctype="multipart/form-data" style="margin-left: 20px; color: black">
-        <label > Création CV </label> <br/> <br/>
-        <label > Nom : </label>
-            <input name="nom" type="text" /> <br/> <br/>
-        <label> Prenom : </label>
-            <input name="prenom" type="text" /> <br/> <br/>
-        <label> Adresse : </label>
-            <input name="adresse" type="text" /> <br/> <br/>
-        <label> Code Postal : </label>
-            <input name="code_postal" type="text" /> <br/> <br/>
-        <label> Ville : </label>
-            <input name="ville" type="text" /> <br/> <br/>
-        <label> Numéro Securité Sociale : </label>
-            <input name="num_secu_sociale" type="number" size="15" required/> <br/> <br/>
-        <label> Téléphone Portable : </label>
-            <input name="num_portable" type="text" /> <br/> <br/>
-        <label> Téléphone Fixe : </label>
-            <input name="num_fixe" type="text" /> <br/> <br/>
-        <label> Photographie </label>
-            <input name="photo" type="file" required/> <br/> <br/>
-            <input type="hidden" name="max_size_photo" value="307200">
-        <label> Contrat Assurance Professionnel </label>
-            <input name="assurance" type="file" required/> <br/> <br/>
-            <input type="hidden" name="max_size_assurance" value="819200"/>
-        <label> CV PDF </label>
-            <input name="cvpdf" type="file"/> <br/> <br/>
-            <input type="hidden" name="max_size_cv_pdf" value="409600"/>
-        <input type="submit" name = "creer" value="Creer CV"/>
-        <input type="submit" name="creer" value="Annuler"/>
-    </form>
+    <section class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="main col-md-8 space-bottom">
+                    <div class="contact-form">
+                        <form action="../creer_cv" method="post" enctype="multipart/form-data" style="margin-left: 20px; color: black">
+                            <label> Création CV </label> <br/> <br/>
+                            <div class="form-group has-feedback">
+                                <label> Nom </label>
+                                <input type="text" class="form-control" name="nom"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label>Prenom</label>
+                                <input type="text" class="form-control" name="prenom" />
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label>Pseudonyme</label>
+                                <input type="text" class="form-control" name="pseudo" />
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label>Adresse</label>
+                                <input type="text" class="form-control" name="adresse"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >Code Postal</label>
+                                <input type="text" class="form-control" name="code_postal"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >Ville</label>
+                                <input type="text" class="form-control" name="ville"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >Numéro de Sécurité Sociale</label>
+                                <input type="number" class="form-control" name="num_secu_sociale" size="15"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >Téléphone Portable</label>
+                                <input type="text" class="form-control" name="num_portable"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >Téléphone Fixe</label>
+                                <input type="text" class="form-control" name="num_fixe"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >Photographie</label>
+                                <input type="file" class="form-control" name="photo"/>
+                                <input type="hidden" name="max_size_photo" value="307200">
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >Contrat Assurance Professionnel</label>
+                                <input type="file" class="form-control" name="assurance"/>
+                                <input type="hidden" name="max_size_photo" value="307200">
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >CV PDF</label>
+                                <input type="file" class="form-control" name="cvpdf"/>
+                                <input type="hidden" name="max_size_photo" value="307200">
+                            </div>
+                            <input type="submit" name="creer" value="Creer CV" class="submit-button btn btn-default"/>
+                            <input type="submit" name="creer" value="Annuler" class="submit-button btn btn-default"/>
+                        </form>
+                    </div>
+                </div>
+                <!-- main end -->
+            </div>
+        </div>
+    </section>
 
-<?php include 'footer.php';?>
+<?php
+    require_once 'vue/footer.php';
+?>

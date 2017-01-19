@@ -1,29 +1,57 @@
 <?php
-    include 'header.php';
-    if(isset($_GET['reponse']))
-    {
-        require '../gestion_action_utilisateur.php';
-        echo '<br/><br/>';
-        afficher_type_changement($_GET['reponse']);
-    }
+    require_once 'vue/header.php';
+    echo '<br/>';
+    echo $reponse;
 ?>
-    <form action="../valider_maj_cv.php?numero=<?php echo $_GET['numero'];?>" method="post" style="margin-left: 20px; color: black">
-        <label> Nom : </label>
-            <input name="nom" type="text" /> <br/> <br/>
-        <label> Prenom : </label>
-            <input name="prenom" type="text" /> <br/> <br/>
-        <label> Adresse : </label>
-            <input name="adresse" type="text" /> <br/> <br/>
-        <label> Code Postal : </label>
-            <input name="code_postal" type="text" /> <br/> <br/>
-        <label> Ville : </label>
-            <input name="ville" type="text" /> <br/> <br/>
-        <label> Téléphone Portable : </label>
-            <input name="num_portable" type="text" /> <br/> <br/>
-        <label> Téléphone Fixe : </label>
-            <input name="num_fixe" type="text" /> <br/> <br/>
-        <input type="submit" name = "majcv" value="Enregistrer Modifications"/>
-        <input type="submit" name="majcv" value="Annuler"/>
-    </form>
+    <section class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="main col-md-8 space-bottom">
+                    <div class="contact-form">
+                        <form action="../maj_cv?numero=<?php echo $_GET['numero'];?>" method="post" style="margin-left: 20px; color: black">
+                            <label> Modifications CV </label> <br/> <br/>
+                            <div class="form-group has-feedback">
+                                <label> Nom </label>
+                                <input type="text" class="form-control" name="nom"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label>Prenom</label>
+                                <input type="text" class="form-control" name="prenom" />
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label>Pseudonyme</label>
+                                <input type="text" class="form-control" name="pseudo" />
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label>Adresse</label>
+                                <input type="text" class="form-control" name="adresse"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >Code Postal</label>
+                                <input type="text" class="form-control" name="code_postal"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >Ville</label>
+                                <input type="text" class="form-control" name="ville"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >Téléphone Portable</label>
+                                <input type="text" class="form-control" name="num_portable"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label >Téléphone Fixe</label>
+                                <input type="text" class="form-control" name="num_fixe"/>
+                            </div>
+                            <input type="submit" name="majcv" value="Enregistrer Modifications" class="submit-button btn btn-default"/>
+                            <input type="submit" name="majcv" value="Annuler" class="submit-button btn btn-default"/>
+                        </form>
+                    </div>
+                </div>
+                <!-- main end -->
+            </div>
+        </div>
+    </section>
 
-<?php include 'footer.php';?>
+<?php
+    require_once 'vue/footer.php';
+?>
