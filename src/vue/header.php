@@ -140,7 +140,7 @@
                                             <form class="login-form margin-clear" action="connexion_recruteur" method="post">
                                                 <div class="form-group has-feedback">
                                                     <label class="control-label">Pseudonyme ou adresse mail</label>
-                                                    <input type="text" class="form-control" name="pseudo" placeholder="john.doe@cv-direct.fr">
+                                                    <input type="text" class="form-control" name="pseudo" placeholder="test@test.fr">
                                                     <i class="fa fa-user form-control-feedback"></i>
                                                 </div>
                                                 <div class="form-group has-feedback">
@@ -288,3 +288,10 @@
         <!-- header end -->
     </div>
     <!-- header-container end -->
+
+<?php
+$test =$_GET['alerte'];
+if ($test == 1)
+    echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Erreur d\'identifiant</div>';
+
+?>
