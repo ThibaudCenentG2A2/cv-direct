@@ -99,7 +99,16 @@ class Recruteur
      */
     static function est_presente($mail)
     {
-        return BD::getInstance()->query("SELECT COUNT(*) FROM UTILISATEUR WHERE EMAIL = `$mail`")->fetchColumn() > 0;
+        $req = BD::getInstance()->prepare('SELECT COUNT(*) FROM UTILISATEUR WHERE EMAIL = :mail');
+        $req->execute(array("mail" => $mail));
+
+        return $req->fetchColumn() > 0;
+    }
+
+
+    static function modifier_mot_de_passe($mail, $nouveau_mdp)
+    {
+        $req = BD::getInstance()->prepare('UPDATE UTILISATEUR SET PASSWORD = :nouveau_mdp WHERE EMAIL = :mail');
     }
 
 

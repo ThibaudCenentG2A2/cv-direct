@@ -144,6 +144,21 @@ class PieceJointe
         return $token_genere;
     }
 
+    static function initialiser_token_mot_de_passe_oublie($token)
+    {
+        $requete_test_presence = BD::getInstance()->prepare('SELECT COUNT(*) AS token FROM TOKEN WHERE TOKEN = :token');
+        $requete_test_presence->execute(array('token' => $token));
+        
+        $donnees = $requete_test_presence->fetch();
+        if ($donnees['token'] != 0)
+            return false;
+        else
+        {
+            $requete_insertion = BD::getInstance()->prepare('UPDATE TOKEN SET TOKEN = :token WHERE ');
+            return true;
+        }
+    }
+
     /** Vérifie si le token est présent dans la BD et s'adapte en conséquence : regénere un token tant qu'il n'est pas valide ou renvoie le token validé
      * @return string
      */
