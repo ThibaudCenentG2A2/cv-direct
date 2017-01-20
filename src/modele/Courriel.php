@@ -2,6 +2,11 @@
 /**
  * Classe statique d'envoi de mails au format MIME 1.0
  * Gestion du texte et du format HTML
+ *
+ * @author Tristan DIETZ
+ * @author Romain COLONNA D'ISTRIA
+ *
+ * @version 1.10
  */
 class Courriel
 {
