@@ -52,10 +52,10 @@
 					</div>
 				</div>
                 <div class="col-sm" style="display: inline-block; position: relative; left: 55%;">
-                    <a href="../maj_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>"> <img src="vue/images_site/update.png" width=35 height=35> </a>
+                    <a href="../maj_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>"> <li class="fa fa-gears"></li> </a>
                 </div>
                 <div class="col-sm" style="display: inline-block; position: relative; left: 40%;">
-                    <a href="../supprimer_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>"><img src="vue/images_site/supprimer.png" width=27 height=27> </a>
+                    <a href="../supprimer_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>"> <li class="fa fa-times md"></li> </a>
                 </div>
             </section>
             <br/> <br/> <br/> <br/>
@@ -65,7 +65,7 @@
                 {
             ?>
                     <div class="image-box team-member style-2 shadow bordered light-gray-bg text-center" style="display: inline-block; width: 8%; margin-left: 20px;">
-                        <a href="../cv/pieces_jointes/<?php echo $cv_pdf->get_token(); ?>.<?php echo $cv_pdf->get_extension();?>"><img src="vue/images_site/cvpdf.png"> </a>
+                        <a href="../cv/pieces_jointes/<?php echo $cv_pdf->get_token(); ?>.<?php echo $cv_pdf->get_extension();?>"> <li class="fa fa-file-pdf-o fa-5x"></li> </a>
                         <div class="body">
                             <h3 class="margin-clear" style="text-align: center">N° <?php echo $cv_pdf->get_id_piece_jointe();?> </h3>
                         </div>
