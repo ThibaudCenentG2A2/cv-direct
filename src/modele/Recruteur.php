@@ -111,7 +111,16 @@ class Recruteur
         $req = BD::getInstance()->prepare('UPDATE UTILISATEUR SET PASSWORD = :nouveau_mdp WHERE EMAIL = :mail');
     }
 
-
+    static function verificationMailDejaExistant($mail)
+    {
+        $req = BD::getInstance()->prepare('SELECT EMAIL FROM UTILISATEUR  WHERE EMAIL = '.$mail);
+        $req->execute();
+        if(!empty($req->fetchColumn()))
+        {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * @return mixed

@@ -7,7 +7,7 @@
  */
 require_once 'header.php';
 require_once 'modele/Recruteur.php';
-$valAlerte=1;
+$alerteUser=1;
 if (isset($_POST['pseudo']) &&
     isset($_POST['mdp']))
 {
@@ -23,13 +23,13 @@ if (isset($_POST['pseudo']) &&
     }
     else
     {
-        header('Location:index.php?alerte='.$valAlerte);
+        header('Location:index.php?alerteUser='.$alerteUser);
 
     }
 }
 else
 {
-    header('Location:index.php?alerte='.$valAlerte);
+    header('Location:index.php?alerteUser='.$alerteUser);
 
 }
 

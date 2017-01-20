@@ -5,7 +5,7 @@
  * Date: 16/01/2017
  * Time: 21:31
  */
-require_once ('header.php');
+require_once ('vue/header.php');
 ?>
 <div class="main-container dark-translucent-bg" style="background-image:url('images/background-img-6.jpg');">
 				<div class="container">
