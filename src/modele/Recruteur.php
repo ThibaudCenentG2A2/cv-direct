@@ -16,6 +16,7 @@ class Recruteur
     private $prenom;
     private $nom;
     private $mail;
+    private $valid;
 
 
 
@@ -23,7 +24,7 @@ class Recruteur
     {
         //TODO vérifier que le mdp correspond au pseudo ou à l'adresse mail (une requête est suffisance avec WHERE ... OR ...). Si oui, initialiser les données-membres. Sinon, tout vaut null.
 
-        $req = BD::getInstance()->prepare("SELECT U.PSEUDONYME, U.PASSWORD, U.NOM, U.PRENOM
+        $req = BD::getInstance()->prepare("SELECT U.PSEUDONYME, U.PASSWORD, U.NOM, U.PRENOM, U.VALID
                                           FROM UTILISATEUR U
                                           WHERE U.EMAIL = `$pseudo_or_mail`
                                             OR U.PSEUDONYME = `$pseudo_or_mail`
@@ -37,6 +38,7 @@ class Recruteur
             $this->prenom = $data['PRENOM'];
             $this->pseudo = $data['PSEUDONYME'];
             $this->mail = $data['EMAIL'];
+            $this->valid = $data['VALID'];
         }
 
     }
@@ -76,7 +78,7 @@ class Recruteur
         $data=$req->fetch();
         if($data['EMAIL']== '' && preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\\.[a-z]{2,4}$#", $mail) && !empty($mail)&& !empty($nom)&& !empty($prenom) && !empty($pseudo))
             {
-            $req = BD::getInstance()->prepare('INSERT INTO UTILISATEUR(PSEUDONYME, PRENOM, NOM, EMAIL, PASSWORD) VALUES (:pseudo, :prenom, :nom, :mail, :mdp)');// a modifier selon la bd hein :)
+            $req = BD::getInstance()->prepare('INSERT INTO UTILISATEUR(PSEUDONYME, PRENOM, NOM, EMAIL, PASSWORD, VALID) VALUES (:pseudo, :prenom, :nom, :mail, :mdp, 1)');// a modifier selon la bd hein :)
             $req->execute(array(':pseudo' => $pseudo, ':prenom' => $prenom, ':nom' => $nom, ':mail' => $mail, ':mdp' => $mdp));
             }
         else
@@ -117,6 +119,13 @@ class Recruteur
     {
         return $this->prenom;
     }
+    /**
+ * @return mixed
+ */
+    public function getValid()
+    {
+        return $this->valid;
+    }
 
     /**
      * @return mixed
@@ -134,5 +143,18 @@ class Recruteur
         return $this->mail;
     }
 
+    /**
+     * @return mixed
+     */
+    public function setValidTrue()
+    {
+        $req = BD::getInstance()->prepare("UPDATE UTILISATEUR
+                                          SET VALID = 0
+                                          WHERE U.EMAIL = `$this->mail`
+                                          AND U.PSEUDONYME = `$this->pseudo`
+                                          ");
+        $req->execute();
+        
+    }
 
 }

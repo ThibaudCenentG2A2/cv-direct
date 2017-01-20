@@ -14,7 +14,7 @@ if (isset($_POST['pseudo']) &&
 
 $user= new Recruteur($_POST['pseudo'],$_POST['mdp']);
 
-if($user->getNom()!=null)
+if($user->getNom()!=null && $user->getValid()==0)
 {
     $_SESSION['pseudo'] = $user->getPseudo();
     $_SESSION['nom'] = $user->getNom();
