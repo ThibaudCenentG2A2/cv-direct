@@ -25,9 +25,9 @@
                     ?>
                             <div class="main col-md-6 col-md-offset-3 pv-40">
                                 <h2> Modification Photographie</h2>
-                                <h2>(Taille Maximale : 307 Ko, Formats Autorisés : JPG, JPEG, PNG) </h2> <br/> <br/>
+                                <h2>(Taille Maximale : 400 Ko, Formats Autorisés : JPG, JPEG, PNG) </h2> <br/> <br/>
                                 <div class="form-group has-feedback">
-                                    <input type="hidden" name="MAX_FILE_SIZE" value="307200">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="400000">
                                     <input type="file" class="form-control" name="photo"/>
                                 </div> <br/> <br/>
                                 <input type="submit" name="maj_photo" value="Choisir Photo" class="btn btn-default btn-animated btn-lg" />

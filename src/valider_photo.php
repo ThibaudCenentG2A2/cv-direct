@@ -37,7 +37,7 @@
     {
         $id_photo = $_GET['idpj'];
         if(PieceJointe::get_photo_provisoire($_GET['numero'], $id_photo) == null) // Si il s'agissait de la première photo pour un CV qu'on uploadé
-            header('Location: afficher_photo?numero=' . $_GET['numero'] . '&reponse=15');
+            header('Location: afficher_cv?numero=' . $_GET['numero'] . '&reponse=17');
         // On supprime la photo initiale mise sur le serveur et la BD pour respecter le changement de photo
         $id_photo_par_defaut = PieceJointe::get_photo_provisoire($_GET['numero'], $id_photo)->get_id_piece_jointe();
         unlink("cv/pieces_jointe/". PieceJointe::afficher($id_photo_par_defaut)->get_token() . "." . PieceJointe::afficher($id_photo_par_defaut)->get_extension());

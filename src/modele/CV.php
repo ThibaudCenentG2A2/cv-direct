@@ -379,7 +379,7 @@ class CV
      */
     public static function get_page_actuelle()
     {
-        $nombre_pages_necessaires = CV::cv_par_page;
+        $nombre_pages_necessaires = CV::get_nombres_pages_necessaires();
         if (isset($_GET['page'])) {
             $page_actuelle = intval($_GET['page']);
             if ($page_actuelle > $nombre_pages_necessaires)

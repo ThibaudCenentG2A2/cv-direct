@@ -19,7 +19,7 @@
                 {
                 ?>
                     <img src="cv/pieces_jointes/<?php echo $photo_provisoire->get_token();?>.<?php echo $photo_provisoire->get_extension();?>" style="position: relative; left: 35%;">
-                    <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>.<?php echo $photo_provisoire->get_id_piece_jointe();?>" method="post" style="margin-left: 20px; color: black">
+                    <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>&amp;idpj=<?php echo $photo_provisoire->get_id_piece_jointe();?>" method="post" style="margin-left: 20px; color: black">
                 <?php
                 }
                 ?>
