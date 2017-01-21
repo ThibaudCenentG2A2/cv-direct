@@ -11,10 +11,10 @@
 						<!-- ================ -->
                         <form action="../ajouter_cv_pdf?numero=<?php echo $_GET['numero'];?>" method="post" style="margin-left: 20px; color: black">
 						    <div class="main col-md-6 col-md-offset-3 pv-40">
-							    <h2> CV PDF à ajouter </h2> <br/> <br/>
+							    <h2> CV PDF à ajouter (Taille Maximale : 307 Ko, Format Autorisé : PDF)</h2> <br/> <br/>
                                 <div class="form-group has-feedback">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="307200">
                                     <input type="file" class="form-control" name="cvpdf"/>
-                                    <input type="hidden" name="max_size_photo" value="307200">
                                 </div> <br/> <br/>
                                 <input type="submit" name="ajoutcvpdf" value="Ajouter CV PDF" class="btn btn-default btn-animated btn-lg"/>
                                 <input type="submit" name="ajoutcvpdf" value="Annuler" class="btn btn-default btn-animated btn-lg" />

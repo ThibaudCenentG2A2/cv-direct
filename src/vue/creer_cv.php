@@ -47,19 +47,19 @@
                                 <input type="text" class="form-control" name="num_fixe"/>
                             </div>
                             <div class="form-group has-feedback">
-                                <label >Photographie</label>
+                                <label >Photographie (Taille Maximale : 307 Ko, Formats Autorisés : JPG, JPEG, PNG)</label>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="307200">
                                 <input type="file" class="form-control" name="photo"/>
-                                <input type="hidden" name="max_size_photo" value="307200">
                             </div>
                             <div class="form-group has-feedback">
-                                <label >Contrat Assurance Professionnel</label>
+                                <label >Contrat Assurance Professionnel (Taille Maximale : 307 Ko, Formats Autorisés : JPG, PDF)</label>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="307200">
                                 <input type="file" class="form-control" name="assurance" required/>
-                                <input type="hidden" name="max_size_photo" value="307200">
                             </div>
                             <div class="form-group has-feedback">
-                                <label >CV PDF</label>
+                                <label >CV PDF (Taille Maximale : 307 Ko, Format Autorisé : PDF)</label>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="307200">
                                 <input type="file" class="form-control" name="cvpdf"/>
-                                <input type="hidden" name="max_size_photo" value="307200">
                             </div>
                             <input type="submit" name="creer" value="Creer CV" class="submit-button btn btn-default"/>
                             <input type="submit" name="creer" value="Annuler" class="submit-button btn btn-default"/>

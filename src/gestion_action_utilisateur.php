@@ -30,7 +30,7 @@
             case 8:
                 return "Le nom de la ville doit être inscrit uniquement avec des majuscules";
             case 9:
-                return "Erreur lors de l'upload de l'assurance, veuillez réessayer svp";
+                return "Erreur lors de l'upload de l'assurance, veuillez réessayer svp (Rappel : Taille maximale autorisé à 307 Ko, Formats autorisés : JPEG, PDF)";
             case 10:
                 return "Votre CV a bien été ajouté";
             case 11:
@@ -42,9 +42,9 @@
             case 14:
                 return "Votre CV PDF a bien été supprimé";
             case 15:
-                return "Erreur lors de l'upload du CV PDF, veuillez réessayer svp";
+                return "Erreur lors de l'upload du CV PDF, veuillez réessayer svp (Rappel : Taille maximale autorisé à 307 Ko, Format Autorisé : PDF)";
             case 16:
-                return "Erreur lors de l'upload de la photo de profil, veuillez réessayer svp";
+                return "Erreur lors de l'upload de la photo de profil, veuillez réessayer svp (Rappel : Taille maximale autorisé à 307 Ko, Formats autorisés : JPEG, JPG, PDF)";
             case 17 :
                 return "Votre photo de profil a bien été mise à jour";
             case 18 :
