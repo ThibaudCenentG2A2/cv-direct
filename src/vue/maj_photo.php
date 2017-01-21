@@ -30,8 +30,8 @@
                                     <input type="hidden" name="MAX_FILE_SIZE" value="307200">
                                     <input type="file" class="form-control" name="photo"/>
                                 </div> <br/> <br/>
-                                <input type="submit" name="maj_photo" value="Choisir Photo" class="btn btn-default btn-animated btn-lg" />
-                                <input type="submit" name="maj_photo" value="Annuler" class="btn btn-default btn-animated btn-lg" />
+                                <input type="submit" name="maj_photo" value="Choisir Photo" class="btn btn-default btn-lg" />
+                                <input type="submit" name="maj_photo" value="Annuler" class="btn btn-default btn-lg" />
                             </div>
                         </form>
                     <!-- main end -->

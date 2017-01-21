@@ -23,4 +23,3 @@
         header('Location: afficher_cv?numero=' . $_GET['numero']);
     }
     require_once 'vue/supprimer_cv.php';
-?>
