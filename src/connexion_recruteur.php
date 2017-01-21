@@ -14,14 +14,15 @@ if (isset($_POST['pseudo']) &&
     isset($_POST['mdp'])) {
 
     // Test de la connexion : initialisation des données-membres si l'utilisateur est connecté
-    $user = new Recruteur($_POST['pseudo'], $_POST['mdp']);
+    $user = new Recruteur($_POST['pseudo'], Recruteur::encryptage_mdp($_POST['mdp']));
 
     // En cas de succès :
-    if ($user->getNom() != null && $user->getValid() == 0) {
+    if ( $user->getNom()!=null && $user->getValid() == 1) {
         $_SESSION['pseudo'] = $user->getPseudo();
         $_SESSION['nom'] = $user->getNom();
         $_SESSION['prenom'] = $user->getPrenom();
-        header('page_perso.php');
+
+        header("Location: $_SERVER[HTTP_REFERER]");
     }
 
     else

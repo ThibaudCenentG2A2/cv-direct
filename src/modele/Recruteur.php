@@ -24,15 +24,15 @@ class Recruteur
     {
         //TODO vérifier que le mdp correspond au pseudo ou à l'adresse mail (une requête est suffisance avec WHERE ... OR ...). Si oui, initialiser les données-membres. Sinon, tout vaut null.
 
-        $req = BD::getInstance()->prepare("SELECT U.PSEUDONYME, U.PASSWORD, U.NOM, U.PRENOM, U.VALID
-                                          FROM UTILISATEUR U
-                                          WHERE U.EMAIL = `$pseudo_or_mail`
-                                            OR U.PSEUDONYME = `$pseudo_or_mail`
-                                          AND U.PASSWORD = `$mdp`");
-        $req->execute();
+        $req = BD::getInstance()->prepare("SELECT PSEUDONYME, PASSWORD, NOM, PRENOM, VALID
+                                          FROM UTILISATEUR 
+                                          WHERE UTILISATEUR.EMAIL = :mail
+                                            OR UTILISATEUR.PSEUDONYME = :pseudo
+                                          AND UTILISATEUR.PASSWORD = :mdp");
+        $req->execute(array( ':mail' => $pseudo_or_mail, ':pseudo' =>$pseudo_or_mail,':mdp' =>$mdp ));
 
         $data = $req->fetch();
-        if(!empty($data))
+        if($req->fetch()>0)
         {
             $this->nom = $data['NOM'];
             $this->prenom = $data['PRENOM'];
@@ -78,7 +78,7 @@ class Recruteur
         $data=$req->fetch();
         if($data['EMAIL']== '' && preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\\.[a-z]{2,4}$#", $mail) && !empty($mail)&& !empty($nom)&& !empty($prenom) && !empty($pseudo))
             {
-            $req = BD::getInstance()->prepare('INSERT INTO UTILISATEUR(PSEUDONYME, PRENOM, NOM, EMAIL, PASSWORD, VALID) VALUES (:pseudo, :prenom, :nom, :mail, :mdp, 1)');// a modifier selon la bd hein :)
+            $req = BD::getInstance()->prepare('INSERT INTO UTILISATEUR(PSEUDONYME, PRENOM, NOM, EMAIL, PASSWORD, VALID) VALUES (:pseudo, :prenom, :nom, :mail, :mdp, 0)');// a modifier selon la bd hein :)
             $req->execute(array(':pseudo' => $pseudo, ':prenom' => $prenom, ':nom' => $nom, ':mail' => $mail, ':mdp' => $mdp));
             }
         else
@@ -121,21 +121,10 @@ class Recruteur
         $req->execute(array('nouveau_mdp' => $mdp, 'mail' => $mail));
     }
 
-    //TODO supprimer cette fonction
-    static function verificationMailDejaExistant($mail)
-    {
-        $req = BD::getInstance()->prepare('SELECT EMAIL FROM UTILISATEUR  WHERE EMAIL = '.$mail);
-        $req->execute();
-        if(!empty($req->fetchColumn()))
-        {
-            return true;
-        }
-        return false;
-    }
 
     static function recuperation_nouveaux_inscrits()
     {
-        $req = BD::getInstance()->prepare('SELECT EMAIL FROM UTILISATEUR WHERE VALID = 0 ');
+        $req = BD::getInstance()->prepare('SELECT EMAIL FROM UTILISATEUR WHERE VALID = 1 ');
         $req->execute();
         $result = $req->fetchAll();
         return $result;
