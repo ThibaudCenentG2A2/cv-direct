@@ -12,14 +12,14 @@
                     {
                     ?>
                         <img src="cv/pieces_jointes/<?php echo $photo->get_token();?>.<?php echo $photo->get_extension();?>" style=" position: relative; left: 35%;">
-                        <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>&idpj=<?php echo $piece_jointe;?>" method="post" style="margin-left: 20px; color: black">
+                        <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>&idpj=<?php echo $id_piece_jointe;?>" method="post" style="margin-left: 20px; color: black">
                     <?php
                     }
                     else
                     {
                     ?>
                         <img src="vue/images_site/unknown.png" style="position: relative; left: 35%;">
-                            <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>" method="post" style="margin-left: 20px; color: black">
+                        <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>" method="post" style="margin-left: 20px; color: black">
                     <?php
                     }
                     ?>
@@ -29,7 +29,7 @@
                                     <input type="file" class="form-control" name="photo"/>
                                     <input type="hidden" name="max_size_photo" value="307200">
                                 </div> <br/> <br/>
-                                <input type="submit" name="maj_photo" value="Choisir Photo" class="btn btn-default btn-animated btn-lg"/>
+                                <input type="submit" name="maj_photo" value="Choisir Photo" class="btn btn-default btn-animated btn-lg" />
                                 <input type="submit" name="maj_photo" value="Annuler" class="btn btn-default btn-animated btn-lg" />
                             </div>
                         </form>

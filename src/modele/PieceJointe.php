@@ -121,6 +121,19 @@ class PieceJointe
         return new PieceJointe($id_piece_jointe, $donnees['ID_CV'], $donnees['TYPE_PIECE_JOINTE'], $donnees['EXTENSION'], $donnees['TOKEN']);
     }
 
+    /** Permet de récupérer la photo provisoire stockée dans le cas de la modification de la photo
+     * @param $id_cv
+     * @param $id_piece_jointe
+     * @return \PieceJointe
+     */
+    public static function get_photo_provisoire($id_cv, $id_piece_jointe)
+    {
+        $req = BD::getInstance()->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_CV = :id_cv AND ID_PIECE_JOINTE != :id_piece_jointe AND TYPE_PIECE_JOINTE = PhotoCV');
+        $req->execute(array('id_cv' => $id_cv, 'id_piece_jointe' => $id_piece_jointe));
+        $donnees = $req->fetch();
+        return new PieceJointe($donnees['ID_PIECE_JOINTE'], $id_cv, $donnees['TYPE_PIECE_JOINTE'], $donnees['EXTENSION'], $donnees['TOKEN']);
+    }
+
     public static function supprimer($id_piece_jointe)
     {
         $req = BD::getInstance()->prepare('DELETE FROM PIECE_JOINTE WHERE ID_PIECE_JOINTE = :id_piece_jointe');

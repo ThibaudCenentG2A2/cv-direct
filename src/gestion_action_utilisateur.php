@@ -18,27 +18,37 @@
             case 2:
                 return "Le prénom doit commencer par une majuscule suivie de minuscules";
             case 3:
-                return "Le numéro de téléphone portable ne doit être constitué que de 10 chiffres";
+                return "Le pseudonyme doit être constitué d'une majuscule en première lettre suivi de minuscules et se terminant par un ou plusieurs chiffres";
             case 4:
-                return "Le numéro de téléphone fixe ne doit être constitué que de 10 chiffres";
+                return "Le numéro de téléphone portable ne doit être constitué que de 10 chiffres";
             case 5:
-                return "Erreur de syntaxe dans l'adresse ";
+                return "Le numéro de téléphone fixe ne doit être constitué que de 10 chiffres";
             case 6:
-                return "Le code postal est constitué au maximum de 5 chiffres";
+                return "Erreur de syntaxe dans l'adresse ";
             case 7:
-                return "Le nom de la ville doit être inscrit uniquement avec des majuscules";
+                return "Le code postal est constitué au maximum de 5 chiffres";
             case 8:
-                return "Erreur lors de l'upload de l'assurance, veuillez réessayer svp";
+                return "Le nom de la ville doit être inscrit uniquement avec des majuscules";
             case 9:
-                return "Votre CV a bien été ajouté";
+                return "Erreur lors de l'upload de l'assurance, veuillez réessayer svp";
             case 10:
-                return "Votre CV a bien été mis à jour";
+                return "Votre CV a bien été ajouté";
             case 11:
-                return "Votre CV a bien été supprimé";
+                return "Votre CV a bien été mis à jour";
             case 12:
-                return "Votre CV PDF a bien été ajouté";
+                return "Votre CV a bien été supprimé";
             case 13:
+                return "Votre CV PDF a bien été ajouté";
+            case 14:
                 return "Votre CV PDF a bien été supprimé";
+            case 15:
+                return "Erreur lors de l'upload du CV PDF, veuillez réessayer svp";
+            case 16:
+                return "Erreur lors de l'upload de la photo de profil, veuillez réessayer svp";
+            case 17 :
+                return "Votre photo de profil a bien été mise à jour";
+            case 18 :
+                return "Votre photo de profil a bien été supprimée";
         }
     }
 ?>
