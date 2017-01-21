@@ -21,6 +21,7 @@ if (isset($_POST['pseudo']) &&
         $_SESSION['pseudo'] = $user->getPseudo();
         $_SESSION['nom'] = $user->getNom();
         $_SESSION['prenom'] = $user->getPrenom();
+        $_SESSION['mail'] = $user->getMail();
         $_SESSION['admin'] =$user->getAdmin();
 
         header("Location: index.php");
