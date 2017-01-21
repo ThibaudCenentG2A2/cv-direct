@@ -106,6 +106,13 @@ class Recruteur
     }
 
 
+    /**
+     * Cette fonction va servir à mettre à jour le mot de passe de l'utilisatur
+     * ayant le mail associé.
+     *
+     * @param String $mail Mail du compte associé a la demande de modication de mot de passe
+     * @param String $nouveau_mdp Nouveau mot de passe
+     */
     static function modifier_mot_de_passe($mail, $nouveau_mdp)
     {
         $mdp = md5(htmlentities($nouveau_mdp));
@@ -114,6 +121,7 @@ class Recruteur
         $req->execute(array('nouveau_mdp' => $mdp, 'mail' => $mail));
     }
 
+    //TODO supprimer cette fonction
     static function verificationMailDejaExistant($mail)
     {
         $req = BD::getInstance()->prepare('SELECT EMAIL FROM UTILISATEUR  WHERE EMAIL = '.$mail);
@@ -127,7 +135,7 @@ class Recruteur
 
     static function recuperation_nouveaux_inscrits()
     {
-        $req = BD::getInstance()->prepare('SELECT EMAIL FROM UTILISATEUR  WHERE VALID = 1 ');
+        $req = BD::getInstance()->prepare('SELECT EMAIL FROM UTILISATEUR WHERE VALID = 0 ');
         $req->execute();
         $result = $req->fetchAll();
         return $result;
@@ -135,7 +143,7 @@ class Recruteur
 
     static function valider_nouvel_inscrit($mail)
     {
-        $req = BD::getInstance()->prepare('UPDATE UTILISATEUR SET VALID =0  WHERE EMAIL = '.$mail);
+        $req = BD::getInstance()->prepare('UPDATE UTILISATEUR SET VALID = 1 WHERE EMAIL = '.$mail);
         $req->execute();
 
     }
