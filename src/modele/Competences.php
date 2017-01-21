@@ -15,13 +15,13 @@ class Competences
 
     /**
      * Recherche si la catégorie donnée en paramètre existe bien dans la base de données
-     * @param $categorie
-     * @return bool
+     * @param int $categorie Le numéro de la catégorie à tester
+     * @return bool Renvoie true si présente en BD, false sinon
      */
     public static function categorie_existe($categorie) {
 
-        $req = BD::getInstance()->prepare('SELECT COUNT(*) AS TOTAL FROM COMPETENCE_CATEGORIE WHERE NOM_COMPETENCE_CATEGORIE = :nom_categorie');
-        $req->execute(array('nom_categorie' => $categorie));
+        $req = BD::getInstance()->prepare('SELECT COUNT(*) AS TOTAL FROM COMPETENCE_CATEGORIE WHERE ID_COMPETENCE_CATEGORIE = :id_categorie');
+        $req->execute(array('id_categorie' => $categorie));
         $data = $req->fetch();
         return $data['TOTAL'];
     }
