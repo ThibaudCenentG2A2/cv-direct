@@ -144,6 +144,12 @@ class PieceJointe
         return $token_genere;
     }
 
+    /**
+     * Va permettre d'ajouter le token correspondant la BDD
+     * @param String $token
+     * @param String $mail
+     * @return bool
+     */
     static function initialiser_token_mot_de_passe_oublie($token, $mail)
     {
         $requete_test_presence = BD::getInstance()->prepare('SELECT COUNT(*) FROM TOKEN WHERE TOKEN = $token');
@@ -162,9 +168,6 @@ class PieceJointe
 
             $requete_insertion = BD::getInstance()->prepare('INSERT INTO TOKEN_MOT_DE_PASSE_OUBLIE VALUES (:id_utilisateur, :token)');
             $requete_insertion->execute(array('id_utilisateur' => $id_utilisateur, 'token' => $token));
-
-
-            //UPDATE TOKEN SET TOKEN = :token WHERE TOKEN.ID_UTILISATEUR;
 
             return true;
         }

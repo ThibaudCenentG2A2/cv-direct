@@ -20,7 +20,7 @@ class Recruteur
 
 
 
-    public function __construct($pseudo_or_mail, $mdp) //TODO
+    public function __construct($pseudo_or_mail, $mdp)
     {
         //TODO vérifier que le mdp correspond au pseudo ou à l'adresse mail (une requête est suffisance avec WHERE ... OR ...). Si oui, initialiser les données-membres. Sinon, tout vaut null.
 
@@ -115,7 +115,7 @@ class Recruteur
      */
     static function modifier_mot_de_passe($mail, $nouveau_mdp)
     {
-        $mdp = md5(htmlentities($nouveau_mdp));
+        $mdp = self::encryptage_mdp(htmlentities($nouveau_mdp));
 
         $req = BD::getInstance()->prepare('UPDATE UTILISATEUR SET PASSWORD = :nouveau_mdp WHERE EMAIL = :mail');
         $req->execute(array('nouveau_mdp' => $mdp, 'mail' => $mail));
