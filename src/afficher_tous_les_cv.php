@@ -19,4 +19,3 @@
         require_once('vue/afficher_tous_les_cv.php');
     }
     require_once('vue/afficher_tous_les_cv.php');
-?>

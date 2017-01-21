@@ -89,7 +89,7 @@ class CV
      * @see CV::get_nombres_pages_necessaires()
      * @see CV::afficher_tous_les_cv()
      */
-    const cv_par_page = 5;
+    const cv_par_page = 8;
 
     /** Constructeur de la classe CV
      * @param $id_cv
@@ -218,6 +218,20 @@ class CV
         $req->execute(array('id_cv' => $this->get_id_cv(), 'type_piece_jointe' => $type_piece_jointe));
         $donnees = $req->fetch();
         return new PieceJointe($donnees['ID_PIECE_JOINTE'], $this->get_id_cv(), $donnees['TYPE_PIECE_JOINTE'], $donnees['EXTENSION'], $donnees['TOKEN']);
+    }
+
+    /** Retourne toutes les pièces jointes associés à un CV en particulier
+     * @return array
+     */
+    public function get_liste_pieces_jointe()
+    {
+        $req = BD::getInstance()->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_CV = :id_cv');
+        $req->execute(array('id_cv' => $this->get_id_cv()));
+        $liste_pieces_jointe = array();
+        while($donnees = $req->fetch())
+            $liste_pieces_jointe[] = new PieceJointe($donnees['ID_PIECE_JOINTE'], $this->get_id_cv(), $donnees['TYPE_PIECE_JOINTE'], $donnees['EXTENSION'],
+                $donnees['TOKEN']);
+        return $liste_pieces_jointe;
     }
 
     /**
