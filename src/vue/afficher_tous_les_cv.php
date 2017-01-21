@@ -98,19 +98,21 @@
                             {
                                 if($nbre_pages == 1) // Si notre BD ne contient que 8 CV
                                     echo '<li class="active"><a href="../afficher_tous_les_cv?page='. $nbre_pages . '">' . $nbre_pages . '</a> </li>';
+                                else if($i == 1 && $nbre_pages > 1)
+                                {
+                                    echo '<li class="active"><a href="../afficher_tous_les_cv?page='. $i . '">' . $i . '</a> </li>';
+                                    echo '<li><a href="../afficher_tous_les_cv?page=' . $suivant . '" aria-label="Next"><i class="fa fa-angle-right"></i></a></li>';
+                                }
+                                else if ($i != $nbre_pages && $i > 1) // Si on a plus de 8 CV et qu'on ne se trouve pas sur la dernière page disponible
+                                {
+                                    echo '<li><a href="../afficher_tous_les_cv?page=' . --$i . '" aria-label="Previous"><i class="fa fa-angle-left"></i></a></li> ';
+                                    echo '<li class="active"><a href="../afficher_tous_les_cv?page='. $i . '">' . $i . '</a> </li>';
+                                    echo '<li><a href="../afficher_tous_les_cv?page=' . $suivant . '" aria-label="Next"><i class="fa fa-angle-right"></i></a></li>';
+                                }
                                 else
                                 {
-                                    if ($i != $nbre_pages) // Si on a plus de 8 CV et qu'on ne se trouve pas sur la dernière page disponible
-                                    {
                                         echo '<li><a href="../afficher_tous_les_cv?page=' . --$i . '" aria-label="Previous"><i class="fa fa-angle-left"></i></a></li> ';
-                                        echo '<li class="active"><a href="../afficher_tous_les_cv?page='. $i . '">' . $i . '</a> </li>';
-                                        echo '<li><a href="../afficher_tous_les_cv?page=' . $suivant . '" aria-label="Next"><i class="fa fa-angle-right"></i></a></li>';
-                                    }
-                                    else
-                                    {
-                                        echo '<li><a href="../afficher_tous_les_cv?page=' . --$i . '" aria-label="Previous"><i class="fa fa-angle-left"></i></a></li> ';
-                                        echo '<li class="active"><a href="../afficher_tous_les_cv?page=' . $i . '"> ' . $i . '</a></li> ';
-                                    }
+                                        echo '<li class="active"><a href="../afficher_tous_les_cv?page=' . $nbre_pages . '"> ' . $nbre_pages . '</a></li> ';
                                 }
                             }
                             ?>
