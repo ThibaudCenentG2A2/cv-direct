@@ -261,7 +261,7 @@
                                                             <ul class="dropdown-menu to-left">
                                                                 <li ><a href="#">Liste</a></li>
                                                                 <li ><a href="#">Ajouter catégorie</a></li>
-                                                                <li ><a href="#">Ajouter compétence</a></li>
+                                                                <li ><a href="ajouter_competence">Ajouter compétence</a></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
