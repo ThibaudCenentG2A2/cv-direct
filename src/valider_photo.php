@@ -14,17 +14,20 @@
     {
         if(isset($_GET['idpj'])) // Si il existe déja une photo sur le CV dans la BD que l'on souhaite modifier
         {
-            if(!empty($_FILES['photo']) && upload_files($_GET['numero'], 'photo') == false)
+            if(upload_files($_GET['numero'], 'photo') == false)
                 header('Location: maj_photo?numero=' . $_GET['numero'] . '&idpj=' . $_GET['idpj'] . '&reponse=16');
             $id_piece_jointe_actuelle = $_GET['idpj'];
             $nouvelle_photo = PieceJointe::get_photo_provisoire($_GET['numero'], $id_piece_jointe_actuelle); // On récupére la photo provisoire pour l'affichage en attendant la confirmation du recruteur
             require_once 'vue/valider_photo.php';
         }
-        if(!empty($_FILES['photo']) && upload_files($_GET['numero'], 'photo') == false)
-            header('Location : maj_photo?numero=' . $_GET['numero'] . '&reponse=16');
-        $cv_actuel = CV::afficher($_GET['numero']); // On initialise un objet CV afin de pouvoir accéder à l'identifiant de la photo provisoire insérée dans la BD et upload sur le serveur
-        $photo_provisoire = $cv_actuel->get_piece_jointe('PhotoCV');
-        require_once 'vue/valider_photo.php';
+        else
+        {
+            if (upload_files($_GET['numero'], 'photo') == false)
+                header('Location : maj_photo?numero=' . $_GET['numero'] . '&reponse=16');
+            $cv_actuel = CV::afficher($_GET['numero']); // On initialise un objet CV afin de pouvoir accéder à l'identifiant de la photo provisoire insérée dans la BD et upload sur le serveur
+            $photo_provisoire = $cv_actuel->get_piece_jointe('PhotoCV');
+            require_once 'vue/valider_photo.php';
+        }
 
     }
     else if($_POST['maj_photo'] == 'Annuler')
@@ -39,7 +42,7 @@
         $id_photo_par_defaut = PieceJointe::get_photo_provisoire($_GET['numero'], $id_photo)->get_id_piece_jointe();
         unlink("cv/pieces_jointe/". PieceJointe::afficher($id_photo_par_defaut)->get_token() . "." . PieceJointe::afficher($id_photo_par_defaut)->get_extension());
         PieceJointe::supprimer($id_photo_par_defaut);
-        header('Location; maj_photo?numero=' . $_GET['numero'] . '&reponse=17');
+        header('Location: afficher_cv?numero=' . $_GET['numero'] . '&reponse=17');
     }
     else if($_POST['valider'] == 'Non')
     {
@@ -50,9 +53,12 @@
            PieceJointe::supprimer($id_photo);
            header('Location: maj_photo?numero=' . $_GET['numero']);
        }
-       // On supprime la photo provisoire de la BD et du serveur et on se redirige vers le contrôleur maj_cv avec à l'affichage la photo initiale qu'on souhaitait modifier
-       unlink("cv/pieces_jointe/". PieceJointe::afficher($id_photo)->get_token() . "." . PieceJointe::afficher($id_photo)->get_extension());
-       $id_photo_par_defaut = PieceJointe::get_photo_provisoire($_GET['numero'], $id_photo)->get_id_piece_jointe();
-       PieceJointe::supprimer($id_photo);
-       header('Location; maj_photo?numero=' . $_GET['numero'] . '.idpj=' . $id_photo_par_defaut);
+       else
+       {
+           // On supprime la photo provisoire de la BD et du serveur et on se redirige vers le contrôleur maj_cv avec à l'affichage la photo initiale qu'on souhaitait modifier
+           unlink("cv/pieces_jointe/". PieceJointe::afficher($id_photo)->get_token() . "." . PieceJointe::afficher($id_photo)->get_extension());
+           $id_photo_par_defaut = PieceJointe::get_photo_provisoire($_GET['numero'], $id_photo)->get_id_piece_jointe();
+           PieceJointe::supprimer($id_photo);
+           header('Location: maj_photo?numero=' . $_GET['numero'] . '&idpj=' . $id_photo_par_defaut);
+       }
     }

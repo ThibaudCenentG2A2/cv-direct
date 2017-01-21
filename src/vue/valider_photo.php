@@ -12,7 +12,7 @@
                 {
                 ?>
                     <img src="cv/pieces_jointes/<?php echo $nouvelle_photo->get_token();?>.<?php echo $nouvelle_photo->get_extension();?>" style=" position: relative; left: 35%;">
-                    <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>&idpj=<?php echo $nouvelle_photo->get_id_piece_jointe();?>" method="post" style="margin-left: 20px; color: black">
+                    <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>&amp;idpj=<?php echo $nouvelle_photo->get_id_piece_jointe();?>" method="post" style="margin-left: 20px; color: black">
                 <?php
                 }
                 else

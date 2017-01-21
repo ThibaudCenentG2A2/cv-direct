@@ -12,19 +12,20 @@
                     {
                     ?>
                         <img src="cv/pieces_jointes/<?php echo $photo->get_token();?>.<?php echo $photo->get_extension();?>" style=" position: relative; left: 35%;">
-                        <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>&amp;idpj=<?php echo $id_piece_jointe;?>" method="post" style="margin-left: 20px; color: black">
+                        <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>&amp;idpj=<?php echo $id_piece_jointe;?>" method="post" enctype="multipart/form-data" style="margin-left: 20px; color: black">
                     <?php
                     }
                     else
                     {
                     ?>
                         <img src="vue/images_site/unknown.png" style="position: relative; left: 35%;">
-                        <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>" method="post" style="margin-left: 20px; color: black">
+                        <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>" method="post" enctype="multipart/form-data" style="margin-left: 20px; color: black">
                     <?php
                     }
                     ?>
                             <div class="main col-md-6 col-md-offset-3 pv-40">
-                                <h2> Modification Photographie (Taille Maximale : 307 Ko, Formats Autorisés : JPG, JPEG, PNG)</h2> <br/> <br/>
+                                <h2> Modification Photographie</h2>
+                                <h2>(Taille Maximale : 307 Ko, Formats Autorisés : JPG, JPEG, PNG) </h2> <br/> <br/>
                                 <div class="form-group has-feedback">
                                     <input type="hidden" name="MAX_FILE_SIZE" value="307200">
                                     <input type="file" class="form-control" name="photo"/>

@@ -13,12 +13,12 @@
      */
     function upload_files($id_cv, $nom_file)
     {
-        if(isset($_FILES[$nom_file])AND $_FILES[$nom_file]['size'] <= 307200 AND $_FILES[$nom_file]['error'] == 0)
+        if(!empty($_FILES[$nom_file])AND $_FILES[$nom_file]['size'] <= 307200 AND $_FILES[$nom_file]['error'] == 0)
         {
             $token = PieceJointe::verifier_presence_token();
             $infos_Fichier = pathinfo($_FILES[$nom_file]['name']);
             $extension_Upload = $infos_Fichier['extension'];
-            if($nom_file == 'assurance' AND !($extension_Upload == 'jpg' OR $extension_Upload == 'pdf'))
+            if($nom_file == 'assurance' AND ($extension_Upload == 'jpg' OR $extension_Upload == 'pdf'))
                 PieceJointe::inserer($id_cv, 'Assurance', $extension_Upload, $token);
             else if($nom_file == 'photo' AND ($extension_Upload == 'jpg' OR $extension_Upload == 'png' OR $extension_Upload == 'jpeg'))
                 PieceJointe::inserer($id_cv, 'PhotoCV', $extension_Upload, $token);

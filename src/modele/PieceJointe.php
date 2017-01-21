@@ -128,8 +128,8 @@ class PieceJointe
      */
     public static function get_photo_provisoire($id_cv, $id_piece_jointe)
     {
-        $req = BD::getInstance()->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_CV = :id_cv AND ID_PIECE_JOINTE != :id_piece_jointe AND TYPE_PIECE_JOINTE = PhotoCV');
-        $req->execute(array('id_cv' => $id_cv, 'id_piece_jointe' => $id_piece_jointe));
+        $req = BD::getInstance()->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_CV = :id_cv AND ID_PIECE_JOINTE != :id_piece_jointe AND TYPE_PIECE_JOINTE = :type_piece_jointe');
+        $req->execute(array('id_cv' => $id_cv, 'id_piece_jointe' => $id_piece_jointe, 'type_piece_jointe' => 'PhotoCV'));
         $donnees = $req->fetch();
         return new PieceJointe($donnees['ID_PIECE_JOINTE'], $id_cv, $donnees['TYPE_PIECE_JOINTE'], $donnees['EXTENSION'], $donnees['TOKEN']);
     }
