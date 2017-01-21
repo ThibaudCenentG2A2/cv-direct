@@ -26,13 +26,7 @@ if (isset($_POST['pseudo']) &&
 
     else
     {
-        header('Location:index.php?alerteUser='.$alerteUser);
+        header("Location: $_SERVER[HTTP_REFERER]?alerteUser=".$alerteUser);
 
     }
-}
-else
-{
-    $alerteUser=4;
-    header('Location:index.php?alerteUser='.$alerteUser);
-
 }
