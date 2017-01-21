@@ -24,5 +24,15 @@ if (isset($_POST['pseudo']) &&
         header('page_perso.php');
     }
 
-    header('Location:' . $_SERVER[HTTP_REFERER]);
+    else
+    {
+        header('Location:index.php?alerteUser='.$alerteUser);
+
+    }
+}
+else
+{
+    $alerteUser=4;
+    header('Location:index.php?alerteUser='.$alerteUser);
+
 }

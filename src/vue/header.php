@@ -299,4 +299,6 @@ if($test== 2)
 
 if($test== 3)
     echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Email déja existant</div>';
+if($test== 4)
+    echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Veuillez remplir correctement vos identifiants de connexion</div>';
 ?>
