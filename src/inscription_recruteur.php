@@ -15,7 +15,6 @@ if (isset($_POST['pseudo_inscription']) &&
     if(Recruteur::verificationMailDejaExistant($_POST['mail_inscription'])==true)
     {
         Recruteur::inscrire_utilisateur($_POST['pseudo_inscription'], $_POST['prenom_inscription'], $_POST['nom_inscription'], $_POST['mail_inscription'], $_POST['mot_de_passe']);
-        Courriel::envoyer_courriel_validation_par_mail($_POST['mail_inscription'], $_POST['pseudo_inscription'], "");
         $alerteUser = 2;
         header('Location:index.php?alerteUser=' . $alerteUser);
     }

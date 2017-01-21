@@ -122,6 +122,21 @@ class Recruteur
         return false;
     }
 
+    static function recuperation_nouveaux_inscrits()
+    {
+        $req = BD::getInstance()->prepare('SELECT EMAIL FROM UTILISATEUR  WHERE VALID = 1 ');
+        $req->execute();
+        $result = $req->fetchAll();
+        return $result;
+    }
+
+    static function valider_nouvel_inscrit($mail)
+    {
+        $req = BD::getInstance()->prepare('UPDATE UTILISATEUR SET VALID =0  WHERE EMAIL = '.$mail);
+        $req->execute();
+
+    }
+
     /**
      * @return mixed
      */
