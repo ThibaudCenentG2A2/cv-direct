@@ -21,9 +21,7 @@
         $verif_creer_cv_possible = verif_infos_cv($_POST['nom'], $_POST['prenom'], $_POST['pseudo'], $_POST['num_portable'], $_POST['num_fixe']
             ,$_POST['adresse'], $_POST['code_postal'], $_POST['ville']);
         if($verif_creer_cv_possible != 0)
-        {
            header('Location: creer_cv?reponse=' . $verif_creer_cv_possible);
-        }
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
         $pseudo = $_POST['pseudo'];
@@ -34,12 +32,12 @@
         $code_postal = $_POST['code_postal'];
         $ville = $_POST['ville'];
         $id_cv_recupere = CV::inserer($num_secu, $num_portable, $num_fixe, $adresse, $code_postal, $ville, $nom, $prenom, $pseudo);
-        if(!(upload_files($id_cv_recupere, 'assurance')))
-        {
+        if(!empty($_FILES['assurance']) && upload_files($id_cv_recupere, 'assurance') == false)
             header('Location: creer_cv?reponse=9');
-        }
-        upload_files($id_cv_recupere, 'photo');
-        upload_files($id_cv_recupere , 'cvpdf');
+        if(!empty($_FILES['photo']) && upload_files($id_cv_recupere, 'photo') == false)
+            header('Location: creer_cv?reponse=16');
+        if(!empty($_FILES['cvpdf']) && upload_files($id_cv_recupere , 'cvpdf') == false)
+            header('Location: creer_cv?reponse=15');
         header('Location: afficher_tous_les_cv?reponse=10');
     }
     else if($_POST['creer'] == "Annuler")

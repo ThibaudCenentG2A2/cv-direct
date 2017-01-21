@@ -19,9 +19,7 @@
         $verif_maj_cv_possible = verif_infos_cv($_POST['nom'], $_POST['prenom'], $_POST['pseudo'], $_POST['num_portable'], $_POST['num_fixe']
             ,$_POST['adresse'], $_POST['code_postal'], $_POST['ville']);
         if($verif_maj_cv_possible != 0)
-        {
            header('Location: maj_cv?numero=' . $_GET['numero']. '&reponse=' . $verif_maj_cv_possible);
-        }
         $id_Cv = $_GET['numero'];
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
