@@ -24,27 +24,28 @@
                                         <div class="owl-carousel content-slider-with-large-controls">
                                             <div class="overlay-container overlay-visible">
                                                 <?php
-                                                if(!empty($photo))
+                                                if($photo->get_token() != null)
                                                 {
                                                 ?>
-                                                    <img src="cv/pieces_jointes/<?php echo $photo->get_token();?>.<?php echo $photo->get_extension();?>" alt="">
-                                                    <a href="cv/pieces_jointes/<?php echo $photo->get_token();?>.<?php echo $photo->get_extension();?>" class="popup-img overlay-link"><i class="icon-plus-1"></i></a>
+                                                    <a href="cv/pieces_jointes/<?php echo $photo->get_token();?>.<?php echo $photo->get_extension();?>"><img src="cv/pieces_jointes/<?php echo $photo->get_token();?>.<?php echo $photo->get_extension();?>" alt=""></a>
+                                                    <ul class="nav nav-pills">
+                                                        <li><a href="../maj_photo?numero=<?php echo $photo->get_id_cv();?>&amp;idpj=<?php echo $photo->get_id_piece_jointe();?>"><i class="fa fa-camera pr-5"></i> Modifier Photo </a></li>
+                                                        <li><a href="../supprimer_photo?numero<?php echo $photo->get_id_cv();?>&amp;idpj=<?php echo $photo->get_id_piece_jointe();?>"><i class="fa fa-times md"></i> Supprimer Photo </a></li>
+                                                    </ul>
                                                 <?php
                                                 }
                                                 else
                                                 {
                                                 ?>
-                                                    <img src="vue/images_site/unknown.png" alt="">
-                                                    <a href="vue/images_site/unknown.png" class="popup-img overlay-link"><i class="icon-plus-1"></i></a>
+                                                    <a href="vue/images_site/unknown.png"><img src="vue/images_site/unknown.png" alt=""></a>
+                                                    <ul class="nav nav-pills">
+                                                        <li><a href="../maj_photo?numero=<?php echo $photo->get_id_cv();?>"><i class="fa fa-camera pr-5"></i> Modifier Photo </a></li>
+                                                    </ul>
                                                 <?php
                                                 }
                                                 ?>
                                             </div>
                                         </div>
-                                        <ul class="nav nav-pills">
-                                            <li><a href="../maj_photo?numero=<?php echo $photo->get_id_cv();?>&idpj=<?php echo $photo->get_id_piece_jointe();?>"><i class="fa fa-camera pr-5"></i> Modifier Photo </a></li>
-                                            <li><a href="../supprimer_photo?idpj=<?php echo $photo->get_id_piece_jointe();?>"><i class="fa fa-times md"></i> Supprimer Photo </a></li>
-                                        </ul>
                                     </div>
 									<!-- pills end -->
 								</div>
@@ -64,12 +65,12 @@
 							<!-- Nav tabs -->
                             <ul class="nav nav-pills">
                                 <li><a href="../maj_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>"><i class="fa fa-gears"></i> Modifier CV </a></li>
-                                <li><a href="../supprimer_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>" title="video"><i class="fa fa-times md"></i> Supprimer CV</a></li>
+                                <li><a href="../supprimer_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>"><i class="fa fa-times md"></i> Supprimer CV</a></li>
                             </ul>
 							<ul class="nav nav-tabs style-4" role="tablist">
-								<li class="active"><a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-files-o pr-5"></i>Profil</a></li>
-                                <li><a href="#h2tab3" role="tab" data-toggle="tab"><i class="fa fa-star pr-5"></i> Contrat d'Assurance Pro</a> </li>
-								<li><a href="#h2tab4" role="tab" data-toggle="tab"><i class="fa fa-star pr-5"></i>CV PDF</a></li>
+								<li class="active"><a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-user "></i> Profil</a></li>
+                                <li><a href="#h2tab3" role="tab" data-toggle="tab"><i class="fa fa-file"></i> Contrat d'Assurance Pro</a> </li>
+								<li><a href="#h2tab4" role="tab" data-toggle="tab"><i class="fa fa-file-pdf-o"></i> CV PDF</a></li>
 							</ul>
 							<!-- Tab panes -->
 							<div class="tab-content padding-top-clear padding-bottom-clear">
@@ -119,6 +120,10 @@
                                     </div>
                                 </div>
 								<div class="tab-pane fade" id="h2tab4">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="../ajouter_cv_pdf?numero=<?php echo $cv_a_afficher->get_id_cv();?>"><i class="fa fa-plus-square"></i> Ajouter un CV PDF</a> </li>
+                                    </ul>
+                                    <br/>
                                     <div class="main col-md-12">
                                         <!-- Tab panes -->
                                         <div class="tab-content clear-style">
@@ -135,6 +140,9 @@
                                                                 </div>
                                                                 <div class="body" style="margin-left: 20px;">
                                                                     <h3><a href="../cv/pieces_jointes/<?php echo $cv_pdf->get_token();?>.<?php echo $cv_pdf->get_extension();?>"> CV PDF N°<?php echo $cv_pdf->get_id_piece_jointe();?></a></h3>
+                                                                    <ul class="nav nav-pills">
+                                                                        <li><a href="../supprimer_cv_pdf?numero=<?php echo $cv_a_afficher->get_id_cv();?>&amp;idpdf=<?php echo $cv_pdf->get_id_piece_jointe()?>"><i class="fa fa-times md" style="margin-left: 30px;"></i></a></li>
+                                                                    </ul>
                                                                 </div>
                                                             </div>
                                                         </div>

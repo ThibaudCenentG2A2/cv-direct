@@ -32,11 +32,11 @@
         $code_postal = $_POST['code_postal'];
         $ville = $_POST['ville'];
         $id_cv_recupere = CV::inserer($num_secu, $num_portable, $num_fixe, $adresse, $code_postal, $ville, $nom, $prenom, $pseudo);
-        if(!empty($_FILES['assurance']) && upload_files($id_cv_recupere, 'assurance') == false)
+        if(upload_files($id_cv_recupere, 'assurance') == false)
             header('Location: creer_cv?reponse=9');
-        if(!empty($_FILES['photo']) && upload_files($id_cv_recupere, 'photo') == false)
+        if(upload_files($id_cv_recupere, 'photo') == false)
             header('Location: creer_cv?reponse=16');
-        if(!empty($_FILES['cvpdf']) && upload_files($id_cv_recupere , 'cvpdf') == false)
+        if(upload_files($id_cv_recupere , 'cvpdf') == false)
             header('Location: creer_cv?reponse=15');
         header('Location: afficher_tous_les_cv?reponse=10');
     }

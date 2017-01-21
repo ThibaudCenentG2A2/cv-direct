@@ -47,18 +47,18 @@
                                 <input type="text" class="form-control" name="num_fixe"/>
                             </div>
                             <div class="form-group has-feedback">
-                                <label >Photographie (Taille Maximale : 307 Ko, Formats Autorisés : JPG, JPEG, PNG)</label>
-                                <input type="hidden" name="MAX_FILE_SIZE" value="307200">
+                                <label >Photographie (Taille Maximale : 400 Ko, Formats Autorisés : JPG, JPEG, PNG)</label>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="400000">
                                 <input type="file" class="form-control" name="photo"/>
                             </div>
                             <div class="form-group has-feedback">
-                                <label >Contrat Assurance Professionnel (Taille Maximale : 307 Ko, Formats Autorisés : JPG, PDF)</label>
-                                <input type="hidden" name="MAX_FILE_SIZE" value="307200">
+                                <label >Contrat Assurance Professionnel (Taille Maximale : 400 Ko, Formats Autorisés : JPG, PDF)</label>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="400000">
                                 <input type="file" class="form-control" name="assurance" required/>
                             </div>
                             <div class="form-group has-feedback">
-                                <label >CV PDF (Taille Maximale : 307 Ko, Format Autorisé : PDF)</label>
-                                <input type="hidden" name="MAX_FILE_SIZE" value="307200">
+                                <label >CV PDF (Taille Maximale : 400 Ko, Format Autorisé : PDF)</label>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="400000">
                                 <input type="file" class="form-control" name="cvpdf"/>
                             </div>
                             <input type="submit" name="creer" value="Creer CV" class="submit-button btn btn-default"/>

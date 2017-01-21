@@ -13,7 +13,7 @@
      */
     function upload_files($id_cv, $nom_file)
     {
-        if(!empty($_FILES[$nom_file])AND $_FILES[$nom_file]['size'] <= 307200 AND $_FILES[$nom_file]['error'] == 0)
+        if(!empty($_FILES[$nom_file])AND $_FILES[$nom_file]['size'] <= 400000 AND $_FILES[$nom_file]['error'] == 0)
         {
             $token = PieceJointe::verifier_presence_token();
             $infos_Fichier = pathinfo($_FILES[$nom_file]['name']);
