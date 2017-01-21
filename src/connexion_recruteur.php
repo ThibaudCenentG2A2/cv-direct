@@ -21,13 +21,14 @@ if (isset($_POST['pseudo']) &&
         $_SESSION['pseudo'] = $user->getPseudo();
         $_SESSION['nom'] = $user->getNom();
         $_SESSION['prenom'] = $user->getPrenom();
+        $_SESSION['admin'] =$user->getAdmin();
 
-        header("Location: $_SERVER[HTTP_REFERER]");
+        header("Location: index.php");
     }
 
     else
     {
-        header("Location: $_SERVER[HTTP_REFERER]?alerteUser=".$alerteUser);
+        header("Location: index.php?alerteUser=".$alerteUser);
 
     }
 }

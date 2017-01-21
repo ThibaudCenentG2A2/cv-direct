@@ -17,6 +17,7 @@ class Recruteur
     private $nom;
     private $mail;
     private $valid;
+    private $admin;
 
 
 
@@ -24,7 +25,7 @@ class Recruteur
     {
         //TODO vérifier que le mdp correspond au pseudo ou à l'adresse mail (une requête est suffisance avec WHERE ... OR ...). Si oui, initialiser les données-membres. Sinon, tout vaut null.
 
-        $req = BD::getInstance()->prepare("SELECT PSEUDONYME, PASSWORD, NOM, PRENOM, VALID
+        $req = BD::getInstance()->prepare("SELECT PSEUDONYME, PASSWORD, NOM, PRENOM, VALID, ADMIN
                                           FROM UTILISATEUR 
                                           WHERE UTILISATEUR.EMAIL = :mail
                                             OR UTILISATEUR.PSEUDONYME = :pseudo
@@ -32,13 +33,14 @@ class Recruteur
         $req->execute(array( ':mail' => $pseudo_or_mail, ':pseudo' =>$pseudo_or_mail,':mdp' =>$mdp ));
 
         $data = $req->fetch();
-        if($req->fetch()>0)
+        if($data['PASSWORD']==$mdp)
         {
             $this->nom = $data['NOM'];
             $this->prenom = $data['PRENOM'];
             $this->pseudo = $data['PSEUDONYME'];
             $this->mail = $data['EMAIL'];
             $this->valid = $data['VALID'];
+            $this->admin = $data['ADMIN'];
         }
 
     }
@@ -153,11 +155,18 @@ class Recruteur
         return $this->prenom;
     }
     /**
- * @return mixed
- */
+     * @return mixed
+     */
     public function getValid()
     {
         return $this->valid;
+    }
+    /**
+ * @return mixed
+ */
+    public function getAdmin()
+    {
+        return $this->admin;
     }
 
     /**
