@@ -1,13 +1,14 @@
 <?php
 require_once 'modele/Recruteur.php';
 
-//TODO finir verif mot de passe identique, insertion dans BD du nouveau mdp et variable global
-if (isset($_POST['mdp1']) && isset($_POST['mdp2']))
+if (isset($_POST['mdp1']) && isset($_POST['mdp2']) && isset($_GET['mail']))
 {
+    $mdp = htmlentities($_POST['mdp1']);
+    $mail = htmlentities($_GET['mail']);
     
-    if ($_POST['mdp1'] == $_POST['mdp2'])
+    if ($mdp == $_POST['mdp2'])
     {
-        Recruteur::modifier_mot_de_passe($_GET['email'], $_POST['mdp1']);
+        Recruteur::modifier_mot_de_passe($mail, $mdp);
         header('Location: http://cv-direct.alwaysdata.net/index?alerte=2');
     }
     else
@@ -17,4 +18,9 @@ if (isset($_POST['mdp1']) && isset($_POST['mdp2']))
     }
 }
 else
-    require_once 'vue/changer_mot_de_passe.php';
+    if (isset($_GET['mail']))
+    {
+        require_once 'vue/changer_mot_de_passe.php';
+    }
+    else
+        header('Location: accueil');

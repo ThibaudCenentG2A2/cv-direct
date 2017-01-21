@@ -102,13 +102,16 @@ class Recruteur
         $req = BD::getInstance()->prepare('SELECT COUNT(*) FROM UTILISATEUR WHERE EMAIL = :mail');
         $req->execute(array("mail" => $mail));
 
-        return $req->fetchColumn() > 0;
+        return $req->fetch() > 0;
     }
 
 
     static function modifier_mot_de_passe($mail, $nouveau_mdp)
     {
+        $mdp = md5(htmlentities($nouveau_mdp));
+
         $req = BD::getInstance()->prepare('UPDATE UTILISATEUR SET PASSWORD = :nouveau_mdp WHERE EMAIL = :mail');
+        $req->execute(array('nouveau_mdp' => $mdp, 'mail' => $mail));
     }
 
     static function verificationMailDejaExistant($mail)

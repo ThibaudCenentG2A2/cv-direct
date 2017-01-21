@@ -23,7 +23,7 @@ class Courriel
     public static function envoyer_courriel_mot_de_passe_oublie($destinataire, $token, $expediteur = self::EXPEDITEUR_PAR_DEFAUT)
     {
         $sujet = "Demande nouveau mot de passe";
-        $url = 'http://cv-direct.alwaysdata.net/modification_mot_de_passe?token='.$token.'&'.$destinataire;
+        $url = 'http://cv-direct.alwaysdata.net/modification_mot_de_passe?mail='.$destinataire.'&token='.$token;
 
         $contenu_texte = file_get_contents("http://cv-direct.alwaysdata.net/vue/emails/texte/courriel_oubli_mdp.txt");
         $contenu_texte = str_replace("%URL%", $url, $contenu_texte);
