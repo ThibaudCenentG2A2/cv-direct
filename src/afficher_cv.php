@@ -11,6 +11,7 @@
     $cv_a_afficher = CV::afficher($_GET['numero']);
     $photo = $cv_a_afficher->get_piece_jointe('PhotoCV');
     $contrat_assurance = $cv_a_afficher->get_piece_jointe('Assurance');
+    $liste_pdf = $cv_a_afficher->get_liste_cv_pdf();
     if(isset($_GET['reponse']))
     {
         $reponse = afficher_type_changement($_GET['reponse']);

@@ -12,35 +12,35 @@
                             <label> Création CV </label> <br/> <br/>
                             <div class="form-group has-feedback">
                                 <label> Nom </label>
-                                <input type="text" class="form-control" name="nom"/>
+                                <input type="text" class="form-control" name="nom" required/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label>Prenom</label>
-                                <input type="text" class="form-control" name="prenom" />
+                                <input type="text" class="form-control" name="prenom" required/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label>Pseudonyme</label>
-                                <input type="text" class="form-control" name="pseudo" />
+                                <input type="text" class="form-control" name="pseudo" required/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label>Adresse</label>
-                                <input type="text" class="form-control" name="adresse"/>
+                                <input type="text" class="form-control" name="adresse" required/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label >Code Postal</label>
-                                <input type="text" class="form-control" name="code_postal"/>
+                                <input type="text" class="form-control" name="code_postal" required/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label >Ville</label>
-                                <input type="text" class="form-control" name="ville"/>
+                                <input type="text" class="form-control" name="ville" required/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label >Numéro de Sécurité Sociale</label>
-                                <input type="number" class="form-control" name="num_secu_sociale" size="15"/>
+                                <input type="number" class="form-control" name="num_secu_sociale" size="15" required/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label >Téléphone Portable</label>
-                                <input type="text" class="form-control" name="num_portable"/>
+                                <input type="text" class="form-control" name="num_portable" required/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label >Téléphone Fixe</label>
@@ -53,7 +53,7 @@
                             </div>
                             <div class="form-group has-feedback">
                                 <label >Contrat Assurance Professionnel</label>
-                                <input type="file" class="form-control" name="assurance"/>
+                                <input type="file" class="form-control" name="assurance" required/>
                                 <input type="hidden" name="max_size_photo" value="307200">
                             </div>
                             <div class="form-group has-feedback">

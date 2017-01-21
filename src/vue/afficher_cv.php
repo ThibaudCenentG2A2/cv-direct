@@ -2,80 +2,155 @@
     require_once 'vue/header.php';
     echo $reponse;
 ?>
+            <!-- main-container start -->
+			<!-- ================ -->
+            <br/> <br/>
+			<section class="main-container">
 
-            <div class="container" style="color: black; position: absolute; margin-left: 5px; top:23%;">
-                <div class="row">
-                    <form method="post" action="../ajouter_cv_pdf?numero=<?php echo $_GET['numero'];?>">
-                        <input type="submit" name="ajoutpdf" value="Ajouter un CV PDF" class="submit-button btn btn-default" style="display: inline;"/>
-                    </form>
-                </div>
-            </div>
-            <div class="image-box team-member style-2 shadow bordered light-gray-bg text-center" style="position: absolute; width: 10%; height: 10%; left: 70%; top : 25%;">
-                <?php
-                if(!empty($photo))
-                {
-                ?>
-                    <a href="cv/pieces_jointes/<?php echo $photo->get_token();?>.<?php echo $photo->get_extension();?>"> <img src="cv/pieces_jointes/<?php echo $photo->get_token();?>.<?php echo $photo->get_extension();?>"> </a>
-                <?php
-                }
-                else
-                {
-                ?>
-                    <a href="vue/images_site/unknown.png"> <img src="vue/images_site/unknown.png"> </a>
-                <?php
-                }
-                ?>
-            </div>
-            <br/>
-			<section class="main-container" >
 				<div class="container">
-					<div class="row" style="text-align: center; color: black">
-                        <h1 class="page-title" > CV N° <?php echo $_GET['numero'];?> </h1> <br/>
-                        <div class="page-title" >
-                            <p> Nom : <?php echo $cv_a_afficher->get_nom();?> </p> <br/>
-                            <p> Prenom : <?php echo $cv_a_afficher->get_prenom(); ?> </p> <br/>
-                            <p> Pseudonyme : <?php echo $cv_a_afficher->get_pseudo();?> </p> <br/>
-                            <p> Adresse : <?php echo $cv_a_afficher->get_adresse(); ?> </p> <br/>
-                            <p> Code Postal : <?php echo $cv_a_afficher->get_code_postal(); ?> </p> <br/>
-                            <p> Ville : <?php echo $cv_a_afficher->get_ville(); ?> </p> <br/>
-                            <p> Numéro Portable : <?php echo $cv_a_afficher->get_num_tel_portable(); ?></p> <br/>
-                            <?php
-                                if($cv_a_afficher->get_num_tel_fixe())
-                                {
-                            ?>
-                                    <p> Numéro Fixe : <?php echo $cv_a_afficher->get_num_tel_fixe(); ?></p> <br/>
-                            <?php
-                                }
-                            ?>
-                            <p> Numéro de Sécurité Sociale : <?php echo $cv_a_afficher->get_numero_secu_sociale() ?> </p> <br/>
-                        </div>
+					<div class="row">
+
+						<!-- main start -->
+						<!-- ================ -->
+						<div class="main col-md-12">
+							<!-- page-title start -->
+							<!-- ================ -->
+							<h1 class="page-title">CV N° <?php echo $cv_a_afficher->get_id_cv();?></h1>
+							<div class="separator-2"></div>
+							<!-- page-title end -->
+							<div class="row">
+								<div class="col-md-4">
+                                    <div class="tab-pane active" id="pill-1">
+                                        <div class="owl-carousel content-slider-with-large-controls">
+                                            <div class="overlay-container overlay-visible">
+                                                <?php
+                                                if(!empty($photo))
+                                                {
+                                                ?>
+                                                    <img src="cv/pieces_jointes/<?php echo $photo->get_token();?>.<?php echo $photo->get_extension();?>" alt="">
+                                                    <a href="cv/pieces_jointes/<?php echo $photo->get_token();?>.<?php echo $photo->get_extension();?>" class="popup-img overlay-link"><i class="icon-plus-1"></i></a>
+                                                <?php
+                                                }
+                                                else
+                                                {
+                                                ?>
+                                                    <img src="vue/images_site/unknown.png" alt="">
+                                                    <a href="vue/images_site/unknown.png" class="popup-img overlay-link"><i class="icon-plus-1"></i></a>
+                                                <?php
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
+                                        <ul class="nav nav-pills">
+                                            <li><a href="../maj_photo?numero=<?php echo $photo->get_id_cv();?>&idpj=<?php echo $photo->get_id_piece_jointe();?>"><i class="fa fa-camera pr-5"></i> Modifier Photo </a></li>
+                                            <li><a href="../supprimer_photo?idpj=<?php echo $photo->get_id_piece_jointe();?>"><i class="fa fa-times md"></i> Supprimer Photo </a></li>
+                                        </ul>
+                                    </div>
+									<!-- pills end -->
+								</div>
+							</div>
+						</div>
+						<!-- main end -->
 					</div>
 				</div>
-                <div class="col-sm" style="display: inline-block; position: relative; left: 55%;">
-                    <a href="../maj_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>"> <li class="fa fa-gears"></li> </a>
-                </div>
-                <div class="col-sm" style="display: inline-block; position: relative; left: 40%;">
-                    <a href="../supprimer_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>"> <li class="fa fa-times md"></li> </a>
-                </div>
-            </section>
-            <br/> <br/> <br/> <br/>
-            <h1 class="page-title" style="text-align: center;"> CV PDF </h1> <br/> <br/> <br/>
-            <?php
-                foreach ($cv_a_afficher->get_liste_cv_pdf() as $cv_pdf)
-                {
-            ?>
-                    <div class="image-box team-member style-2 shadow bordered light-gray-bg text-center" style="display: inline-block; width: 8%; margin-left: 20px;">
-                        <a href="../cv/pieces_jointes/<?php echo $cv_pdf->get_token(); ?>.<?php echo $cv_pdf->get_extension();?>"> <li class="fa fa-file-pdf-o fa-5x"></li> </a>
-                        <div class="body">
-                            <h3 class="margin-clear" style="text-align: center">N° <?php echo $cv_pdf->get_id_piece_jointe();?> </h3>
-                        </div>
-                        <div class="col-sm">
-                            <a href="../supprimer_cv_pdf?numero=<?php echo $cv_pdf->get_id_cv();?>&idpdf=<?php echo $cv_pdf->get_id_piece_jointe()?>"><img src="vue/images_site/supprimer.png" width=15 height=15 style="display: inline"> </a>
-                        </div>
-                    </div>
-            <?php
-                }
-            ?>
- <?php
+			</section>
+			<!-- main-container end -->
+			<!-- section start -->
+			<!-- ================ -->
+			<section class="pv-30 light-gray-bg">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8">
+							<!-- Nav tabs -->
+                            <ul class="nav nav-pills">
+                                <li><a href="../maj_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>"><i class="fa fa-gears"></i> Modifier CV </a></li>
+                                <li><a href="../supprimer_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>" title="video"><i class="fa fa-times md"></i> Supprimer CV</a></li>
+                            </ul>
+							<ul class="nav nav-tabs style-4" role="tablist">
+								<li class="active"><a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-files-o pr-5"></i>Profil</a></li>
+                                <li><a href="#h2tab3" role="tab" data-toggle="tab"><i class="fa fa-star pr-5"></i> Contrat d'Assurance Pro</a> </li>
+								<li><a href="#h2tab4" role="tab" data-toggle="tab"><i class="fa fa-star pr-5"></i>CV PDF</a></li>
+							</ul>
+							<!-- Tab panes -->
+							<div class="tab-content padding-top-clear padding-bottom-clear">
+								<div class="tab-pane fade in active" id="h2tab2">
+									<h4 class="space-top">Identité</h4>
+									<hr>
+									<dl class="dl-horizontal">
+										<dt>Nom</dt>
+										<dd> <?php echo $cv_a_afficher->get_nom();?> </dd> <br/>
+										<dt>Prenom</dt>
+										<dd><?php echo $cv_a_afficher->get_prenom(); ?></dd> <br/>
+										<dt>Pseudonyme</dt>
+										<dd><?php echo $cv_a_afficher->get_pseudo();?></dd> <br/>
+										<dt>Adresse </dt>
+										<dd><?php echo $cv_a_afficher->get_adresse();?></dd> <br/>
+										<dt>Code Postal</dt>
+										<dd><?php echo $cv_a_afficher->get_code_postal();?></dd> <br/>
+										<dt>Ville </dt>
+										<dd><?php echo $cv_a_afficher->get_ville();?></dd> <br/>
+										<dt>Numéro de Sécu</dt>
+										<dd><?php echo $cv_a_afficher->get_numero_secu_sociale();?></dd> <br/>
+                                        <dt>Numéro Portable</dt>
+                                        <dd><?php echo $cv_a_afficher->get_num_tel_portable();?></dd> <br/>
+                                        <?php
+                                        if($cv_a_afficher->get_num_tel_fixe())
+                                        {
+                                        ?>
+                                            <dt>Numéro Fixe</dt>
+                                            <dd><?php echo $cv_a_afficher->get_num_tel_fixe();?></dd> <br/>
+                                        <?php
+                                        }
+                                        ?>
+									</dl>
+									<hr>
+								</div>
+                                <div class="tab-pane active" id="h2tab3">
+                                    <div class="main col-md-12">
+                                        <!-- Tab panes -->
+                                        <div class="tab-content clear-style">
+                                            <div class="tab-pane active" id="pill-2">
+                                                <img src="cv/pieces_jointes/<?php echo $contrat_assurance->get_token(); ?>.<?php echo $contrat_assurance->get_extension(); ?>"
+                                                     width="85%">
+                                                <a href="cv/pieces_jointes/<?php echo $contrat_assurance->get_token(); ?>.<?php echo $contrat_assurance->get_extension(); ?>"
+                                                   class="popup-img overlay-link"><i class="icon-plus-1"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+								<div class="tab-pane fade" id="h2tab4">
+                                    <div class="main col-md-12">
+                                        <!-- Tab panes -->
+                                        <div class="tab-content clear-style">
+                                            <div class="tab-pane active" id="pill-2">
+                                                <div class="row masonry-grid-fitrows grid-space-10">
+                                                    <?php
+                                                    foreach ($liste_pdf as $cv_pdf)
+                                                    {
+                                                    ?>
+                                                        <div class="col-md-3 col-sm-6 masonry-grid-item">
+                                                            <div class="listing-item white-bg bordered mb-20">
+                                                                <div class="overlay-container">
+                                                                    <a href="../cv/pieces_jointes/<?php echo $cv_pdf->get_token(); ?>.<?php echo $cv_pdf->get_extension();?>"> <img src="vue/images_site/cvpdf.png"> </a>
+                                                                </div>
+                                                                <div class="body" style="margin-left: 20px;">
+                                                                    <h3><a href="../cv/pieces_jointes/<?php echo $cv_pdf->get_token();?>.<?php echo $cv_pdf->get_extension();?>"> CV PDF N°<?php echo $cv_pdf->get_id_piece_jointe();?></a></h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- section end -->
+<?php
     require_once 'vue/footer.php';
 ?>
