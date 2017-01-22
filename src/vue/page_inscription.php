@@ -55,7 +55,7 @@ require_once ('vue/header.php');
 										<div class="col-sm-offset-3 col-sm-8">
 											<div class="checkbox">
 												<label>
-													<input type="checkbox" required> Acceptez nos <a href="#"> conditions générales d'utilisation </a>
+													<input type="checkbox" required> Acceptez nos <a href="../mentions_legales"> conditions générales d'utilisation </a>
 												</label>
 											</div>
 										</div>

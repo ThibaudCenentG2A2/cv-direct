@@ -55,7 +55,17 @@
                             <div class="space-bottom">
                                 <h2> Article 5 : Cookies </h2>
                                 <p> Un cookie est un élément qui ne permet pas d'identifier l'Utilisateur mais sert à enregistrer des </p>
-                                <p> informations relatives à la naviguation de celui-ci</p>
+                                <p> informations relatives à la naviguation de celui-ci sur le site Internet. L'Utilisateur pourra désactiver ce</p>
+                                <p> cookie par l'intermédiaire des paramètres figurant au sein de son logiciel de navigation.</p>
+                                <p> En naviguant sur le site, il les accepte.</p>
+                            </div>
+
+                            <div class="space-bottom">
+                                <h2> Article 6 : Propriété Intellectuelle </h2>
+                                <p> Toute utilisation, reproduction, diffusion, commercialisation, modification de toute ou partie du site </p>
+                                <p> <strong> http://cv-direct.alwaysdata.net/, </strong> sans autorisation de l'Editeur est prohibée et pourra entraînée </p>
+                                <p> des actions et poursuites judiciaires telles que notamment prévues par le Code de la propriété</p>
+                                <p> intellectuelle et le Code civil.</p>
                             </div>
                         </div>
 					</div>
