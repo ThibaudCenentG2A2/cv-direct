@@ -219,83 +219,102 @@
                         <!-- header-left end -->
 
                     </div>
-                    <div class="col-md-9">
+                    <?php
+                    if(isset($_SESSION['pseudo'])) {
+                        ?>
+                        <div class="col-md-9">
 
-                        <!-- header-right start -->
-                        <!-- ================ -->
-                        <div class="header-right clearfix">
-
-                            <!-- main-navigation start -->
-                            <!-- classes: -->
-                            <!-- "onclick": Makes the dropdowns open on click, this the default bootstrap behavior e.g. class="main-navigation onclick" -->
-                            <!-- "animated": Enables animations on dropdowns opening e.g. class="main-navigation animated" -->
-                            <!-- "with-dropdown-buttons": Mandatory class that adds extra space, to the main navigation, for the search and cart dropdowns -->
+                            <!-- header-right start -->
                             <!-- ================ -->
-                            <div class="main-navigation  animated with-dropdown-buttons">
+                            <div class="header-right clearfix">
 
-                                <!-- navbar start -->
+                                <!-- main-navigation start -->
+                                <!-- classes: -->
+                                <!-- "onclick": Makes the dropdowns open on click, this the default bootstrap behavior e.g. class="main-navigation onclick" -->
+                                <!-- "animated": Enables animations on dropdowns opening e.g. class="main-navigation animated" -->
+                                <!-- "with-dropdown-buttons": Mandatory class that adds extra space, to the main navigation, for the search and cart dropdowns -->
                                 <!-- ================ -->
-                                <nav class="navbar navbar-default">
-                                    <div class="container-fluid">
+                                <div class="main-navigation  animated with-dropdown-buttons">
 
-                                        <!-- Toggle get grouped for better mobile display -->
-                                        <div class="navbar-header">
-                                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-                                                <span class="sr-only">Toggle navigation</span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                            </button>
+                                    <!-- navbar start -->
+                                    <!-- ================ -->
+                                    <nav class="navbar navbar-default">
+                                        <div class="container-fluid">
 
-                                        </div>
+                                            <!-- Toggle get grouped for better mobile display -->
+                                            <div class="navbar-header">
+                                                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                                        data-target="#navbar-collapse-1">
+                                                    <span class="sr-only">Toggle navigation</span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                </button>
 
-                                        <!-- Collect the nav links, forms, and other content for toggling -->
-                                        <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                                            <!-- main-menu -->
-                                            <ul class="nav navbar-nav ">
-                                                <li class="dropdown ">
-                                                    <a href="accueil" class="dropdown-toggle" data-toggle="dropdown">CV</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li ><a href="afficher_tous_les_cv">Liste</a></li>
-                                                        <li ><a href="creer_cv">Nouveau</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown ">
-                                                    <a href="accueil" class="dropdown-toggle" data-toggle="dropdown">Administration</a>
-                                                    <ul class="dropdown-menu">
+                                            </div>
+
+                                            <!-- Collect the nav links, forms, and other content for toggling -->
+                                            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                                                <!-- main-menu -->
+                                                <ul class="nav navbar-nav ">
+                                                    <li class="dropdown ">
+                                                        <a href="accueil" class="dropdown-toggle"
+                                                           data-toggle="dropdown">CV</a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="afficher_tous_les_cv">Liste</a></li>
+                                                            <li><a href="creer_cv">Nouveau</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <?php
+                                                    if($_SESSION['admin']==1) {
+                                                        ?>
                                                         <li class="dropdown ">
-                                                            <a  class="dropdown-toggle" data-toggle="dropdown" href="#">Recruteurs</a>
-                                                            <ul class="dropdown-menu to-left">
-                                                                <li ><a href="#">Liste</a></li>
-                                                                <li ><a href="#">En attente de validation</a></li>
-                                                                <li ><a href="#">Nouveau</a></li>
+                                                            <a href="accueil" class="dropdown-toggle"
+                                                               data-toggle="dropdown">Administration</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li class="dropdown ">
+                                                                    <a class="dropdown-toggle" data-toggle="dropdown"
+                                                                       href="#">Recruteurs</a>
+                                                                    <ul class="dropdown-menu to-left">
+                                                                        <li><a href="#">Liste</a></li>
+                                                                        <li><a href="#">En attente de validation</a>
+                                                                        </li>
+                                                                        <li><a href="#">Nouveau</a></li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="dropdown ">
+                                                                    <a class="dropdown-toggle" data-toggle="dropdown"
+                                                                       href="#">Compétences</a>
+                                                                    <ul class="dropdown-menu to-left">
+                                                                        <li><a href="competences">Liste</a></li>
+                                                                        <li><a href="#">Ajouter catégorie</a></li>
+                                                                        <li><a href="ajouter_competence">Ajouter
+                                                                                compétence</a></li>
+                                                                    </ul>
+                                                                </li>
                                                             </ul>
                                                         </li>
-                                                        <li class="dropdown ">
-                                                            <a  class="dropdown-toggle" data-toggle="dropdown" href="#">Compétences</a>
-                                                            <ul class="dropdown-menu to-left">
-                                                                <li ><a href="competences">Liste</a></li>
-                                                                <li ><a href="#">Ajouter catégorie</a></li>
-                                                                <li ><a href="ajouter_competence">Ajouter compétence</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                            <!-- main-menu end -->
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </ul>
+                                                <!-- main-menu end -->
+
+                                            </div>
 
                                         </div>
+                                    </nav>
+                                    <!-- navbar end -->
 
-                                    </div>
-                                </nav>
-                                <!-- navbar end -->
-
+                                </div>
+                                <!-- main-navigation end -->
                             </div>
-                            <!-- main-navigation end -->
-                        </div>
-                        <!-- header-right end -->
+                            <!-- header-right end -->
 
-                    </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
 
