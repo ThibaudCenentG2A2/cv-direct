@@ -10,11 +10,12 @@ require_once 'vue/header.php';
                 <!-- debut conteneur -->
                 <div class="main col-md-12">
 <?php
-
 if (isset($alerte) && $alerte == 1)
+    echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Les mots de passe ne sont pas identiques !</div>';
+if (isset($erreur) && isset($alerte) && $alerte == 3)
 {
     require_once '../modele/Recruteur.php';
-    echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.Recruteur::modifier_mot_de_passe($_GET['mail'], $mdp).'</div>';
+    echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.$erreur.'</div>';
 }
 
 ?>
