@@ -241,13 +241,6 @@
                                                 <li class="dropdown ">
                                                     <a href="accueil" class="dropdown-toggle" data-toggle="dropdown">Administration</a>
                                                     <ul class="dropdown-menu">
-                                                        <li ><a href="index-shop.html">Shop Home 1</a></li>
-                                                        <li ><a href="index-shop-2.html">Shop Home 2</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown ">
-                                                    <a href="accueil" class="dropdown-toggle" data-toggle="dropdown">Administration</a>
-                                                    <ul class="dropdown-menu">
                                                         <li class="dropdown ">
                                                             <a  class="dropdown-toggle" data-toggle="dropdown" href="#">Recruteurs</a>
                                                             <ul class="dropdown-menu to-left">
