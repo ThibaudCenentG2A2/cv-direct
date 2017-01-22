@@ -5,8 +5,8 @@ if (isset($_POST['mail']))
     $mail = htmlentities($_POST['mail']);
 
     require_once 'modele/Recruteur.php';
-
     require_once 'modele/PieceJointe.php';
+    
     $token = PieceJointe::generer_token_aleatoire();
 
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL))

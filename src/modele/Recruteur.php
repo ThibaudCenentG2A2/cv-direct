@@ -74,7 +74,7 @@ class Recruteur
         return md5("on y met notre grain de sel" . $mdp);
     }
 
-    //TODO revoir cette foncion car echo 'Erreur EMAIL deja existant' ne sert a rien
+    //TODO revoir cette foncion car n'utilise pas la fonction est_presente()
     /**
      * Fonction d'inscription d'un utilisateur dans la base de données avec les informations en paramètre
      *
@@ -106,7 +106,7 @@ class Recruteur
      * Cette fonction va permettre de vérifier que l'adresse mail en parametre
      * est présente dans la base de données.
      *
-     * @param String $mail Email a vérifier
+     * @param string $mail Email a vérifier
      *
      * @return bool Renvoie true si présente, false sinon.
      */
@@ -122,17 +122,11 @@ class Recruteur
     /**
      * Cette fonction va servir à mettre à jour le mot de passe de l'utilisatur
      * ayant le mail associé.
-     *
-     * @param String $mail Mail du compte associé a la demande de modication de mot de passe
-     * @param String $nouveau_mdp Nouveau mot de passe
      * 
-     * Cette fonction va servir à mettre à jour le mot de passe de l'utilisatur
-     * ayant le mail associé.
+     * @param string $mail Mail du compte associé a la demande de modication de mot de passe
+     * @param string $nouveau_mdp Nouveau mot de passe
      * 
-     * @param $mail
-     * @param $nouveau_mdp
-     * 
-     * @return null|string
+     * @return null|string Texte correspondant a une erreur
      */
     static function modifier_mot_de_passe($mail, $nouveau_mdp)
     {

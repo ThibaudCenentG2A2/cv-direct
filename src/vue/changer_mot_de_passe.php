@@ -14,7 +14,7 @@ if (isset($alerte) && $alerte == 1)
     echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Les mots de passe ne sont pas identiques !</div>';
 if (isset($erreur) && isset($alerte) && $alerte == 3)
 {
-    require_once '../modele/Recruteur.php';
+    require_once 'modele/Recruteur.php';
     echo '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.$erreur.'</div>';
 }
 
