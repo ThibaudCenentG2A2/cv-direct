@@ -151,7 +151,7 @@ class Recruteur
      */
     static function recuperation_nouveaux_inscrits()
     {
-        $req = BD::getInstance()->prepare('SELECT EMAIL FROM RECRUTEUR WHERE VALID = 1 ');
+        $req = BD::getInstance()->prepare('SELECT EMAIL FROM RECRUTEUR WHERE VALID = 0 ');
         $req->execute();
         $result = $req->fetchAll();
         return $result;
