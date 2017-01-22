@@ -10,7 +10,7 @@
             <div class="subfooter-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="text-center">© 2017 <a href="http://dromcorp.eu">DromCorp</a>. Tous droits réservés.</p>
+                        <p class="text-center">© 2017 <a href="http://dromcorp.eu">DromCorp</a> | <a href="mentions_legales">Mentions légales</a> | Tous droits réservés.</p>
                     </div>
                 </div>
             </div>
