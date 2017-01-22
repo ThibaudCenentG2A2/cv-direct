@@ -31,4 +31,7 @@ if (isset($_POST['pseudo']) &&
 
     else
         header("Location: accueil?alerteUser=".$alerteUser);
+
+    // Si on arrive sur la page par hasard
+    header("Location: accueil");
 }
