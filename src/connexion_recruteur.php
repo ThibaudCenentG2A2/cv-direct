@@ -26,16 +26,9 @@ if (isset($_POST['pseudo']) &&
         $_SESSION['prenom'] = $user->getPrenom();
         $_SESSION['mail'] = $user->getMail();
         $_SESSION['admin'] =$user->getAdmin();
-        echo "OK";
-        echo '<br>';
-        print_r($_SESSION);
         header("Location: accueil");
     }
 
     else
-    {
-        echo "PAS OK";
-        //header("Location: index.php?alerteUser=".$alerteUser);
-
-    }
+        header("Location: accueil?alerteUser=".$alerteUser);
 }

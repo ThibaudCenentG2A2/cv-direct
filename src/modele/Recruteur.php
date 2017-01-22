@@ -84,7 +84,7 @@ class Recruteur
      * @param String $mail Adresse mail
      * @param String $mdp Mot de passe
      */
-    public static function inscrire_utilisateur($pseudo, $prenom, $nom, $mail, $mdp)
+    public static function inscrire_recruteur($pseudo, $prenom, $nom, $mail, $mdp)
     {
         $req = BD::getInstance()->prepare('SELECT EMAIL FROM RECRUTEUR WHERE RECRUTEUR.EMAIL =:mail');// a modifier selon la bd hein :)
         $req->execute(array( ':mail' => $mail));
