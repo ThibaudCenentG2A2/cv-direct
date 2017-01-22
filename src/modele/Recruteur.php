@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe d'utilisateurs et fonctions relatives à ces derniers.
+ * Classe Recruteur et fonctions relatives à ces derniers.
  *
  * @author Tristan DIETZ, Thierry Fernandez, Romain COLONNA D'ISTRIA
  *
@@ -76,7 +76,7 @@ class Recruteur
 
     //TODO revoir cette foncion car n'utilise pas la fonction est_presente()
     /**
-     * Fonction d'inscription d'un utilisateur dans la base de données avec les informations en paramètre
+     * Fonction d'inscription d'un recruteur dans la base de données avec les informations en paramètre
      *
      * @param String $pseudo Pseudo
      * @param String $nom Nom de famille
@@ -120,7 +120,7 @@ class Recruteur
     }
 
     /**
-     * Cette fonction va servir à mettre à jour le mot de passe de l'utilisatur
+     * Cette fonction va servir à mettre à jour le mot de passe du recruteur
      * ayant le mail associé.
      * 
      * @param string $mail Mail du compte associé a la demande de modication de mot de passe

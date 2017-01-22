@@ -17,7 +17,6 @@ else if ($alerte == 3)
                     <input name="mail" type="text" class="form-control" id="inputMail" placeholder="mail@example.org" required>
                     <i class="fa fa-envelope form-control-feedback"></i>
                     <p></p>
-                    <div class="g-recaptcha" data-sitekey="6LfQpREUAAAAACGFu0kuaEUGa5Mj41IRc5GbClVI"></div>
                 </div>
             </div>
 

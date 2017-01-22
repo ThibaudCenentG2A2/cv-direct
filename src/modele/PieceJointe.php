@@ -174,24 +174,28 @@ class PieceJointe
      */
     static function initialiser_token_mot_de_passe_oublie($token, $mail)
     {
-        $requete_test_presence = BD::getInstance()->prepare('SELECT COUNT(*) FROM TOKEN WHERE TOKEN = $token');
+        $requete_test_presence = BD::getInstance()->prepare('SELECT COUNT(*) AS NB FROM TOKEN_MOT_DE_PASSE_OUBLIE WHERE TOKEN = :token');
         $requete_test_presence->execute(array('token' => $token));
         
         $donnees = $requete_test_presence->fetch();
-        if ($donnees != 0)
-            return false;
-        else
+        if ($donnees['NB'] == 0)
         {
-            $requete_recup_id_utilisateur = BD::getInstance()->prepare('SELECT R.ID_UTILISATEUR FROM RECRUTEUR R WHERE EMAIL = :mail');
-            $requete_recup_id_utilisateur->execute(array('mail' => $mail));
-            $donnees = $requete_recup_id_utilisateur->fetch();
+            $date = new DateTime();
+            $requete_recup_id_recruteur = BD::getInstance()->prepare('SELECT R.ID_RECRUTEUR FROM RECRUTEUR R WHERE EMAIL = :mail');
+            $requete_recup_id_recruteur->execute(array('mail' => $mail));
+            $donnees = $requete_recup_id_recruteur->fetch();
 
-            $id_utilisateur = $donnees['ID_UTILISATEUR'];
+            $id_recruteur = $donnees['ID_RECRUTEUR'];
+            $date = $date->getTimestamp();
 
-            $requete_insertion = BD::getInstance()->prepare('INSERT INTO TOKEN_MOT_DE_PASSE_OUBLIE VALUES (:id_utilisateur, :token)');
-            $requete_insertion->execute(array('id_utilisateur' => $id_utilisateur, 'token' => $token));
+            $requete_insertion = BD::getInstance()->prepare('INSERT INTO TOKEN_MOT_DE_PASSE_OUBLIE VALUES (:id_recruteur, :token, :date)');
+            $requete_insertion->execute(array('id_recruteur' => $id_recruteur, 'token' => $token, 'date' => $date));
 
             return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

@@ -29,8 +29,7 @@ if (isset($erreur) && isset($alerte) && $alerte == 3)
                     <!-- formulaire -->
 
                     <div class="icon-contacts-form">
-                        <form action="../modification_mot_de_passe?mail=<?php echo $mail; ?>" class="form-horizontal" method="post">
-
+                        <form action="../modification_mot_de_passe?mail=<?php echo $_GET['mail']; ?>&token=<?php echo $_GET['token']; ?>" class="form-horizontal" method="post">
                             <div class="form-group has-feedback">
                                 <label for="inputMdp" class="col-sm-4 control-label">Nouveau mot de passe</label>
                                 <div class="col-sm-4">
