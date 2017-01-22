@@ -84,7 +84,7 @@ class Recruteur
      * @param String $mail Adresse mail
      * @param String $mdp Mot de passe
      */
-    public static function inscrire_utilisateur($pseudo, $nom, $prenom, $mail, $mdp)
+    public static function inscrire_utilisateur($pseudo, $prenom, $nom, $mail, $mdp)
     {
         $req = BD::getInstance()->prepare('SELECT EMAIL FROM UTILISATEUR WHERE UTILISATEUR.EMAIL =:mail');// a modifier selon la bd hein :)
         $req->execute(array( ':mail' => $mail));
@@ -112,17 +112,16 @@ class Recruteur
      */
     static function est_presente($mail)
     {
-        echo 4;
-        $req = BD::getInstance()->prepare('SELECT COUNT(*) FROM UTILISATEUR WHERE EMAIL = :mail');
-        echo 5;
+        $req = BD::getInstance()->prepare('SELECT COUNT(*) AS TOTAL FROM UTILISATEUR WHERE EMAIL = :mail');
         $req->execute(array("mail" => $mail));
-        echo 6;
-        return $req->fetch() > 0;
+        $res = $req->fetch();
+
+        return $res['TOTAL'] > 0;
     }
 
     /**
-     *     /**
-     * 
+     * Cette fonction va servir à mettre à jour le mot de passe de l'utilisatur
+     * ayant le mail associé.
      *
      * @param String $mail Mail du compte associé a la demande de modication de mot de passe
      * @param String $nouveau_mdp Nouveau mot de passe
@@ -153,7 +152,7 @@ class Recruteur
     /**
      * Cette fonction va permettre de recuperer tous les utilisateurs en attente de validation apres inscription
      *
-     * @return PDOStatement Tableau contenant les comptes de recruteurs non validés par
+     * @return array Tableau contenant les comptes de recruteurs non validés par
      *                      un administrateur
      */
     static function recuperation_nouveaux_inscrits()
@@ -183,7 +182,7 @@ class Recruteur
      */
     public static function suppression_compte($email, $pseudo)
     {
-        $req = BD::getInstance()->prepare('DELETE FROM UTILISATEUR WHERE EMAIL ='.$email.'AND PSEUDONYME ='.$pseudo);
+        $req = BD::getInstance()->prepare('DELETE FROM UTILISATEUR WHERE EMAIL ='.$email.' AND PSEUDONYME ='.$pseudo);
         $req->execute();
     }
 
