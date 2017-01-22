@@ -5,6 +5,7 @@
     require_once 'modele/BD.php';
     require_once 'modele/CV.php';
     require_once 'modele/PieceJointe.php';
+    require_once 'modele/Competences.php';
     require_once 'gestion_action_utilisateur.php';
 
     /**

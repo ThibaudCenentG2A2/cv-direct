@@ -1,5 +1,6 @@
 <?php
     require_once 'vue/header.php';
+
     echo $reponse;
 ?>
     <section class="main-container">
@@ -61,6 +62,27 @@
                                 <label >CV PDF (Taille Maximale : 400 Ko, Format Autorisé : PDF)</label>
                                 <input type="hidden" name="MAX_FILE_SIZE" value="400000">
                                 <input type="file" class="form-control" name="cvpdf"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <h2>Compétences</h2>
+                                <?php
+                                $bd_cat = Competences::get_categories();
+                                while ($categorie = $bd_cat->fetch())
+                                {
+                                    echo '
+                        <p><strong>' . $categorie['NOM_COMPETENCE_CATEGORIE'] . '</strong></p>
+                        <p>';
+
+                                    $bd_cmpt = Competences::get_competences_depuis_categorie($categorie['ID_COMPETENCE_CATEGORIE']);
+                                    while ($competence = $bd_cmpt->fetch())
+                                    {
+                                        echo "<input type='checkbox' name='competences[]' value='" . $competence['ID_COMPETENCE'] . "' id='". $competence['ID_COMPETENCE'] ."'> <label for='" . $competence['ID_COMPETENCE'] . "'>" . $competence['NOM_COMPETENCE'] . "</label><br/>";
+                                    }
+
+                                    echo '</p>
+';
+                                }
+                                ?>
                             </div>
                             <input type="submit" name="creer" value="Creer CV" class="submit-button btn btn-default"/>
                             <input type="submit" name="creer" value="Annuler" class="submit-button btn btn-default"/>

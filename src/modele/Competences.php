@@ -30,7 +30,7 @@ class Competences
      */
     public static function get_competences_depuis_categorie($id_categorie)
     {
-        $req = BD::getInstance()->prepare('SELECT NOM_COMPETENCE FROM COMPETENCE WHERE ID_COMPETENCE_CATEGORIE = :id_categorie ORDER BY NOM_COMPETENCE');
+        $req = BD::getInstance()->prepare('SELECT NOM_COMPETENCE, ID_COMPETENCE FROM COMPETENCE WHERE ID_COMPETENCE_CATEGORIE = :id_categorie ORDER BY NOM_COMPETENCE');
         $req->execute(array('id_categorie' => $id_categorie));
         return $req;
 
