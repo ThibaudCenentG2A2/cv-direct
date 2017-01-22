@@ -10,7 +10,7 @@
     $photo = PieceJointe::afficher($_GET['idpj']);
     if($_POST['supprimer'] == 'Supprimer')
     {
-        unlink('cv/pieces_jointe/'. $photo->get_token() . '.' . $photo->get_extension());
+        unlink("cv/pieces_jointe/". $photo->get_token() . "." . $photo->get_extension());
         PieceJointe::supprimer($_GET['idpj']);
         header('Location: afficher_cv?numero=' . $_GET['numero'] . '&reponse=18');
     }

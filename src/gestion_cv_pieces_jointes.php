@@ -87,6 +87,6 @@
     function supprimer_pieces_jointes_cv(CV $cv_a_supprimer)
     {
         foreach ($cv_a_supprimer->get_liste_pieces_jointe() as $piece_jointe)
-            unlink('cv/pieces_jointes/' . $piece_jointe->get_token() . "." . $piece_jointe->get_extension());
+            unlink("cv/pieces_jointes/" . $piece_jointe->get_token() . "." . $piece_jointe->get_extension());
     }
 

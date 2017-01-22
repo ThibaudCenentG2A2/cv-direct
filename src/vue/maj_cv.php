@@ -15,35 +15,35 @@
                             <label> Modifications CV </label> <br/> <br/>
                             <div class="form-group has-feedback">
                                 <label> Nom </label>
-                                <input type="text" class="form-control" name="nom"/>
+                                <input type="text" class="form-control" name="nom" pattern="[A-Z]+"/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label>Prenom</label>
-                                <input type="text" class="form-control" name="prenom" />
+                                <input type="text" class="form-control" name="prenom" pattern="^[A-Z][a-z]+$" />
                             </div>
                             <div class="form-group has-feedback">
                                 <label>Pseudonyme</label>
-                                <input type="text" class="form-control" name="pseudo" />
+                                <input type="text" class="form-control" name="pseudo" pattern="^[A-Z][a-z]+[1-9]{2,5}$" />
                             </div>
                             <div class="form-group has-feedback">
                                 <label>Adresse</label>
-                                <input type="text" class="form-control" name="adresse"/>
+                                <input type="text" class="form-control" name="adresse" pattern="^[A-Z][a-z]+|^[1-9]{1-4} [a-z]+ [A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+"/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label >Code Postal</label>
-                                <input type="text" class="form-control" name="code_postal"/>
+                                <input type="text" class="form-control" name="code_postal" pattern="[0-9]{5}"/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label >Ville</label>
-                                <input type="text" class="form-control" name="ville"/>
+                                <input type="text" class="form-control" name="ville" pattern="[A-Z]+|[A-Z]+ [A-Z]+ [A-Z]+"/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label >Téléphone Portable</label>
-                                <input type="text" class="form-control" name="num_portable"/>
+                                <input type="text" class="form-control" name="num_portable" pattern="[0-9]{10}"/>
                             </div>
                             <div class="form-group has-feedback">
                                 <label >Téléphone Fixe</label>
-                                <input type="text" class="form-control" name="num_fixe"/>
+                                <input type="text" class="form-control" name="num_fixe" pattern="[0-9]{10}"/>
                             </div>
                             <input type="submit" name="majcv" value="Enregistrer Modifications" class="submit-button btn btn-default"/>
                             <input type="submit" name="majcv" value="Annuler" class="submit-button btn btn-default"/>
