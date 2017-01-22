@@ -1,4 +1,5 @@
 <?php
+    require_once 'header.php';
 
     /** Fichier gérant la gestion des actions effectués par l'utilisateur sur le site
     * @author Thibaud CENENT

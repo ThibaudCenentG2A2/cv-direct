@@ -1,4 +1,5 @@
 <?php
+    require_once 'header.php';
     /**
      * Contrôleur sur la modification de la photo qui va réagir différement sur la vue en fonction si la personne concernée par le CV a une photo ou non.
      * @author Thibaud CENENT

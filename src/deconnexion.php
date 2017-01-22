@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pyrrha
- * Date: 22/01/2017
- * Time: 18:13
- */
+require_once 'header.php';
 
 unset($_SESSION);
 session_destroy();

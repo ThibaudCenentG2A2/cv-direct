@@ -1,5 +1,5 @@
 <?php
-
+require_once 'header.php';
 if (isset($_POST['mail']))
 {
     $mail = htmlentities($_POST['mail']);

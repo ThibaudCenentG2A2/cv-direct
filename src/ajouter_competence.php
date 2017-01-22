@@ -1,5 +1,7 @@
 <?php
 
+require_once 'header.php';
+
 require_once 'modele/Competences.php';
 
 if (isset($_POST['ValidButton']) && isset($_POST['competences']) && isset($_POST['categorie']))

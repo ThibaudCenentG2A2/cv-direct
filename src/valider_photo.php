@@ -1,4 +1,5 @@
 <?php
+require_once 'header.php';
     /** Contrôleur permettant l'affichage de la photo et de s'adapter en fonction de si le recruteur souhaite valider le choix de cette photo ou non.
      * @author Thibaud CENENT
      * @version 1.0

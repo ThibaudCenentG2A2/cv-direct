@@ -7,6 +7,7 @@
  * @version 1.2
  */
 require_once 'header.php';
+
 require_once 'modele/Recruteur.php';
 $alerteUser=1;
 
@@ -16,6 +17,8 @@ if (isset($_POST['pseudo']) &&
     // Test de la connexion : initialisation des données-membres si l'utilisateur est connecté
     $user = new Recruteur($_POST['pseudo'], Recruteur::encryptage_mdp($_POST['mdp']));
 
+    print_r($_POST);
+
     // En cas de succès :
     if ( $user->getNom()!=null && $user->getValid() == 1) {
         $_SESSION['pseudo'] = $user->getPseudo();
@@ -23,13 +26,16 @@ if (isset($_POST['pseudo']) &&
         $_SESSION['prenom'] = $user->getPrenom();
         $_SESSION['mail'] = $user->getMail();
         $_SESSION['admin'] =$user->getAdmin();
-
-        header("Location: index.php");
+        echo "OK";
+        echo '<br>';
+        print_r($_SESSION);
+        header("Location: accueil");
     }
 
     else
     {
-        header("Location: index.php?alerteUser=".$alerteUser);
+        echo "PAS OK";
+        //header("Location: index.php?alerteUser=".$alerteUser);
 
     }
 }

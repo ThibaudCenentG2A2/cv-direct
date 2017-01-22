@@ -1,4 +1,6 @@
 <?php
+    require_once 'header.php';
+
     require_once 'gestion_cv_pieces_jointes.php';
     require_once 'modele/BD.php';
     require_once 'modele/CV.php';

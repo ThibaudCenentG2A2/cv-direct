@@ -1,4 +1,5 @@
 <?php
+require_once 'header.php';
 require_once 'modele/Recruteur.php';
 if (isset($_POST['mdp1']) && isset($_POST['mdp2']) && isset($_GET['mail']))
 {

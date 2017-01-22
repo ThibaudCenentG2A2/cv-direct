@@ -1,4 +1,5 @@
 <?php
+    require_once 'header.php';
 
     /**
      * Fichier contenant les fonctions gérant la mise ou non des pièces jointes sur le serveur

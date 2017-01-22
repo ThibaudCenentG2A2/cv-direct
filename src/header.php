@@ -7,7 +7,3 @@
 session_start();
 
 //TODO espion administrateur
-
-if (isset($_SESSION['pseudo']))
-{
-

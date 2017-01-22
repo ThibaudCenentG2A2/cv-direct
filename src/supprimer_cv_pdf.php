@@ -1,4 +1,5 @@
 <?php
+require_once 'header.php';
     require_once 'modele/BD.php';
     require_once 'modele/CV.php';
     require_once 'modele/PieceJointe.php';
