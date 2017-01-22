@@ -30,7 +30,7 @@
             case 8:
                 return "Le nom de la ville doit être inscrit uniquement avec des majuscules";
             case 9:
-                return "Erreur lors de l'upload de l'assurance, veuillez réessayer svp (Rappel : Taille maximale autorisé à 400 Ko, Formats autorisés : JPEG, PDF)";
+                return "Erreur lors de l'upload de l'assurance, veuillez réessayer svp (Rappel : Taille maximale autorisé à 400 Ko, Formats autorisés : JPG, JPEG, PDF)";
             case 10:
                 return "Votre CV a bien été ajouté";
             case 11:

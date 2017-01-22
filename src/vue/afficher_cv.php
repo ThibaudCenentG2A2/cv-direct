@@ -111,10 +111,19 @@
                                         <!-- Tab panes -->
                                         <div class="tab-content clear-style">
                                             <div class="tab-pane active" id="pill-2">
-                                                <img src="cv/pieces_jointes/<?php echo $contrat_assurance->get_token(); ?>.<?php echo $contrat_assurance->get_extension(); ?>"
-                                                     width="85%">
-                                                <a href="cv/pieces_jointes/<?php echo $contrat_assurance->get_token(); ?>.<?php echo $contrat_assurance->get_extension(); ?>"
-                                                   class="popup-img overlay-link"><i class="icon-plus-1"></i></a>
+                                                <?php
+                                                if($contrat_assurance->get_extension() == 'pdf')
+                                                {
+                                                ?>
+                                                <?php
+                                                }
+                                                else
+                                                {
+                                                ?>
+                                                    <a href="cv/pieces_jointes/<?php echo $contrat_assurance->get_token();?>.<?php echo $contrat_assurance->get_extension();?>"><img src="cv/pieces_jointes/<?php echo $contrat_assurance->get_token();?>.<?php echo $contrat_assurance->get_extension();?>"></a>
+                                                <?php
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
