@@ -160,15 +160,13 @@ class Recruteur
     }
 
     /**
-     * Cette fonction va permettre de supprimer un compte.
-     *
-     * @param String $email Mail du compte associé à un utilisateur inscrit
-     * @param String $pseudo Pseudo du compte associé à un utilisateur inscrit
+     * Suppression de compte
+     * @param string $pseudo_ou_mail Mail ou pseudo
      */
-    public static function suppression_compte($email, $pseudo)
+    public static function suppression_compte($pseudo_ou_mail)
     {
-        $req = BD::getInstance()->prepare('DELETE FROM UTILISATEUR WHERE EMAIL ='.$email.' AND PSEUDONYME ='.$pseudo);
-        $req->execute();
+        $req = BD::getInstance()->prepare('DELETE FROM UTILISATEUR WHERE EMAIL = :pom OR PSEUDONYME = :pom');
+        $req->execute(array("pom" => strval($pseudo_ou_mail)));
     }
 
     /**
