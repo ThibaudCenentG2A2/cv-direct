@@ -16,10 +16,11 @@ if (isset($_POST['ValidButton']) && isset($_POST['competences']) && isset($_POST
     else
     {
         // Récupération des compétences une par une et ajout en BD après protection
-        $competences_form = htmlspecialchars($_POST['competences']);
-        $competences = explode(", ", $competences_form);
-        Competences::ajouter_les_competences($competences, htmlspecialchars($_POST['categorie']));
-        $alert = 2;
+
+        $competences_form = htmlspecialchars($_POST['competences']); // utilisée dans la vue
+        $competences = preg_split('/(\s)*,(\s)*/', $competences_form); // à enregistrer dans la BD
+        Competences::ajouter_les_competences($competences, intval($_POST['categorie'])); // enregistrement
+        $alert = 2; // message de succès
     }
 }
 
