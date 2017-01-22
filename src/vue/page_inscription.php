@@ -61,8 +61,8 @@ require_once ('vue/header.php');
 										</div>
 									</div>
 									<div class="form-group">
-										<div class="col-sm-offset-3 col-sm-8">
-											<input type="submit" class="btn btn-group btn-default btn-animated"> </input>
+										<div class="col-sm-offset-4 col-sm-8">
+											<input type="submit" class="btn btn-group btn-default "> </input>
 										</div>
 									</div>
 								</form>

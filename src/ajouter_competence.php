@@ -23,5 +23,6 @@ if (isset($_POST['ValidButton']) && isset($_POST['competences']) && isset($_POST
         $alert = 2; // message de succès
     }
 }
+else
 
 require_once 'vue/ajouter_competence.php';

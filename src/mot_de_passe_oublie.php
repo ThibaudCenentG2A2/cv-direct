@@ -6,7 +6,7 @@ if (isset($_POST['mail']))
     $mail = htmlentities($_POST['mail']);
 
     require_once 'modele/Recruteur.php';
-    if (Recruteur::est_presente($mail))
+    if (Recruteur::est_presente($_POST['mail']))
     {
         require_once 'modele/PieceJointe.php';
         $token = PieceJointe::generer_token_aleatoire();
