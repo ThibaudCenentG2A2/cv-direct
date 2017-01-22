@@ -11,17 +11,19 @@ require_once 'vue/header.php';
 
                 <!-- debut conteneur -->
                 <div class="main col-md-12">
-                    <!-- titre de la page -->
-                    <h1 class="page-title">Ajout de compétences</h1>
-                    <div class="separator-2"></div>
+                    <div class="space-bottom">
+                        <!-- titre de la page -->
+                        <h1 class="page-title">Ajout de compétences</h1>
+                        <div class="separator-2"></div>
 
-                    <!-- descriptif de la page -->
-                    <p>Ajoutez ici de nouvelles compétences, séparées par une virgule, sélectionnables ensuite par les
-                        Recruteurs pour étoffer les CV de la base.</p>
+                        <!-- descriptif de la page -->
+                        <p>Ajoutez ici de nouvelles compétences, séparées par une virgule, sélectionnables ensuite par les
+                            Recruteurs pour étoffer les CV de la base.</p>
+                    </div>
 
                     <!-- formulaire -->
                     <div class="contact-form">
-                        <form id="contact-form" class="margin-clear" role="form" method="post" action="../ajouter_competence">
+                        <form id="contact-form" class="margin-clear" method="post" action="ajouter_competence">
                             <div class="form-group has-feedback">
                                 <label for="categorie">Catégorie où enregistrer</label>
                                 <select class="form-control" name="categorie" required><?php

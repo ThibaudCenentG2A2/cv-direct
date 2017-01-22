@@ -277,7 +277,7 @@
                                                                        href="#">Recruteurs</a>
                                                                     <ul class="dropdown-menu to-left">
                                                                         <li><a href="#">Liste</a></li>
-                                                                        <li><a href="#">En attente de validation</a>
+                                                                        <li><a href="panel_administration.php">En attente de validation</a>
                                                                         </li>
                                                                         <li><a href="inscription_recruteur">Nouveau</a></li>
                                                                     </ul>
@@ -287,7 +287,7 @@
                                                                        href="#">Compétences</a>
                                                                     <ul class="dropdown-menu to-left">
                                                                         <li><a href="competences">Liste</a></li>
-                                                                        <li><a href="#">Ajouter catégorie</a></li>
+                                                                        <li><a href="ajouter_categorie ">Ajouter catégorie</a></li>
                                                                         <li><a href="ajouter_competence">Ajouter
                                                                                 compétence</a></li>
                                                                     </ul>
