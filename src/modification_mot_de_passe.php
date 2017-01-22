@@ -8,8 +8,13 @@ if (isset($_POST['mdp1']) && isset($_POST['mdp2']) && isset($_GET['mail']))
     
     if ($mdp == $_POST['mdp2'])
     {
-        Recruteur::modifier_mot_de_passe($mail, $mdp);
-        header('Location: http://cv-direct.alwaysdata.net/index?alerte=2');
+        if (strlen(Recruteur::modifier_mot_de_passe($mail, $mdp)) == null)
+            header('Location: http://cv-direct.alwaysdata.net/index?alerte=2');
+        else
+        {
+            require_once 'vue/changer_mot_de_passe.php';
+
+        }
     }
     else
     {

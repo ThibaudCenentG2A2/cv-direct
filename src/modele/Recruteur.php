@@ -125,13 +125,28 @@ class Recruteur
      *
      * @param String $mail Mail du compte associé a la demande de modication de mot de passe
      * @param String $nouveau_mdp Nouveau mot de passe
+     * 
+     * Cette fonction va servir à mettre à jour le mot de passe de l'utilisatur
+     * ayant le mail associé.
+     * 
+     * @param $mail
+     * @param $nouveau_mdp
+     * 
+     * @return null|string
      */
     static function modifier_mot_de_passe($mail, $nouveau_mdp)
     {
-        $mdp = self::encryptage_mdp($nouveau_mdp);
-
-        $req = BD::getInstance()->prepare('UPDATE UTILISATEUR SET PASSWORD = :nouveau_mdp WHERE EMAIL = :mail');
-        $req->execute(array('nouveau_mdp' => $mdp, 'mail' => $mail));
+        if (strlen($nouveau_mdp) < 8)
+            return 'Le mot de passe doit avoir une taille d\'au moins huit caractères.';
+        else if (!preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $nouveau_mdp))
+            return 'Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.';
+        else
+        {
+            $mdp = self::encryptage_mdp($nouveau_mdp);
+            $req = BD::getInstance()->prepare('UPDATE UTILISATEUR SET PASSWORD = :nouveau_mdp WHERE EMAIL = :mail');
+            $req->execute(array('nouveau_mdp' => $mdp, 'mail' => $mail));
+            return null;
+        }
     }
 
     /**
