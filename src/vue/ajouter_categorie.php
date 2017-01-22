@@ -31,7 +31,7 @@ require_once 'vue/header.php';
                         <form method="post" action="ajouter_categorie">
                             <div class="form-group has-feedback">
                                 <label for="categorie">Catégorie</label>
-                                <input class="form-control" id="categorie" name="categorie" placeholder="ex : Développement web" <?php echo isset($alert) && $alert == 1 ? "value=".$categorie : null ?>required>
+                                <input class="form-control" id="categorie" name="categorie" placeholder="ex : Développement web" <?php echo isset($alert) && $alert == 1 ? "value=\"".$categorie."\"" : null ?>required>
                                 <i class="fa fa-pencil form-control-feedback"></i>
                             </div>
                             <div class="form-group has-feedback">
