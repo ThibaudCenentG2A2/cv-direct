@@ -277,7 +277,7 @@
                                                                        href="#">Recruteurs</a>
                                                                     <ul class="dropdown-menu to-left">
                                                                         <li><a href="#">Liste</a></li>
-                                                                        <li><a href="#">En attente de validation</a>
+                                                                        <li><a href="panel_administration.php">En attente de validation</a>
                                                                         </li>
                                                                         <li><a href="inscription_recruteur">Nouveau</a></li>
                                                                     </ul>
