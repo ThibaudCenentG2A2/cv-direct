@@ -68,7 +68,7 @@
                                 <li><a href="../supprimer_cv?numero=<?php echo $cv_a_afficher->get_id_cv();?>"><i class="fa fa-times md"></i> Supprimer CV</a></li>
                             </ul>
 							<ul class="nav nav-tabs style-4" role="tablist">
-								<li class="active"><a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-user "></i> Profil</a></li>
+								<li><a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-user "></i> Profil</a></li>
                                 <li><a href="#h2tab3" role="tab" data-toggle="tab"><i class="fa fa-file"></i> Contrat d'Assurance Pro</a> </li>
 								<li><a href="#h2tab4" role="tab" data-toggle="tab"><i class="fa fa-file-pdf-o"></i> CV PDF</a></li>
 							</ul>
@@ -106,24 +106,12 @@
 									</dl>
 									<hr>
 								</div>
-                                <div class="tab-pane active" id="h2tab3">
+                                <div class="tab-pane fade" id="h2tab3">
                                     <div class="main col-md-12">
                                         <!-- Tab panes -->
                                         <div class="tab-content clear-style">
                                             <div class="tab-pane active" id="pill-2">
-                                                <?php
-                                                if($contrat_assurance->get_extension() == 'pdf')
-                                                {
-                                                ?>
-                                                <?php
-                                                }
-                                                else
-                                                {
-                                                ?>
-                                                    <a href="cv/pieces_jointes/<?php echo $contrat_assurance->get_token();?>.<?php echo $contrat_assurance->get_extension();?>"><img src="cv/pieces_jointes/<?php echo $contrat_assurance->get_token();?>.<?php echo $contrat_assurance->get_extension();?>"></a>
-                                                <?php
-                                                }
-                                                ?>
+                                                <a href="cv/pieces_jointes/<?php echo $contrat_assurance->get_token();?>.<?php echo $contrat_assurance->get_extension();?>"><img src="cv/pieces_jointes/<?php echo $contrat_assurance->get_token();?>.<?php echo $contrat_assurance->get_extension();?>"></a>
                                             </div>
                                         </div>
                                     </div>

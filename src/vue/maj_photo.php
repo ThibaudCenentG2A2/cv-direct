@@ -2,9 +2,11 @@
     require_once 'vue/header.php';
     echo $reponse;
 ?>
-        <section class="main-container jumbotron light-gray-bg text-center margin-clear">
+        <section class="main-container" style="text-align: center;">
             <div class="container">
                 <div class="row">
+                    <h1 class="page-title" >Modification Photographie</h1>
+                    <div class="separator-2" style="left: 20%"></div>
                     <!-- main start -->
                     <!-- ================ -->
                     <?php
@@ -19,13 +21,11 @@
                     {
                     ?>
                         <img src="vue/images_site/unknown.png" style="position: relative; left: 35%;">
-                        <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>" method="post" enctype="multipart/form-data" style="margin-left: 20px; color: black">
+                        <form action="../valider_photo?numero=<?php echo $_GET['numero'];?>" method="post" enctype="multipart/form-data">
                     <?php
                     }
                     ?>
                             <div class="main col-md-6 col-md-offset-3 pv-40">
-                                <h2> Modification Photographie</h2>
-                                <h2>(Taille Maximale : 400 Ko, Formats Autorisés : JPG, JPEG, PNG) </h2> <br/> <br/>
                                 <div class="form-group has-feedback">
                                     <input type="hidden" name="MAX_FILE_SIZE" value="400000">
                                     <input type="file" class="form-control" name="photo"/>

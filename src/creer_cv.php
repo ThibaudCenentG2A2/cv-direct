@@ -1,5 +1,5 @@
 <?php
-    require_once 'gestion_upload_files.php';
+    require_once 'gestion_cv_pieces_jointes.php';
     require_once 'modele/BD.php';
     require_once 'modele/CV.php';
     require_once 'modele/PieceJointe.php';
@@ -32,21 +32,19 @@
         $code_postal = $_POST['code_postal'];
         $ville = $_POST['ville'];
         $id_cv_recupere = CV::inserer($num_secu, $num_portable, $num_fixe, $adresse, $code_postal, $ville, $nom, $prenom, $pseudo);
-        if(upload_files($id_cv_recupere, 'assurance') == false)
+        if(upload_piece_jointe($id_cv_recupere, 'assurance') == false)
             header('Location: creer_cv?reponse=9');
-        if(upload_files($id_cv_recupere, 'photo') == false)
+        if(upload_piece_jointe($id_cv_recupere, 'photo') == false)
             header('Location: creer_cv?reponse=16');
-        if(upload_files($id_cv_recupere , 'cvpdf') == false)
+        if(upload_piece_jointe($id_cv_recupere , 'cvpdf') == false)
             header('Location: creer_cv?reponse=15');
         header('Location: afficher_tous_les_cv?reponse=10');
     }
     else if($_POST['creer'] == "Annuler")
-    {
        header('Location: afficher_tous_les_cv');
-    }
+
     else if($_POST['ajout'] == "Ajouter un CV")
-    {
         header('Location: creer_cv');
-    }
+
     require_once 'vue/creer_cv.php';
-?>
+

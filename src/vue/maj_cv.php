@@ -6,9 +6,12 @@
     <section class="main-container">
         <div class="container">
             <div class="row">
+                <!-- titre de la page -->
+                <h1 class="page-title">Modifications du CV</h1>
+                <div class="separator-2"></div>
                 <div class="main col-md-8 space-bottom">
                     <div class="contact-form">
-                        <form action="../maj_cv?numero=<?php echo $_GET['numero'];?>" method="post" style="margin-left: 20px; color: black">
+                        <form action="../maj_cv?numero=<?php echo $_GET['numero'];?>" method="post">
                             <label> Modifications CV </label> <br/> <br/>
                             <div class="form-group has-feedback">
                                 <label> Nom </label>

@@ -18,4 +18,3 @@
         require_once('vue/afficher_cv.php');
     }
     require_once('vue/afficher_cv.php');
-?>

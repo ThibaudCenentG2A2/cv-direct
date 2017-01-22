@@ -2,7 +2,7 @@
     require_once 'modele/BD.php';
     require_once 'modele/PieceJointe.php';
     require_once 'modele/CV.php';
-    require_once 'gestion_upload_files.php';
+    require_once 'gestion_cv_pieces_jointes.php';
 
     /**
      *Gére la suppression ou non d'un CV en fonction du choix du recruteur.
@@ -19,7 +19,6 @@
         header('Location: afficher_tous_les_cv?reponse=12');
     }
     else if($_POST['action'] == 'Annuler')
-    {
         header('Location: afficher_cv?numero=' . $_GET['numero']);
-    }
+
     require_once 'vue/supprimer_cv.php';

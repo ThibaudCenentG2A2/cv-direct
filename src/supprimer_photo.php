@@ -16,4 +16,5 @@
     }
     else if($_POST['supprimer'] == 'Annuler')
         header('Location: afficher_cv?numero=' . $_GET['numero']);
+
     require_once 'vue/supprimer_photo.php';

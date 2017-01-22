@@ -1,6 +1,6 @@
 <?php
     require_once 'gestion_action_utilisateur.php';
-    require_once 'gestion_upload_files.php';
+    require_once 'gestion_cv_pieces_jointes.php';
     require_once 'modele/BD.php';
     require_once 'modele/PieceJointe.php';
 
@@ -16,11 +16,11 @@
     else if($_POST['ajoutcvpdf'] == "Ajouter CV PDF")
     {
         $id_cv_recupere = $_GET['numero'];
-        if(upload_files($id_cv_recupere , 'cvpdf') == false)
+        if(upload_piece_jointe($id_cv_recupere , 'cvpdf') == false)
             header('Location: ajouter_cv_pdf?numero=' . $_GET['numero'] . '&reponse=15');
         header('Location: afficher_cv?numero=' . $id_cv_recupere . '&reponse=13');
     }
     else if($_POST['ajoutcvpdf'] == 'Annuler')
         header('Location: afficher_cv?numero=' . $_GET['numero']);
+
     require_once 'vue/ajouter_cv_pdf.php';
-?>

@@ -1,7 +1,7 @@
 <?php
     require_once 'modele/BD.php';
     require_once 'modele/CV.php';
-    require_once 'gestion_upload_files.php';
+    require_once 'gestion_cv_pieces_jointes.php';
     require_once 'gestion_action_utilisateur.php';
 
     /**
@@ -33,8 +33,6 @@
         header('Location: afficher_cv?numero='.$_GET['numero'] .'&reponse=11');
     }
     else if($_POST['majcv'] == "Annuler")
-    {
         header('Location: afficher_cv?numero='.$_GET['numero']);
-    }
+
     require_once 'vue/maj_cv.php';
-?>

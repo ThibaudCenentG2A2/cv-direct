@@ -5,7 +5,7 @@
      */
 
     require_once 'gestion_action_utilisateur.php';
-    require_once 'gestion_upload_files.php';
+    require_once 'gestion_cv_pieces_jointes.php';
     require_once 'modele/BD.php';
     require_once 'modele/PieceJointe.php';
     require_once 'modele/CV.php';
@@ -14,7 +14,7 @@
     {
         if(isset($_GET['idpj'])) // Si il existe déja une photo sur le CV dans la BD que l'on souhaite modifier
         {
-            if(upload_files($_GET['numero'], 'photo') == false)
+            if(upload_piece_jointe($_GET['numero'], 'photo') == false)
                 header('Location: maj_photo?numero=' . $_GET['numero'] . '&idpj=' . $_GET['idpj'] . '&reponse=16');
             $id_piece_jointe_actuelle = $_GET['idpj'];
             $nouvelle_photo = PieceJointe::get_photo_provisoire($_GET['numero'], $id_piece_jointe_actuelle); // On récupére la photo provisoire pour l'affichage en attendant la confirmation du recruteur
@@ -22,7 +22,7 @@
         }
         else
         {
-            if (upload_files($_GET['numero'], 'photo') == false)
+            if (upload_piece_jointe($_GET['numero'], 'photo') == false)
                 header('Location : maj_photo?numero=' . $_GET['numero'] . '&reponse=16');
             $cv_actuel = CV::afficher($_GET['numero']); // On initialise un objet CV afin de pouvoir accéder à l'identifiant de la photo provisoire insérée dans la BD et upload sur le serveur
             $photo_provisoire = $cv_actuel->get_piece_jointe('PhotoCV');

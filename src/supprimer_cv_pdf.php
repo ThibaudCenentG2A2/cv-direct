@@ -17,8 +17,6 @@
         header('Location: afficher_cv?numero=' . $_GET['numero'] . '&reponse=14');
     }
     else if($_POST['action'] == 'Annuler')
-    {
         header('Location: afficher_cv?numero=' . $_GET['numero']);
-    }
+
     require_once 'vue/supprimer_cv_pdf.php';
-?>
