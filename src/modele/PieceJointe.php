@@ -175,7 +175,7 @@ class PieceJointe
             return false;
         else
         {
-            $requete_recup_id_utilisateur = BD::getInstance()->prepare('SELECT U.ID_UTILISATEUR FROM UTILISATEUR U WHERE EMAIL = :mail');
+            $requete_recup_id_utilisateur = BD::getInstance()->prepare('SELECT R.ID_UTILISATEUR FROM RECRUTEUR R WHERE EMAIL = :mail');
             $requete_recup_id_utilisateur->execute(array('mail' => $mail));
             $donnees = $requete_recup_id_utilisateur->fetch();
 
