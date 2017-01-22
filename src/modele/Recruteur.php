@@ -111,10 +111,11 @@ class Recruteur
      */
     static function est_presente($mail)
     {
-        $req = BD::getInstance()->prepare('SELECT COUNT(*) FROM UTILISATEUR WHERE EMAIL = :mail');
+        $req = BD::getInstance()->prepare('SELECT COUNT(*) AS TOTAL FROM UTILISATEUR WHERE EMAIL = :mail');
         $req->execute(array("mail" => $mail));
+        $res = $req->fetch();
 
-        return $req->fetch() > 0;
+        return $res['TOTAL'] > 0;
     }
 
 
