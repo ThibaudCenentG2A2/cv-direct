@@ -3,7 +3,7 @@
 /**
  * Classe d'utilisateurs et fonctions relatives à ces derniers.
  *
- * @author Tristan DIETZ, Thierry Fernandez
+ * @author Tristan DIETZ, Thierry Fernandez, Romain COLONNA D'ISTRIA
  *
  * @version 1.0
  */
@@ -19,7 +19,6 @@ class Recruteur
     private $valid;
     private $admin;
 
-
     /**
      * Constructeur de la classe Recruteur, permettant la connexion d'un recruteur
      * à l'aide d'un mail/pseudo et d'un mot de passe, en verifiant si son compte
@@ -33,28 +32,27 @@ class Recruteur
         //TODO vérifier que le mdp correspond au pseudo ou à l'adresse mail (une requête est suffisance avec WHERE ... OR ...). Si oui, initialiser les données-membres. Sinon, tout vaut null.
 
         $req = BD::getInstance()->prepare("SELECT PSEUDONYME, PASSWORD, NOM, PRENOM, VALID, ADMIN
-                                          FROM UTILISATEUR 
-                                          WHERE UTILISATEUR.EMAIL = :mail
-                                            OR UTILISATEUR.PSEUDONYME = :pseudo
-                                          AND UTILISATEUR.PASSWORD = :mdp");
-        $req->execute(array( ':mail' => $pseudo_or_mail, ':pseudo' =>$pseudo_or_mail,':mdp' =>$mdp ));
-
+                                           FROM UTILISATEUR 
+                                           WHERE UTILISATEUR.EMAIL = :mail
+                                             OR UTILISATEUR.PSEUDONYME = :pseudo
+                                             AND UTILISATEUR.PASSWORD = :mdp");
+        $req->execute(array( ':mail' => $pseudo_or_mail, ':pseudo' => $pseudo_or_mail,':mdp' => $mdp ));
         $data = $req->fetch();
-        if($data['PASSWORD']==$mdp)
+
+        if($data['PASSWORD'] == $mdp)
         {
-            $this->nom = $data['NOM'];
+            $this->nom    = $data['NOM'];
             $this->prenom = $data['PRENOM'];
             $this->pseudo = $data['PSEUDONYME'];
-            $this->mail = $data['EMAIL'];
-            $this->valid = $data['VALID'];
-            $this->admin = $data['ADMIN'];
+            $this->mail   = $data['EMAIL'];
+            $this->valid  = $data['VALID'];
+            $this->admin  = $data['ADMIN'];
         }
-
     }
 
-
+    //TODO relire cette fonction car paramètre pas utilisé
     /**
-     * @param $name
+     * @param String $name
      * @return bool
      */
     public function __isset($name)
@@ -65,49 +63,52 @@ class Recruteur
 
 
     /**
-     * Fonction d'encryptage du mot de passe d'un utilisateur
-     * @param string $mdp Mot de passe à encrypter
-     * @return string Le mot de passe encrypté
+     * Fonction de cryptage d'un mot de passe.
+     *
+     * @param String $mdp Mot de passe à encrypter
+     *
+     * @return String Le mot de passe encrypté
      */
     public static function encryptage_mdp($mdp)
     {
         return md5("on y met notre grain de sel" . $mdp);
     }
 
-
+    //TODO revoir cette foncion car echo 'Erreur EMAIL deja existant' ne sert a rien
     /**
-     *Fonction d'inscription d'un utilisateur, dans la base de données avec les informations en paramètre
-     * @param String $pseudo de l'utilisateur
-     * @param String $nom de l'utilisateur
-     * @param String $prenom de l'utilisateur
-     * @param String $mail email de l'utilisateur
-     * @param String $mdp mot de passe
+     * Fonction d'inscription d'un utilisateur dans la base de données avec les informations en paramètre
+     *
+     * @param String $pseudo Pseudo
+     * @param String $nom Nom de famille
+     * @param String $prenom Prenom
+     * @param String $mail Adresse mail
+     * @param String $mdp Mot de passe
      */
     public static function inscrire_utilisateur($pseudo, $nom, $prenom, $mail, $mdp)
     {
         $req = BD::getInstance()->prepare('SELECT EMAIL FROM UTILISATEUR WHERE UTILISATEUR.EMAIL =:mail');// a modifier selon la bd hein :)
         $req->execute(array( ':mail' => $mail));
         $data=$req->fetch();
-        if($data['EMAIL']== '' && preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\\.[a-z]{2,4}$#", $mail) && !empty($mail)&& !empty($nom)&& !empty($prenom) && !empty($pseudo))
-            {
+
+        if($data['EMAIL']== '' && preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\\.[a-z]{2,4}$#", $mail) && !empty($mail) && !empty($nom)&& !empty($prenom) && !empty($pseudo))
+        {
             $req = BD::getInstance()->prepare('INSERT INTO UTILISATEUR(PSEUDONYME, PRENOM, NOM, EMAIL, PASSWORD, VALID) VALUES (:pseudo, :prenom, :nom, :mail, :mdp, 0)');// a modifier selon la bd hein :)
             $req->execute(array(':pseudo' => $pseudo, ':prenom' => $prenom, ':nom' => $nom, ':mail' => $mail, ':mdp' => $mdp));
-            }
+        }
         else
-            {   header ("Location: $_SERVER[HTTP_REFERER]" );
-                echo 'Erreur EMAIL deja existant';
-            }
+        {
+            header ("Location: $_SERVER[HTTP_REFERER]" );
+            echo 'Erreur EMAIL deja existant';
+        }
     }
 
-
-
     /**
-     * Cette fonction va permettre de vérifier que l'adresse mail entré par
-     * l'utilisateur est présente dans la base de données.
+     * Cette fonction va permettre de vérifier que l'adresse mail en parametre
+     * est présente dans la base de données.
      *
      * @param String $mail Email a vérifier
      *
-     * @return bool Renvoie true si présente et false sinon.
+     * @return bool Renvoie true si présente, false sinon.
      */
     static function est_presente($mail)
     {
@@ -116,7 +117,6 @@ class Recruteur
 
         return $req->fetch() > 0;
     }
-
 
     /**
      * Cette fonction va servir à mettre à jour le mot de passe de l'utilisatur
@@ -127,7 +127,7 @@ class Recruteur
      */
     static function modifier_mot_de_passe($mail, $nouveau_mdp)
     {
-        $mdp = self::encryptage_mdp(htmlentities($nouveau_mdp));
+        $mdp = self::encryptage_mdp($nouveau_mdp);
 
         $req = BD::getInstance()->prepare('UPDATE UTILISATEUR SET PASSWORD = :nouveau_mdp WHERE EMAIL = :mail');
         $req->execute(array('nouveau_mdp' => $mdp, 'mail' => $mail));
@@ -136,7 +136,8 @@ class Recruteur
     /**
      * Cette fonction va permettre de recuperer tous les utilisateurs en attente de validation apres inscription
      *
-     * @return un array avec tous les inscrits non validé dans la BD.
+     * @return PDOStatement Tableau contenant les comptes de recruteurs non validés par
+     *                      un administrateur
      */
     static function recuperation_nouveaux_inscrits()
     {
@@ -147,20 +148,21 @@ class Recruteur
     }
 
     /**
-     * Cette fonction va servir à modifier un attribut de la table UTILISATEUR, VALID et le passer a 1
+     * Cette fonction va permettre de valider un compte recruteur.
+     *
      * @param String $mail Mail du compte associé à un utilisateur inscrit
      */
     static function valider_nouvel_inscrit($mail)
     {
         $req = BD::getInstance()->prepare('UPDATE UTILISATEUR SET VALID = 1 WHERE EMAIL = '.$mail);
         $req->execute();
-
     }
 
     /**
-     * Cette fonction a supprimer un tuple dans une table, la table utilisateur,et ainsi supprimer un utilisateur
+     * Cette fonction va permettre de supprimer un compte.
+     *
      * @param String $email Mail du compte associé à un utilisateur inscrit
-     * @param String $pseudo pseudo du compte associé à un utilisateur inscrit
+     * @param String $pseudo Pseudo du compte associé à un utilisateur inscrit
      */
     public static function suppression_compte($email, $pseudo)
     {
@@ -217,30 +219,16 @@ class Recruteur
     /**
      * @return mixed
      */
-    public function setValidTrue()
+    public function setValid($valide)
     {
         $req = BD::getInstance()->prepare("UPDATE UTILISATEUR
-                                          SET VALID = 0
-                                          WHERE U.EMAIL = `$this->mail`
-                                          AND U.PSEUDONYME = `$this->pseudo`
-                                          ");
-        $req->execute();
+                                           SET VALID = :valide
+                                           WHERE U.EMAIL = `$this->mail`
+                                           AND U.PSEUDONYME = `$this->pseudo`");
+        $req->execute(array('valide' => $valide));
         
     }
-    /**
-     * Cette fonction  sert a modifier un tuple dans une table, la table utilisateur
-     * @param String $modif la nouvelle valeur du mdp
-     */
-    public function set_mot_de_passe($modif)
-    {   $modif=Recruteur::encryptage_mdp($modif);
-        $req = BD::getInstance()->prepare("UPDATE UTILISATEUR
-                                          SET PASSWORD = `$modif`
-                                          WHERE U.EMAIL = `$this->mail`
-                                          AND U.PSEUDONYME = `$this->pseudo`
-                                          ");
-        $req->execute();
 
-    }
     /**
      * Cette fonction  sert a modifier un tuple dans une table, la table utilisateur
      * @param String $modif la nouvelle valeur du nom
