@@ -127,6 +127,10 @@
                         <!-- ================ -->
                         <div id="header-top-second"  class="clearfix">
 
+                            <?php
+                            if (isset($_SESSION['pseudo'])) {
+                            ?>
+
                             <!-- header top dropdowns start -->
                             <!-- ================ -->
                             <div class="header-top-dropdown text-right">
@@ -159,6 +163,24 @@
                                 </div>
                             </div>
                             <!--  header top dropdowns end -->
+
+                            <?php
+                            } else {
+                            ?>
+
+                            <!-- header top dropdowns start -->
+                            <!-- ================ -->
+                            <div class="header-top-dropdown text-right">
+                                <div class="btn-group">
+                                    <a href="deconnexion" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> <?php echo $_SESSION['pseudo']; ?> (déconnexion)</a>
+                                </div>
+                            </div>
+                            <!--  header top dropdowns end -->
+
+                            <?php
+                            }
+                            ?>
+
                         </div>
                         <!-- header-top-second end -->
                     </div>

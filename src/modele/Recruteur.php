@@ -137,7 +137,7 @@ class Recruteur
     /**
      * Cette fonction va permettre de recuperer tous les utilisateurs en attente de validation apres inscription
      *
-     * @return PDOStatement Tableau contenant les comptes de recruteurs non validés par
+     * @return array Tableau contenant les comptes de recruteurs non validés par
      *                      un administrateur
      */
     static function recuperation_nouveaux_inscrits()
@@ -167,7 +167,7 @@ class Recruteur
      */
     public static function suppression_compte($email, $pseudo)
     {
-        $req = BD::getInstance()->prepare('DELETE FROM UTILISATEUR WHERE EMAIL ='.$email.'AND PSEUDONYME ='.$pseudo);
+        $req = BD::getInstance()->prepare('DELETE FROM UTILISATEUR WHERE EMAIL ='.$email.' AND PSEUDONYME ='.$pseudo);
         $req->execute();
     }
 
