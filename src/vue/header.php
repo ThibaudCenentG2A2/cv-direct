@@ -144,7 +144,7 @@
                                             <form class="login-form margin-clear" action="connexion_recruteur" method="post">
                                                 <div class="form-group has-feedback">
                                                     <label class="control-label">Pseudonyme ou adresse mail</label>
-                                                    <input type="text" class="form-control" name="pseudo" placeholder="test@test.fr">
+                                                    <input type="text" class="form-control" name="pseudo" placeholder="john.doe@cv-direct.fr">
                                                     <i class="fa fa-user form-control-feedback"></i>
                                                 </div>
                                                 <div class="form-group has-feedback">
@@ -279,7 +279,7 @@
                                                                         <li><a href="#">Liste</a></li>
                                                                         <li><a href="#">En attente de validation</a>
                                                                         </li>
-                                                                        <li><a href="#">Nouveau</a></li>
+                                                                        <li><a href="inscription_recruteur">Nouveau</a></li>
                                                                     </ul>
                                                                 </li>
                                                                 <li class="dropdown ">
