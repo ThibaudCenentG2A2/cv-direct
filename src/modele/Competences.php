@@ -10,12 +10,25 @@ class Competences
      */
     public static function get_categories()
     {
+        return BD::getInstance()->query('SELECT ID_COMPETENCE_CATEGORIE, NOM_COMPETENCE_CATEGORIE FROM COMPETENCE_CATEGORIE ORDER BY NOM_COMPETENCE_CATEGORIE');
+    }
 
-        return BD::getInstance()->query('SELECT ID_COMPETENCE_CATEGORIE, NOM_COMPETENCE_CATEGORIE
-                                          FROM COMPETENCE_CATEGORIE
-                                          ORDER BY NOM_COMPETENCE_CATEGORIE');
+
+
+    /**
+     * Fonction pour renvoyer depuis la BD la liste des compétences depuis une catégorie donnée en paramètre
+     * @param int $id_categorie ID de la catégorie d'où l'on doit rechercher les compétences
+     * @return PDOStatement Retourne l'ensemble des compétences de la catégorie d'ID celui passé en paramètre
+     */
+    public static function get_competences_depuis_categorie($id_categorie)
+    {
+        $req = BD::getInstance()->prepare('SELECT NOM_COMPETENCE FROM COMPETENCE WHERE ID_COMPETENCE_CATEGORIE = :id_categorie ORDER BY NOM_COMPETENCE');
+        $req->execute(array('id_categorie' => $id_categorie));
+        return $req;
 
     }
+
+
 
     /**
      * Recherche si la catégorie donnée en paramètre existe bien dans la base de données
@@ -25,34 +38,18 @@ class Competences
     public static function categorie_existe($categorie)
     {
 
-        $req = BD::getInstance()->prepare('SELECT COUNT(*) AS TOTAL
-                                            FROM COMPETENCE_CATEGORIE
-                                            WHERE ID_COMPETENCE_CATEGORIE = :id_categorie
-                                            ORDER BY NOM_COMPETENCE_CATEGORIE');
+        $req = BD::getInstance()->prepare('SELECT COUNT(*) AS TOTAL FROM COMPETENCE_CATEGORIE WHERE ID_COMPETENCE_CATEGORIE = :id_categorie ORDER BY NOM_COMPETENCE_CATEGORIE');
         $req->execute(array('id_categorie' => intval($categorie)));
         $data = $req->fetch();
         return $data['TOTAL'];
     }
 
 
-    /**
-     * @param $id_categorie
-     * @return PDOStatement
-     */
-    public static function get_competences_depuis_categorie($id_categorie) {
-        $req = BD::getInstance()->prepare('SELECT NOM_COMPETENCE
-                                            FROM COMPETENCE 
-                                            WHERE ID_COMPETENCE_CATEGORIE = :id_categorie 
-                                            ORDER BY NOM_COMPETENCE');
-        $req->execute(array('id_categorie' => $id_categorie));
-        return $req;
-
-    }
-
 
     /**
+     * Fonction d'ajout de compétences dans la catégorie passée en paramètre.
      * @param string[] $competences Liste des compétences à ajouter
-     * @param int $categorie Numéro de la catégorie
+     * @param int $categorie Numéro de la catégorie où ajouter les compétences.
      */
     public static function ajouter_les_competences($competences, $categorie)
     {
@@ -71,7 +68,8 @@ class Competences
      * @param string $competence Chaîne de la compétence à chercher
      * @return bool Retourne true si le paramètre competence existe dans la BD, false sinon
      */
-    public static function competence_existe($competence) {
+    public static function competence_existe($competence)
+    {
         $req = BD::getInstance()->prepare('SELECT COUNT(*) AS TOTAL FROM COMPETENCE WHERE NOM_COMPETENCE = :nom_competence');
         $req->execute(array("nom_competence" => $competence));
         $data = $req->fetch();
