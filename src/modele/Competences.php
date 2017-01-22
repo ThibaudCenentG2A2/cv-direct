@@ -2,6 +2,14 @@
 
 require_once 'modele/BD.php';
 
+
+/**
+ * Class Competences
+ *
+ * @author Tristan Dietz
+ *
+ * @version 1.4
+ */
 class Competences
 {
     /**
