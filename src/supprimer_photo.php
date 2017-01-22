@@ -1,5 +1,6 @@
 <?php
 require_once 'header.php';
+
     /** Contrôleur gérant la suppression ou non de la photo sur un CV d'une personne en particulier
     * @author Thibaud CENENT
     * @version 1.0

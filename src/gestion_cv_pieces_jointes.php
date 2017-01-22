@@ -9,41 +9,41 @@
 
     /** Gére si possible l'upload des pièces jointes sur le serveur ainsi que la vérification et des champs entrés pour la création ou la modification des CV
      * @param $id_cv
-     * @param $nom_file
+     * @param $nom_fichier
      * @return bool
      */
-    function upload_piece_jointe($id_cv, $nom_file)
+    function upload_piece_jointe($id_cv, $nom_fichier)
     {
-        if(!empty($_FILES[$nom_file])AND $_FILES[$nom_file]['size'] <= 400000 AND $_FILES[$nom_file]['error'] == 0)
+        if(!empty($_FILES[$nom_fichier])AND $_FILES[$nom_fichier]['size'] <= 400000 AND $_FILES[$nom_fichier]['error'] == 0) // Si le fichier n'est pas vide , n'est pas supérieur à 400 Ko et ne renvoie pas d'erreur
         {
-            $token = PieceJointe::verifier_presence_token();
-            $infos_Fichier = pathinfo($_FILES[$nom_file]['name']);
-            $extension_Upload = $infos_Fichier['extension'];
-            if($nom_file == 'assurance')
+            $token = PieceJointe::verifier_presence_token(); // On génére un token aléatoire unique pour chaque pièce jointe
+            $infos_Fichier = pathinfo($_FILES[$nom_fichier]['name']); // On récupére le nom le plus court du fichier
+            $extension_Upload = $infos_Fichier['extension']; // On récupére l'extension du fichier passé en paramètre
+            if($nom_fichier == 'assurance') // Si le fichier correspond à l'assurance
             {
-                if (!($extension_Upload == 'jpg' OR $extension_Upload == 'jpeg' OR $extension_Upload == 'png'))
+                if (!($extension_Upload == 'jpg' OR $extension_Upload == 'jpeg' OR $extension_Upload == 'png')) // Si l'extension ne correspond pas à jpg, jpeg ou png
                     return false;
-                PieceJointe::inserer($id_cv, 'Assurance', $extension_Upload, $token);
+                PieceJointe::inserer($id_cv, 'Assurance', $extension_Upload, $token); // On insére la pièce jointe dans la BD
                 $chemin = "cv/pieces_jointes/" . $token . "." . $extension_Upload;
-                move_uploaded_file($_FILES[$nom_file]['tmp_name'], $chemin);
+                move_uploaded_file($_FILES[$nom_fichier]['tmp_name'], $chemin); // On insére la piéce jointe sur le serveur
                 return true;
             }
-            else if($nom_file == 'photo')
+            else if($nom_fichier == 'photo')
             {
                 if(!($extension_Upload == 'jpg' OR $extension_Upload == 'png' OR $extension_Upload == 'jpeg'))
                     return false;
                 PieceJointe::inserer($id_cv, 'PhotoCV', $extension_Upload, $token);
                 $chemin = "cv/pieces_jointes/" . $token . "." . $extension_Upload;
-                move_uploaded_file($_FILES[$nom_file]['tmp_name'], $chemin);
+                move_uploaded_file($_FILES[$nom_fichier]['tmp_name'], $chemin);
                 return true;
             }
-            else if($nom_file == 'cvpdf')
+            else if($nom_fichier == 'cvpdf')
             {
                 if(!($extension_Upload == 'pdf'))
                     return false;
                 PieceJointe::inserer($id_cv, 'CVPDF', $extension_Upload, $token);
                 $chemin = "cv/pieces_jointes/" . $token . "." . $extension_Upload;
-                move_uploaded_file($_FILES[$nom_file]['tmp_name'], $chemin);
+                move_uploaded_file($_FILES[$nom_fichier]['tmp_name'], $chemin);
                 return true;
             }
         }
@@ -63,7 +63,7 @@
      */
     function verif_infos_cv($nom, $prenom, $pseudo, $portable, $fixe, $adresse, $code_postal, $ville)
     {
-        if(!empty($nom) && preg_match("[A-Z]+", $nom) == 0)
+        if(!empty($nom) && preg_match("[A-Z]+", $nom) == 0) // Si le nom n'est pas vide et qu'il ne correspond à l'expression rationnelle souhaité
             return 1;
         if(!empty($prenom) && preg_match("^[A-Z][a-z]+$", $prenom) == 0)
             return 2;
@@ -88,6 +88,6 @@
     function supprimer_pieces_jointes_cv(CV $cv_a_supprimer)
     {
         foreach ($cv_a_supprimer->get_liste_pieces_jointe() as $piece_jointe)
-            unlink("cv/pieces_jointes/" . $piece_jointe->get_token() . "." . $piece_jointe->get_extension());
+            unlink("cv/pieces_jointes/" . $piece_jointe->get_token() . "." . $piece_jointe->get_extension()); // Utilisation de unlink pour supprimer chaque pièce jointe associé à un CV sur le serveur
     }
 

@@ -3,6 +3,7 @@ require_once 'header.php';
     require_once 'modele/BD.php';
     require_once 'modele/CV.php';
     require_once 'modele/PieceJointe.php';
+
     /**
      *Gére la suppression ou non d'un CV PDF en fonction du choix du recruteur.
      * @author Thibaud CENENT

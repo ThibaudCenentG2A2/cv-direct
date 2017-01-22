@@ -72,7 +72,9 @@ class CV
     private $prenom;
 
     /**
+     * Correspond au pseudonyme d'une personne concernée sur le CV
      * @var $pseudo
+     * @see CV::get_pseudo()
      */
     private $pseudo;
 
@@ -199,7 +201,6 @@ class CV
         return $this->pseudo;
     }
 
-
     /** Retourne la liste des CV_PDF pour un CV en particulier
      * @return array| PieceJointe
      */
@@ -241,10 +242,9 @@ class CV
     {
         $req = BD::getInstance()->prepare('SELECT * FROM PIECE_JOINTE WHERE ID_CV = :id_cv AND TYPE_PIECE_JOINTE = :type_piece_jointe ORDER BY ID_PIECE_JOINTE DESC');
         $req->execute(array('id_cv' => $this->get_id_cv(), 'type_piece_jointe' => 'CVPDF'));
-        while ($donnees = $req->fetch()) {
+        while ($donnees = $req->fetch())
             $this->liste_cv_pdf[] = new PieceJointe($donnees['ID_PIECE_JOINTE'], $this->get_id_cv(), $donnees['TYPE'],
                 $donnees['EXTENSION'], $donnees['TOKEN']);
-        }
     }
 
     /** Retourne sous la forme d'une String le CV et son identifiant
@@ -368,9 +368,7 @@ class CV
         $nombre_cv_total = BD::getInstance()->query('SELECT COUNT(*) AS total_cv FROM CV');
         $donnes_total = $nombre_cv_total->fetch();
         $total = $donnes_total['total_cv'];
-
         $nombre_pages_necessaires = ceil($total / CV::cv_par_page);
-
         return $nombre_pages_necessaires;
     }
 
@@ -383,14 +381,11 @@ class CV
         if (isset($_GET['page'])) {
             $page_actuelle = intval($_GET['page']);
             if ($page_actuelle > $nombre_pages_necessaires)
-            {
                 $page_actuelle = $nombre_pages_necessaires;
-            }
         }
         else
-        {
             $page_actuelle = 1;
-        }
+
         return $page_actuelle;
     }
 
@@ -408,11 +403,9 @@ class CV
         $req->execute();
         $liste_cv_existants = array();
         while ($donnees = $req->fetch())
-        {
             $liste_cv_existants[] = new CV($donnees['ID_CV'], $donnees['NUMERO_SECU_SOCIALE'], $donnees['NUM_TEL_PORTABLE'],
                 $donnees['NUM_TEL_FIXE'], $donnees['ADRESSE'], $donnees['CODE_POSTAL'],
                 $donnees['VILLE'], $donnees['NOM'], $donnees['PRENOM'], $donnees['PSEUDONYME']);
-        }
         return $liste_cv_existants;
     }
 

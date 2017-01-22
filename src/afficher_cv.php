@@ -14,9 +14,9 @@
     $photo = $cv_a_afficher->get_piece_jointe('PhotoCV');
     $contrat_assurance = $cv_a_afficher->get_piece_jointe('Assurance');
     $liste_pdf = $cv_a_afficher->get_liste_cv_pdf();
-    if(isset($_GET['reponse']))
+    if(isset($_GET['reponse'])) // Si on a eu un changement relatif par rapport à ce CV
     {
-        $reponse = afficher_type_changement($_GET['reponse']);
+        $reponse = afficher_type_changement($_GET['reponse']); // On récupére la mise à jour effectué sur ce CV
         require_once('vue/afficher_cv.php');
     }
     require_once('vue/afficher_cv.php');

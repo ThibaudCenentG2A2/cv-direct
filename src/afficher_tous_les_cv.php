@@ -15,9 +15,9 @@
     $i = CV::get_page_actuelle();
     $nbre_pages = CV::get_nombres_pages_necessaires();
     $suivant = $i+1;
-    if(isset($_GET['reponse']))
+    if(isset($_GET['reponse'])) // Si un CV a été ajouté ou supprimé
     {
-        $reponse = afficher_type_changement($_GET['reponse']);
+        $reponse = afficher_type_changement($_GET['reponse']); // On récupére le changement effectué
         require_once('vue/afficher_tous_les_cv.php');
     }
     require_once('vue/afficher_tous_les_cv.php');

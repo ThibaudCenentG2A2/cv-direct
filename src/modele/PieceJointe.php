@@ -136,11 +136,18 @@ class PieceJointe
         return new PieceJointe($donnees['ID_PIECE_JOINTE'], $id_cv, $donnees['TYPE_PIECE_JOINTE'], $donnees['EXTENSION'], $donnees['TOKEN']);
     }
 
+    /** Permet la suppression d'une pièce joint sur la BD
+     * @param $id_piece_jointe
+     */
     public static function supprimer($id_piece_jointe)
     {
         $req = BD::getInstance()->prepare('DELETE FROM PIECE_JOINTE WHERE ID_PIECE_JOINTE = :id_piece_jointe');
         $req->execute(array('id_piece_jointe' => $id_piece_jointe));
     }
+
+    /**
+     * @return string
+     */
     function __toString()
     {
         return $this->generer_token_aleatoire();
