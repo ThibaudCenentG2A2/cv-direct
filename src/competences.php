@@ -1,7 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pyrrha
- * Date: 21/01/2017
- * Time: 14:40
- */
+
+require_once 'header.php';
+
+require_once 'vue/competences.php';
