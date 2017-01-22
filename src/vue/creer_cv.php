@@ -1,6 +1,5 @@
 <?php
     require_once 'vue/header.php';
-    echo '<br/>';
     echo $reponse;
 ?>
     <section class="main-container">
