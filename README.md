@@ -26,3 +26,46 @@ effectuer des modifications comme la photographie du candidat ou bien la modific
 éléments telle que des CV PDF (avec la possibilité aussi de les supprimer).
 Ainsi, les recruteurs ont la capacitée de rechercher en fonction du ou des critère(s) soumis par l'entreprise des candidats potentiels
 répondant à ces critères et de pouvoir les sélectionner par e-mail
+
+# Choix Techniques
+
+- Partie Thibaud
+
+ Au cours de mes tâches à effectuer, je me suis occupé de toute la partie de gestion des CV possible pour les recruteurs
+ à savoir : la création de CV, l'ajout de nouveaux CV PDF, la modification des informations du CV, la suppression de CV
+ , de CV PDF et de la photographie ainsi que la modification de la photo de profil.
+ Au niveau de la partie Modèle, je suis partie sur de la conception en POO avec la création des classes CV et Pièce Jointe
+ dans le but de pouvoir exploiter les capacités de la PDO. Egalement, j'ai connu pour l'affichage de tous les CV, un
+ algorithme de pagination qui permet d'afficher 8 CV par page et de pouvoir par la suite afficher sur la vue les différentes
+ pages sur lesquelles peut naviguer le recruteur en fonction du nombre de CV réparties sur x pages.
+ 
+- Partie Romain
+ 
+ 
+- Partie Tristan
+ 
+ 
+ 
+- Partie Thierry
+
+
+# Configuration logicielle
+
+ - Systèmes d'exploitations : Mac OSX, Ubuntu, Windows
+
+ - Naviguateurs : Chrome, Mozilla Firefox, Internet Explorer
+
+ - Connexion Internet avec un débit adéquat
+
+# Ensemble des identifiants de connexion
+
+ - Compte de Test : Pseudonyme : ThibaudC13 ; E-Mail : thibaud.cenent.pro@hotmail.com ; Mot de passe : jokerxx69
+ 
+ - Compte d'Administration : Pseudonyme : bigbad ; E-mail : fernandez27.tf@gmail.com ; Mot de passe : test
+ 
+ - Base de Données : Utilisateur MYSQL : cv-direct ; Mot de passe : equipettn
+ 
+ - Hébergement : E-Mail : thibaud.cenent.pro@hotmail.com ; Mot de passe : Jokerxx69
+ 
+ - Compte de Github : E-Mail : peter2070@hotmail.fr ; Mot de passe : jokerxx69
+
