@@ -83,4 +83,33 @@ class Competences
         $data = $req->fetch();
         return $data['TOTAL'] > 0;
     }
+
+
+
+    /**
+     * Fonction testant l'existance du nom de la catégorie dans la BD
+     * @param string $categorie Chaîne de la catégorie à chercher
+     * @return bool Retourne true si le paramètre categorie existe dans la BD, false sinon
+     */
+    public static function categorie_existe_nom($categorie)
+    {
+        $req = BD::getInstance()->prepare('SELECT COUNT(*) AS TOTAL FROM COMPETENCE_CATEGORIE WHERE NOM_COMPETENCE_CATEGORIE = :nom_categorie');
+        $req->execute(array("nom_categorie" => strval($categorie)));
+        $data = $req->fetch();
+        return $data['TOTAL'] > 0;
+    }
+
+
+
+    /**
+     * Fonction d'ajout dans la catégorie
+     * @param string $categorie Catégorie à ajouter
+     */
+    public static function ajouter_la_categorie($categorie)
+    {
+        if(self::categorie_existe_nom($categorie))
+            return;
+        $ins = BD::getInstance()->prepare('INSERT INTO COMPETENCE_CATEGORIE (NOM_COMPETENCE_CATEGORIE) VALUES (:categorie)');
+        $ins->execute(array("categorie" => strval($categorie)));
+    }
 }
