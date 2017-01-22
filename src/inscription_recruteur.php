@@ -15,7 +15,7 @@ if (isset($_POST['pseudo_inscription']) &&
 {
     if(Recruteur::est_presente($_POST['mail_inscription'])==false)
     {
-        Recruteur::inscrire_utilisateur($_POST['pseudo_inscription'], $_POST['prenom_inscription'], $_POST['nom_inscription'], $_POST['mail_inscription'], Recruteur::encryptage_mdp($_POST['mot_de_passe']));
+        Recruteur::inscrire_recruteur($_POST['pseudo_inscription'], $_POST['prenom_inscription'], $_POST['nom_inscription'], $_POST['mail_inscription'], Recruteur::encryptage_mdp($_POST['mot_de_passe']));
         $alerteUser = 2;
         header('Location:index.php?alerteUser=' . $alerteUser);
     }
