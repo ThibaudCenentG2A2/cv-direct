@@ -25,7 +25,7 @@ class Recruteur
      * existe dans la base de données
      *
      * @param String $pseudo_or_mail representant soit un mail ou un pseudo
-     * @param String $mdp mot de passe
+     * @param String $mdp mot de passe encrypté par
      */
     public function __construct($pseudo_or_mail, $mdp)
     {

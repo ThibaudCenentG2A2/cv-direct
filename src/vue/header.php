@@ -128,7 +128,7 @@
                         <div id="header-top-second"  class="clearfix">
 
                             <?php
-                            if (isset($_SESSION['pseudo'])) {
+                            if (!isset($_SESSION['pseudo'])) {
                             ?>
 
                             <!-- header top dropdowns start -->
@@ -154,7 +154,7 @@
                                                 </div>
                                                 <button type="submit" class="btn btn-gray btn-sm">Se connecter</button>
                                                 <ul>
-                                                    <li><a href="../mot_de_passe_oublie">Mot de passe oublié?</a></li>
+                                                    <li><a href="mot_de_passe_oublie">Mot de passe oublié?</a></li>
                                                 </ul>
 
                                             </form>

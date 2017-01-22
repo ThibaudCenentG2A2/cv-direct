@@ -10,7 +10,7 @@ function verification_pseudo($pseudo)
 {
     $bdd = $GLOBALS['pdo'];
     $req = $bdd->query
-    ('INSERT INTO SELECT(pseudo)FROM UTILISATEUR WHERE pseudo=:pseudo');// a modifier selon la bd hein :)
+    ('INSERT INTO SELECT(pseudo) FROM UTILISATEUR WHERE pseudo=:pseudo');// a modifier selon la bd hein :)
     $req->execute
     (array(":pseudo" => $pseudo));
     $data = $req->fetch();
@@ -20,4 +20,3 @@ function verification_pseudo($pseudo)
         return false;
     }
 }
-?>
