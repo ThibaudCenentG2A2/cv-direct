@@ -2,7 +2,7 @@
 
 Ce projet en langage de programmation PHP a été réalisé par l'équipe 3TN composée des membres suivants:
 
-# Auteurs
+## Auteurs
 
 - Thibaud CENENT
 - Romain COLONNA D'ISTRIA
@@ -11,11 +11,11 @@ Ce projet en langage de programmation PHP a été réalisé par l'équipe 3TN co
 
 Etudiants de 2ème année en formation Informatique à l'IUT d'Aix en Provence
  
-# URL du site Web
+## URL du site Web
 
 Notre site web vous est accessible à l'URL suivant : http://cv-direct.alwaysdata.net/
  
-# Présentation du projet réalisé
+## Présentation du projet réalisé
  
 Le projet que nous avions eu à concevoir au cours de ces dernières semaines était une CVThèque destinée à un cabinet de consultants
 ou un service des ressources humaines d'une ESN et a pour but d'affecter des ressources sur des missions selon des profils recherchés.
@@ -27,7 +27,7 @@ effectuer des modifications comme la photographie du candidat ou bien la modific
 Ainsi, les recruteurs ont la capacitée de rechercher en fonction du ou des critère(s) soumis par l'entreprise des candidats potentiels
 répondant à ces critères et de pouvoir les sélectionner par e-mail
 
-# Choix Techniques
+## Choix Techniques
 
 - Partie Thibaud
 
@@ -49,7 +49,7 @@ répondant à ces critères et de pouvoir les sélectionner par e-mail
 - Partie Thierry
 
 
-# Configuration logicielle
+## Configuration logicielle
 
  - Systèmes d'exploitations : Mac OSX, Ubuntu, Windows
 
@@ -57,7 +57,7 @@ répondant à ces critères et de pouvoir les sélectionner par e-mail
 
  - Connexion Internet avec un débit adéquat
 
-# Ensemble des identifiants de connexion
+## Ensemble des identifiants de connexion
 
  - Compte de Test : Pseudonyme : ThibaudC13 ; E-Mail : thibaud.cenent.pro@hotmail.com ; Mot de passe : jokerxx69
  
